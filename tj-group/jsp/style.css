@@ -1,0 +1,120 @@
+body {
+  background: white;
+  font-family: verdana, arial, helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+#content {
+  padding-left: .7em;
+  font-size: 90%;
+}
+
+#content .title {
+  font-weight: normal;
+  font-size: 12pt;
+  font-style: italic;
+}
+
+#content .colored {
+  background: #ddddff; //d80404;
+  color: blue;
+  border: 1px solid blue;
+}
+
+#content td {
+  padding: 2px 10px 2px 10px;
+}
+
+#content a {
+  text-decoration: underline;
+}
+
+#content a.coloredtext {
+  color: blue;
+}
+
+#content a.url {
+  color: green;
+  font-size: 10pt;
+  font-weight: normal;
+  text-decoration: none;
+}
+
+#content .url {
+  color: green;
+  font-size: 10pt;
+  font-weight: normal;
+}
+
+#content .age {
+  color: green;
+  font-size: 10pt;
+  font-weight: normal;
+}
+
+#content .smalltitle {
+  font-size:16pt;
+}
+
+#content .pagetitle {
+  font-size:24pt;
+}
+
+#content .query {
+  font-weight: bold;
+}
+
+#content .error {
+  color: blue;
+}
+
+#content .explanation {
+  color: #6666aa;
+}
+
+#content .snippet {
+  font-weight: normal;
+  font-size: 12pt;
+}
+
+#content table {
+  border: 0px;
+  border-spacing: 0px;
+}
+
+#content .snipp {
+  width: 700px;
+}
+
+#header form input, #header form select {
+  margin: 0;
+  padding: 0;
+}
+
+#header form {
+  position: absolute;
+  top: 4px;
+  right: 0%;
+  margin: 0 12px 0 0;
+  padding: 0;
+  text-align: right;
+  font-size: .8em;
+  line-height: 100%;
+}
+
+#header form .search-for {
+  font-size: 84%;
+  text-align: left;
+  float: left;
+}
+
+#header form .links {
+  padding-bottom: .4em;
+  font-size: 84%;
+}
+
+#header form .links a {
+  text-decoration: underline;
+}
+

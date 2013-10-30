@@ -1,0 +1,144 @@
+<?xml version="1.0"?>
+
+<project name="Osmot" default="default" basedir=".">
+
+  <property file="${basedir}/build.properties" />
+
+  <!-- Classpath -->
+  <path id="classpath">
+    <fileset dir="${lib.dir}">
+      <include name="*.jar"/>
+    </fileset>
+  </path>
+
+  <!-- Make destination directories -->
+  <target name="init">
+    <mkdir dir="${build.dir}"/>
+    <mkdir dir="${build.classes}"/>
+    <mkdir dir="${javadoc.dir}"/>
+  </target>    
+
+  <!-- By default make a jar file, and make the documentation -->
+  <target name="default" depends="war,javadoc"/>
+
+  <!-- Compile the Java files -->
+  <target name="compile" depends="init">
+    <javac 
+     encoding="${build.encoding}"
+     srcdir="${src.dir}"
+     includes="edu/cornell/cs/osmot/*/*/*.java,edu/cornell/cs/osmot/*/*.java"
+     destdir="${build.classes}"
+     debug="${debug}"
+     debuglevel="lines,vars,source"
+     optimize="${optimize}"
+     deprecation="${deprecation}">
+      <classpath refid="classpath"/>
+    </javac>
+  </target>
+
+  <!-- Make the javadoc documentation -->
+  <target name="javadoc" depends="init">
+    <javadoc 
+     sourcepath="${javadoc.src}"
+     destdir="${javadoc.dir}"
+     packagenames="edu.cornell.cs.osmot.*"
+     private="false">
+      <link href="http://lucene.apache.org/java/docs/api"/>
+      <classpath refid="classpath"/>
+    </javadoc>
+  </target>
+
+  <!-- Make the searcher jar file -->
+  <target name="jar" depends="compile">
+    <jar
+      jarfile="${build.dir}/${final.name}.jar"
+      basedir="${build.classes}"
+    />
+  </target>
+
+  <!-- Make the searcher war file -->
+  <target name="war" depends="jar">
+     <copy todir="${web.src.dir}/config" file="${basedir}/osmot.conf"/>	 
+     <copy todir="${web.src.dir}/config" file="${basedir}/author_popularity.txt"/>
+     <copy todir="${web.src.dir}/config" file="${basedir}/feature.conf"/>
+     <copy todir="${web.src.dir}/logs" file="${basedir}/.htaccess"/>  
+     <copy todir="${web.src.dir}" file="${basedir}/.htaccess"/>  	
+     <war destfile="${build.dir}/${final.name}.war"
+         webxml="${web.src.dir}/web.xml">
+      <fileset dir="${web.src.dir}" excludes="web.xml"/>
+      <fileset file="storeWeights.txt" />
+      <fileset file="results.txt" />
+      <lib dir="${lib.dir}" includes="colt.jar"/>
+      <lib dir="${lib.dir}" includes="commons-*.jar"/>
+      <lib dir="${lib.dir}" includes="concurrent-(.jar"/>
+      <lib dir="${lib.dir}" includes="dom4j-*.jar"/>
+      <lib dir="${lib.dir}" includes="jaf-*.jar"/>
+      <lib dir="${lib.dir}" includes="jakarta-oro-*.jar"/>
+      <lib dir="${lib.dir}" includes="junit-*.jar"/>
+      <lib dir="${lib.dir}" includes="lucene-*.jar"/>
+      <lib dir="${lib.dir}" includes="mysql-connector-java-*-bin.jar"/>
+      <lib dir="${lib.dir}" includes="servlet-*.jar"/>
+      <lib dir="${lib.dir}" includes="taglibs-*.jar"/>
+      <lib dir="${lib.dir}" includes="xerces-*.jar"/>
+      <lib dir="${lib.dir}" includes="arpack_combo-*.jar"/>
+      <lib dir="${lib.dir}" includes="mtj-*.jar"/>
+      <lib dir="${lib.dir}" includes="netlib-java-*.jar"/>
+      <lib dir="${build.dir}" includes="${final.name}.jar"/>
+    </war>
+  </target>     
+
+	
+  <!-- Install in tomcat -->
+  <target name="install" depends="war">
+    <exec dir="${basedir}" executable="${tomcat.stop.script}">
+    	<arg line="${tomcat.stop.args}"/>
+    </exec>
+    <sleep seconds="2"/>	
+  	<delete dir="${tomcat.dir}/webapps/ROOT"/>
+  	<delete file="${tomcat.dir}/webapps/ROOT.war"/>
+  	<copy file="${build.dir}/${final.name}.war" tofile="${tomcat.dir}/webapps/ROOT.war"/>
+    <exec dir="${basedir}" executable="${tomcat.start.script}">
+    	<arg line="${tomcat.start.args}"/>
+    </exec>	
+  </target>
+  
+  <!-- Create a tarball for distribution -->
+  <target name="distrib" depends="jar">
+    <delete dir="${distrib.name}"/>
+    <mkdir dir="${distrib.name}"/>
+    <copy todir="${distrib.name}/java">
+      <fileset dir="java">
+        <exclude name="**/*.class"/>
+      </fileset>
+    </copy>
+    <copy todir="${distrib.name}/jsp">
+      <fileset dir="jsp"/>
+    </copy>
+    <copy todir="${distrib.name}">
+      <fileset file="LICENSE.txt"/>
+      <fileset file="*.html"/>
+      <fileset file="build.xml"/>
+      <fileset file="build.properties"/>
+      <fileset file="osmot.conf"/>
+    </copy>
+    <mkdir dir="${distrib.name}/lib"/>
+    <mkdir dir="${distrib.name}/build"/>
+    <copy todir="${distrib.name}/build">
+      <fileset file="build/${final.name}.jar"/>
+    </copy>
+    <exec executable="tar">
+        <arg line="-zcvf"/>
+        <arg line="${distrib.name}.tar.gz"/>
+        <arg line="${distrib.name}"/>
+    </exec>
+  </target>
+		
+  <!-- Clean up -->
+  <target name="clean" depends="init">
+    <delete dir="${build.dir}"/>
+    <delete dir="${class.dir}"/>
+    <delete dir="${distrib.name}"/>
+    <delete file="${distrib.name}.tar.gz"/>
+  </target>
+
+</project>

@@ -1,0 +1,8 @@
+<search
+name = "arXiv Search"
+method = "get"
+action = "http://search.arxiv.org:8081/"
+>
+<input name="query" user/>
+<input name="in" value=""/>
+</search>

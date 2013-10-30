@@ -1,0 +1,1002 @@
+Number of iterations: 66015
+26.121415086376317 # 0. (rank_article) - Mapping: BINARIZE_LEQ <= 2.0
+22.9352861281304 # 1. (rank_article) - Mapping: BINARIZE_LEQ <= 5.0
+18.145292516880005 # 2. (rank_article) - Mapping: BINARIZE_LEQ <= 10.0
+6.01584310751348 # 3. (rank_article) - Mapping: BINARIZE_LEQ <= 15.0
+8.487097994367954 # 4. (rank_article) - Mapping: BINARIZE_LEQ <= 25.0
+13.742283194686454 # 5. (rank_article) - Mapping: BINARIZE_LEQ <= 30.0
+18.937337835831233 # 6. (rank_article) - Mapping: BINARIZE_LEQ <= 50.0
+20.78743961109074 # 7. (rank_article) - Mapping: BINARIZE_LEQ <= 100.0
+29.208467331156587 # 8. (rank_article) - Mapping: BINARIZE_LEQ <= 200.0
+71.72360596003189 # 9. (rank_title) - Mapping: BINARIZE_LEQ <= 2.0
+56.58336960673409 # 10. (rank_title) - Mapping: BINARIZE_LEQ <= 5.0
+47.253533874528785 # 11. (rank_title) - Mapping: BINARIZE_LEQ <= 10.0
+39.97339587771996 # 12. (rank_title) - Mapping: BINARIZE_LEQ <= 15.0
+38.548095836714765 # 13. (rank_title) - Mapping: BINARIZE_LEQ <= 25.0
+35.76400466615709 # 14. (rank_title) - Mapping: BINARIZE_LEQ <= 30.0
+40.03990757237763 # 15. (rank_title) - Mapping: BINARIZE_LEQ <= 50.0
+40.86349246395025 # 16. (rank_title) - Mapping: BINARIZE_LEQ <= 100.0
+41.58752454007749 # 17. (rank_title) - Mapping: BINARIZE_LEQ <= 200.0
+41.63763916947311 # 18. (rank_abstract) - Mapping: BINARIZE_LEQ <= 2.0
+35.15843375790608 # 19. (rank_abstract) - Mapping: BINARIZE_LEQ <= 5.0
+26.21499807697328 # 20. (rank_abstract) - Mapping: BINARIZE_LEQ <= 10.0
+19.34482952810165 # 21. (rank_abstract) - Mapping: BINARIZE_LEQ <= 15.0
+21.864106823900535 # 22. (rank_abstract) - Mapping: BINARIZE_LEQ <= 25.0
+21.929708004971427 # 23. (rank_abstract) - Mapping: BINARIZE_LEQ <= 30.0
+24.12836147924629 # 24. (rank_abstract) - Mapping: BINARIZE_LEQ <= 50.0
+27.597737679477127 # 25. (rank_abstract) - Mapping: BINARIZE_LEQ <= 100.0
+31.156408323291554 # 26. (rank_abstract) - Mapping: BINARIZE_LEQ <= 200.0
+31.769947085386093 # 27. (rank_authors) - Mapping: BINARIZE_LEQ <= 2.0
+41.45634035057872 # 28. (rank_authors) - Mapping: BINARIZE_LEQ <= 5.0
+36.28147958652778 # 29. (rank_authors) - Mapping: BINARIZE_LEQ <= 10.0
+35.64729962540412 # 30. (rank_authors) - Mapping: BINARIZE_LEQ <= 15.0
+34.07995612575093 # 31. (rank_authors) - Mapping: BINARIZE_LEQ <= 25.0
+33.08689573397609 # 32. (rank_authors) - Mapping: BINARIZE_LEQ <= 30.0
+33.221502285038625 # 33. (rank_authors) - Mapping: BINARIZE_LEQ <= 50.0
+32.88177053520787 # 34. (rank_authors) - Mapping: BINARIZE_LEQ <= 100.0
+32.71511869544392 # 35. (rank_authors) - Mapping: BINARIZE_LEQ <= 200.0
+27.367359325806532 # 36. (rank_article_1) - Mapping: BINARIZE_LEQ <= 2.0
+17.50285433007488 # 37. (rank_article_1) - Mapping: BINARIZE_LEQ <= 5.0
+11.538332673338724 # 38. (rank_article_1) - Mapping: BINARIZE_LEQ <= 10.0
+2.3822768037338404 # 39. (rank_article_1) - Mapping: BINARIZE_LEQ <= 15.0
+4.339466678999891 # 40. (rank_article_1) - Mapping: BINARIZE_LEQ <= 25.0
+3.753465369784656 # 41. (rank_article_1) - Mapping: BINARIZE_LEQ <= 30.0
+5.492392206338278 # 42. (rank_article_1) - Mapping: BINARIZE_LEQ <= 50.0
+3.329028755275063 # 43. (rank_article_1) - Mapping: BINARIZE_LEQ <= 100.0
+1.9644312210255686 # 44. (rank_article_1) - Mapping: BINARIZE_LEQ <= 200.0
+5.858439349147487 # 45. (rank_article_2) - Mapping: BINARIZE_LEQ <= 2.0
+3.6311922568080672 # 46. (rank_article_2) - Mapping: BINARIZE_LEQ <= 5.0
+0.8165110645358873 # 47. (rank_article_2) - Mapping: BINARIZE_LEQ <= 10.0
+3.813160713433229 # 48. (rank_article_2) - Mapping: BINARIZE_LEQ <= 15.0
+3.3474028683886665 # 49. (rank_article_2) - Mapping: BINARIZE_LEQ <= 25.0
+3.0537775461226424 # 50. (rank_article_2) - Mapping: BINARIZE_LEQ <= 30.0
+2.9556071700056097 # 51. (rank_article_2) - Mapping: BINARIZE_LEQ <= 50.0
+2.5805013910404617 # 52. (rank_article_2) - Mapping: BINARIZE_LEQ <= 100.0
+0.41895341000631775 # 53. (rank_article_2) - Mapping: BINARIZE_LEQ <= 200.0
+0.4494199531882824 # 54. (rank_article_3) - Mapping: BINARIZE_LEQ <= 2.0
+4.800922245818303 # 55. (rank_article_3) - Mapping: BINARIZE_LEQ <= 5.0
+3.430208094846914 # 56. (rank_article_3) - Mapping: BINARIZE_LEQ <= 10.0
+5.121325771569104 # 57. (rank_article_3) - Mapping: BINARIZE_LEQ <= 15.0
+6.289961933536341 # 58. (rank_article_3) - Mapping: BINARIZE_LEQ <= 25.0
+6.458180342215751 # 59. (rank_article_3) - Mapping: BINARIZE_LEQ <= 30.0
+3.265919038940109 # 60. (rank_article_3) - Mapping: BINARIZE_LEQ <= 50.0
+2.859049126450555 # 61. (rank_article_3) - Mapping: BINARIZE_LEQ <= 100.0
+3.0697904421578883 # 62. (rank_article_3) - Mapping: BINARIZE_LEQ <= 200.0
+7.610410290212662 # 63. (rank_article_4) - Mapping: BINARIZE_LEQ <= 2.0
+3.0238367673600006 # 64. (rank_article_4) - Mapping: BINARIZE_LEQ <= 5.0
+2.85309823396028 # 65. (rank_article_4) - Mapping: BINARIZE_LEQ <= 10.0
+1.4948375052973155 # 66. (rank_article_4) - Mapping: BINARIZE_LEQ <= 15.0
+2.845510024667592 # 67. (rank_article_4) - Mapping: BINARIZE_LEQ <= 25.0
+2.8265191947436628 # 68. (rank_article_4) - Mapping: BINARIZE_LEQ <= 30.0
+4.581965538162286 # 69. (rank_article_4) - Mapping: BINARIZE_LEQ <= 50.0
+2.1567214783045423 # 70. (rank_article_4) - Mapping: BINARIZE_LEQ <= 100.0
+1.3446183852635216 # 71. (rank_article_4) - Mapping: BINARIZE_LEQ <= 200.0
+10.072624537158559 # 72. (rank_article_5) - Mapping: BINARIZE_LEQ <= 2.0
+4.3752567790516235 # 73. (rank_article_5) - Mapping: BINARIZE_LEQ <= 5.0
+3.6238510553699252 # 74. (rank_article_5) - Mapping: BINARIZE_LEQ <= 10.0
+4.972854888809806 # 75. (rank_article_5) - Mapping: BINARIZE_LEQ <= 15.0
+4.062874688741732 # 76. (rank_article_5) - Mapping: BINARIZE_LEQ <= 25.0
+6.487620703439852 # 77. (rank_article_5) - Mapping: BINARIZE_LEQ <= 30.0
+3.979518005271947 # 78. (rank_article_5) - Mapping: BINARIZE_LEQ <= 50.0
+1.5502984482425575 # 79. (rank_article_5) - Mapping: BINARIZE_LEQ <= 100.0
+2.7697889901710115 # 80. (rank_article_5) - Mapping: BINARIZE_LEQ <= 200.0
+-10.271904140791206 # 81. (doc_age) - Mapping: BINARIZE >= 20.0
+-15.209325935036585 # 82. (doc_age) - Mapping: BINARIZE >= 50.0
+-16.779190535405693 # 83. (doc_age) - Mapping: BINARIZE >= 100.0
+-21.73058013181357 # 84. (doc_age) - Mapping: BINARIZE >= 200.0
+-29.98493980867167 # 85. (doc_age) - Mapping: BINARIZE >= 300.0
+-34.81515686606217 # 86. (doc_age) - Mapping: BINARIZE >= 400.0
+-35.980736115373745 # 87. (doc_age) - Mapping: BINARIZE >= 500.0
+-41.19447469547712 # 88. (doc_age) - Mapping: BINARIZE >= 1000.0
+-37.040151951275014 # 89. (doc_age) - Mapping: BINARIZE >= 2000.0
+-27.361797445595247 # 90. (doc_age) - Mapping: BINARIZE >= 3000.0
+0.0 # 91. (doc_age) - Mapping: BINARIZE >= 100000.0
+0.0 # 92. (doc_category) - Mapping: CATEGORIZE acc-phys
+-0.11348604629221629 # 93. (doc_category) - Mapping: CATEGORIZE adap-org
+-0.287806910994102 # 94. (doc_category) - Mapping: CATEGORIZE alg-geom
+0.0 # 95. (doc_category) - Mapping: CATEGORIZE ao-sci
+-3.116913213848197 # 96. (doc_category) - Mapping: CATEGORIZE astro-ph
+0.15664683516680925 # 97. (doc_category) - Mapping: CATEGORIZE astro-ph.co
+-0.693022579862764 # 98. (doc_category) - Mapping: CATEGORIZE astro-ph.ep
+0.1287447409979206 # 99. (doc_category) - Mapping: CATEGORIZE astro-ph.ga
+0.355466962488463 # 100. (doc_category) - Mapping: CATEGORIZE astro-ph.he
+-2.909254439789999 # 101. (doc_category) - Mapping: CATEGORIZE astro-ph.im
+-1.3325143560264883 # 102. (doc_category) - Mapping: CATEGORIZE astro-ph.sr
+-1.990291818150483 # 103. (doc_category) - Mapping: CATEGORIZE atom-ph
+-6.643197324591732E-4 # 104. (doc_category) - Mapping: CATEGORIZE bayes-an
+0.4685008750461921 # 105. (doc_category) - Mapping: CATEGORIZE chao-dyn
+0.7465918970041708 # 106. (doc_category) - Mapping: CATEGORIZE chem-ph
+-0.3750673290918215 # 107. (doc_category) - Mapping: CATEGORIZE cmp-lg
+0.37866033921678877 # 108. (doc_category) - Mapping: CATEGORIZE comp-gas
+-3.7588584921546393 # 109. (doc_category) - Mapping: CATEGORIZE cond-mat
+-1.283526038423764 # 110. (doc_category) - Mapping: CATEGORIZE cond-mat.dis-nn
+-3.0517180356045945 # 111. (doc_category) - Mapping: CATEGORIZE cond-mat.mes-hall
+0.9377302970487915 # 112. (doc_category) - Mapping: CATEGORIZE cond-mat.mtrl-sci
+-4.120109815177538 # 113. (doc_category) - Mapping: CATEGORIZE cond-mat.other
+0.08925862803033716 # 114. (doc_category) - Mapping: CATEGORIZE cond-mat.quant-gas
+-0.5586249748698124 # 115. (doc_category) - Mapping: CATEGORIZE cond-mat.soft
+-0.11313250065309371 # 116. (doc_category) - Mapping: CATEGORIZE cond-mat.stat-mech
+0.977839040038478 # 117. (doc_category) - Mapping: CATEGORIZE cond-mat.str-el
+1.8648136315782158 # 118. (doc_category) - Mapping: CATEGORIZE cond-mat.supr-con
+2.784508250849375 # 119. (doc_category) - Mapping: CATEGORIZE cs
+0.8679534052057303 # 120. (doc_category) - Mapping: CATEGORIZE cs.ai
+0.5747785199877696 # 121. (doc_category) - Mapping: CATEGORIZE cs.ar
+1.3967819465170814 # 122. (doc_category) - Mapping: CATEGORIZE cs.cc
+1.2957015233017921 # 123. (doc_category) - Mapping: CATEGORIZE cs.ce
+-0.720770771256444 # 124. (doc_category) - Mapping: CATEGORIZE cs.cg
+-0.5261773231844551 # 125. (doc_category) - Mapping: CATEGORIZE cs.cl
+-3.205777818833975 # 126. (doc_category) - Mapping: CATEGORIZE cs.cr
+1.2967376066366563 # 127. (doc_category) - Mapping: CATEGORIZE cs.cv
+2.2555065163869443 # 128. (doc_category) - Mapping: CATEGORIZE cs.cy
+-0.3314792218289316 # 129. (doc_category) - Mapping: CATEGORIZE cs.db
+-0.3161161455873498 # 130. (doc_category) - Mapping: CATEGORIZE cs.dc
+1.3343032911510904 # 131. (doc_category) - Mapping: CATEGORIZE cs.dl
+0.11572733839599433 # 132. (doc_category) - Mapping: CATEGORIZE cs.dm
+3.021473933518487 # 133. (doc_category) - Mapping: CATEGORIZE cs.ds
+-1.2836051089525258 # 134. (doc_category) - Mapping: CATEGORIZE cs.et
+0.9000123364202296 # 135. (doc_category) - Mapping: CATEGORIZE cs.fl
+-0.13860122163997352 # 136. (doc_category) - Mapping: CATEGORIZE cs.gl
+0.5430713772277243 # 137. (doc_category) - Mapping: CATEGORIZE cs.gr
+-0.5573805052663797 # 138. (doc_category) - Mapping: CATEGORIZE cs.gt
+-1.6705962784177297 # 139. (doc_category) - Mapping: CATEGORIZE cs.hc
+1.5211448110675816 # 140. (doc_category) - Mapping: CATEGORIZE cs.ir
+3.7195578882355553 # 141. (doc_category) - Mapping: CATEGORIZE cs.it
+-0.3996429109797181 # 142. (doc_category) - Mapping: CATEGORIZE cs.lg
+-0.6625721178588796 # 143. (doc_category) - Mapping: CATEGORIZE cs.lo
+0.20861898384386543 # 144. (doc_category) - Mapping: CATEGORIZE cs.ma
+-0.10430244912339184 # 145. (doc_category) - Mapping: CATEGORIZE cs.mm
+-0.5707553057876913 # 146. (doc_category) - Mapping: CATEGORIZE cs.ms
+0.19961959458458195 # 147. (doc_category) - Mapping: CATEGORIZE cs.na
+-1.5570578734763063 # 148. (doc_category) - Mapping: CATEGORIZE cs.ne
+2.4597357866377383 # 149. (doc_category) - Mapping: CATEGORIZE cs.ni
+-0.6537359539250231 # 150. (doc_category) - Mapping: CATEGORIZE cs.oh
+0.46665546438933314 # 151. (doc_category) - Mapping: CATEGORIZE cs.os
+1.1732528213322104 # 152. (doc_category) - Mapping: CATEGORIZE cs.pf
+-0.05848633607654996 # 153. (doc_category) - Mapping: CATEGORIZE cs.pl
+-0.3819018547559046 # 154. (doc_category) - Mapping: CATEGORIZE cs.ro
+0.24660189892650983 # 155. (doc_category) - Mapping: CATEGORIZE cs.sc
+-0.49094643530081 # 156. (doc_category) - Mapping: CATEGORIZE cs.sd
+-0.2043343301529159 # 157. (doc_category) - Mapping: CATEGORIZE cs.se
+-0.4648267516200985 # 158. (doc_category) - Mapping: CATEGORIZE cs.si
+-0.666989606619641 # 159. (doc_category) - Mapping: CATEGORIZE cs.sy
+-0.1661250880771132 # 160. (doc_category) - Mapping: CATEGORIZE dg-ga
+-0.26370076860664515 # 161. (doc_category) - Mapping: CATEGORIZE funct-an
+0.5999700189383641 # 162. (doc_category) - Mapping: CATEGORIZE gr-qc
+-2.689052510287869 # 163. (doc_category) - Mapping: CATEGORIZE hep-ex
+0.05373799274197452 # 164. (doc_category) - Mapping: CATEGORIZE hep-lat
+-1.4875296959205608 # 165. (doc_category) - Mapping: CATEGORIZE hep-ph
+3.1519034217936226 # 166. (doc_category) - Mapping: CATEGORIZE hep-th
+14.351772281701729 # 167. (doc_category) - Mapping: CATEGORIZE math
+7.859452806157164 # 168. (doc_category) - Mapping: CATEGORIZE math-ph
+0.30550232694471485 # 169. (doc_category) - Mapping: CATEGORIZE math.ac
+1.0013119248776245 # 170. (doc_category) - Mapping: CATEGORIZE math.ag
+-0.13548974573946904 # 171. (doc_category) - Mapping: CATEGORIZE math.ap
+0.9318211462610383 # 172. (doc_category) - Mapping: CATEGORIZE math.at
+0.44995491120168996 # 173. (doc_category) - Mapping: CATEGORIZE math.ca
+5.001397268628964 # 174. (doc_category) - Mapping: CATEGORIZE math.co
+0.37223918952796947 # 175. (doc_category) - Mapping: CATEGORIZE math.ct
+0.9280020493144545 # 176. (doc_category) - Mapping: CATEGORIZE math.cv
+0.7772584535610091 # 177. (doc_category) - Mapping: CATEGORIZE math.dg
+1.7194660722364787 # 178. (doc_category) - Mapping: CATEGORIZE math.ds
+1.1197828327677632 # 179. (doc_category) - Mapping: CATEGORIZE math.fa
+1.3642012753088544 # 180. (doc_category) - Mapping: CATEGORIZE math.gm
+-1.6480019080588697 # 181. (doc_category) - Mapping: CATEGORIZE math.gn
+0.7867820219161274 # 182. (doc_category) - Mapping: CATEGORIZE math.gr
+1.5323119654686224 # 183. (doc_category) - Mapping: CATEGORIZE math.gt
+0.36653945937692556 # 184. (doc_category) - Mapping: CATEGORIZE math.ho
+3.7195578882355553 # 185. (doc_category) - Mapping: CATEGORIZE math.it
+0.5253204443405517 # 186. (doc_category) - Mapping: CATEGORIZE math.kt
+1.5043730105320732 # 187. (doc_category) - Mapping: CATEGORIZE math.lo
+2.2406006265020935 # 188. (doc_category) - Mapping: CATEGORIZE math.mg
+7.859452806157164 # 189. (doc_category) - Mapping: CATEGORIZE math.mp
+4.233446890281393 # 190. (doc_category) - Mapping: CATEGORIZE math.na
+2.634851975095874 # 191. (doc_category) - Mapping: CATEGORIZE math.nt
+-0.7627573183215324 # 192. (doc_category) - Mapping: CATEGORIZE math.oa
+0.10854091783032027 # 193. (doc_category) - Mapping: CATEGORIZE math.oc
+-2.788635459890572 # 194. (doc_category) - Mapping: CATEGORIZE math.pr
+-2.708504741215794 # 195. (doc_category) - Mapping: CATEGORIZE math.qa
+1.142212092208646 # 196. (doc_category) - Mapping: CATEGORIZE math.ra
+0.734866812944358 # 197. (doc_category) - Mapping: CATEGORIZE math.rt
+-2.06461238798506 # 198. (doc_category) - Mapping: CATEGORIZE math.sg
+-0.2387549461124793 # 199. (doc_category) - Mapping: CATEGORIZE math.sp
+2.9441137044042236 # 200. (doc_category) - Mapping: CATEGORIZE math.st
+0.0 # 201. (doc_category) - Mapping: CATEGORIZE mtrl-th
+1.1030528689186476 # 202. (doc_category) - Mapping: CATEGORIZE nlin
+-0.7731469157569407 # 203. (doc_category) - Mapping: CATEGORIZE nlin.ao
+-0.8466936793954931 # 204. (doc_category) - Mapping: CATEGORIZE nlin.cd
+0.18663122970966342 # 205. (doc_category) - Mapping: CATEGORIZE nlin.cg
+3.6170381790660597 # 206. (doc_category) - Mapping: CATEGORIZE nlin.ps
+0.16670901713853267 # 207. (doc_category) - Mapping: CATEGORIZE nlin.si
+3.889373759129124 # 208. (doc_category) - Mapping: CATEGORIZE nucl-ex
+1.3734738279336884 # 209. (doc_category) - Mapping: CATEGORIZE nucl-th
+0.04953376626721773 # 210. (doc_category) - Mapping: CATEGORIZE patt-sol
+8.16570655897613 # 211. (doc_category) - Mapping: CATEGORIZE physics
+0.19432572632658263 # 212. (doc_category) - Mapping: CATEGORIZE physics.acc-ph
+-1.0301593831421088 # 213. (doc_category) - Mapping: CATEGORIZE physics.ao-ph
+-0.003624142185995327 # 214. (doc_category) - Mapping: CATEGORIZE physics.atm-clus
+-1.9903409906563287 # 215. (doc_category) - Mapping: CATEGORIZE physics.atom-ph
+-1.7762692838354706 # 216. (doc_category) - Mapping: CATEGORIZE physics.bio-ph
+0.7765218537538839 # 217. (doc_category) - Mapping: CATEGORIZE physics.chem-ph
+3.6266191044390386 # 218. (doc_category) - Mapping: CATEGORIZE physics.class-ph
+3.139051264840253 # 219. (doc_category) - Mapping: CATEGORIZE physics.comp-ph
+1.290393227776397 # 220. (doc_category) - Mapping: CATEGORIZE physics.data-an
+1.612710949373605 # 221. (doc_category) - Mapping: CATEGORIZE physics.ed-ph
+1.4241065133021036 # 222. (doc_category) - Mapping: CATEGORIZE physics.flu-dyn
+5.885188099220234 # 223. (doc_category) - Mapping: CATEGORIZE physics.gen-ph
+0.4530538748256351 # 224. (doc_category) - Mapping: CATEGORIZE physics.geo-ph
+0.8017258510763441 # 225. (doc_category) - Mapping: CATEGORIZE physics.hist-ph
+-2.8611481295252923 # 226. (doc_category) - Mapping: CATEGORIZE physics.ins-det
+0.4643050753812313 # 227. (doc_category) - Mapping: CATEGORIZE physics.med-ph
+2.6343266844509152 # 228. (doc_category) - Mapping: CATEGORIZE physics.optics
+-1.7185902499813719 # 229. (doc_category) - Mapping: CATEGORIZE physics.plasm-ph
+2.8457899983982253 # 230. (doc_category) - Mapping: CATEGORIZE physics.pop-ph
+3.3314541007842404 # 231. (doc_category) - Mapping: CATEGORIZE physics.soc-ph
+0.46054208172247635 # 232. (doc_category) - Mapping: CATEGORIZE physics.space-ph
+-1.7185902499813719 # 233. (doc_category) - Mapping: CATEGORIZE plasm-ph
+-0.19229629981658056 # 234. (doc_category) - Mapping: CATEGORIZE q-alg
+-0.5357653211246468 # 235. (doc_category) - Mapping: CATEGORIZE q-bio
+-0.2867934370348303 # 236. (doc_category) - Mapping: CATEGORIZE q-bio.bm
+0.3691177879925724 # 237. (doc_category) - Mapping: CATEGORIZE q-bio.cb
+-1.0617925210028432 # 238. (doc_category) - Mapping: CATEGORIZE q-bio.gn
+0.6615353413444041 # 239. (doc_category) - Mapping: CATEGORIZE q-bio.mn
+-0.3872506046548143 # 240. (doc_category) - Mapping: CATEGORIZE q-bio.nc
+0.5907645506524053 # 241. (doc_category) - Mapping: CATEGORIZE q-bio.ot
+-1.3907363452333892 # 242. (doc_category) - Mapping: CATEGORIZE q-bio.pe
+-0.7644534528306366 # 243. (doc_category) - Mapping: CATEGORIZE q-bio.qm
+-0.20075525415791523 # 244. (doc_category) - Mapping: CATEGORIZE q-bio.sc
+1.174690394015672 # 245. (doc_category) - Mapping: CATEGORIZE q-bio.to
+-0.5973706108111306 # 246. (doc_category) - Mapping: CATEGORIZE q-fin.cp
+-0.8270472694755846 # 247. (doc_category) - Mapping: CATEGORIZE q-fin.gn
+0.4221424452392979 # 248. (doc_category) - Mapping: CATEGORIZE q-fin.pm
+-1.1934996250222671 # 249. (doc_category) - Mapping: CATEGORIZE q-fin.pr
+-1.2106480022902806 # 250. (doc_category) - Mapping: CATEGORIZE q-fin.rm
+-1.3895267644609572 # 251. (doc_category) - Mapping: CATEGORIZE q-fin.st
+1.1774478336454184 # 252. (doc_category) - Mapping: CATEGORIZE q-fin.tr
+-2.560287506275349 # 253. (doc_category) - Mapping: CATEGORIZE quant-ph
+-1.0917911185564964 # 254. (doc_category) - Mapping: CATEGORIZE solv-int
+1.0267040179065998 # 255. (doc_category) - Mapping: CATEGORIZE stat.ap
+0.14082913985686957 # 256. (doc_category) - Mapping: CATEGORIZE stat.co
+0.48924579677323826 # 257. (doc_category) - Mapping: CATEGORIZE stat.me
+-0.378610170063065 # 258. (doc_category) - Mapping: CATEGORIZE stat.ml
+-0.8921491694407732 # 259. (doc_category) - Mapping: CATEGORIZE stat.ot
+2.9465498401004346 # 260. (doc_category) - Mapping: CATEGORIZE stat.th
+1.8689173862181168 # 261. (doc_category) - Mapping: CATEGORIZE supr-con
+0.0 # 262. (contains_author) - Mapping: CATEGORIZE true
+2.5731418897092424 # 263. (rank_article_simplifiedSim) - Mapping: BINARIZE_LEQ <= 2.0
+3.4134901086745 # 264. (rank_article_simplifiedSim) - Mapping: BINARIZE_LEQ <= 5.0
+3.1616567652175815 # 265. (rank_article_simplifiedSim) - Mapping: BINARIZE_LEQ <= 10.0
+4.5200442968822205 # 266. (rank_article_simplifiedSim) - Mapping: BINARIZE_LEQ <= 15.0
+3.957940002714592 # 267. (rank_article_simplifiedSim) - Mapping: BINARIZE_LEQ <= 25.0
+3.7458640375894587 # 268. (rank_article_simplifiedSim) - Mapping: BINARIZE_LEQ <= 30.0
+3.743588842764513 # 269. (rank_article_simplifiedSim) - Mapping: BINARIZE_LEQ <= 50.0
+1.2555751860952888 # 270. (rank_article_simplifiedSim) - Mapping: BINARIZE_LEQ <= 100.0
+2.6545744706940173 # 271. (rank_article_simplifiedSim) - Mapping: BINARIZE_LEQ <= 200.0
+46.582292870989875 # 272. (rank_title_simplifiedSim) - Mapping: BINARIZE_LEQ <= 2.0
+30.58181593053548 # 273. (rank_title_simplifiedSim) - Mapping: BINARIZE_LEQ <= 5.0
+20.314382054236 # 274. (rank_title_simplifiedSim) - Mapping: BINARIZE_LEQ <= 10.0
+15.000982149618856 # 275. (rank_title_simplifiedSim) - Mapping: BINARIZE_LEQ <= 15.0
+11.772883372905351 # 276. (rank_title_simplifiedSim) - Mapping: BINARIZE_LEQ <= 25.0
+8.585611045111136 # 277. (rank_title_simplifiedSim) - Mapping: BINARIZE_LEQ <= 30.0
+10.20542275779452 # 278. (rank_title_simplifiedSim) - Mapping: BINARIZE_LEQ <= 50.0
+10.524374683278142 # 279. (rank_title_simplifiedSim) - Mapping: BINARIZE_LEQ <= 100.0
+11.968998138944677 # 280. (rank_title_simplifiedSim) - Mapping: BINARIZE_LEQ <= 200.0
+5.5473551082518675 # 281. (rank_from_simplifiedSim) - Mapping: BINARIZE_LEQ <= 2.0
+10.539902375535478 # 282. (rank_from_simplifiedSim) - Mapping: BINARIZE_LEQ <= 5.0
+12.424671270229982 # 283. (rank_from_simplifiedSim) - Mapping: BINARIZE_LEQ <= 10.0
+13.187390867969148 # 284. (rank_from_simplifiedSim) - Mapping: BINARIZE_LEQ <= 15.0
+12.668229571332748 # 285. (rank_from_simplifiedSim) - Mapping: BINARIZE_LEQ <= 25.0
+13.03187627204578 # 286. (rank_from_simplifiedSim) - Mapping: BINARIZE_LEQ <= 30.0
+12.601407239952488 # 287. (rank_from_simplifiedSim) - Mapping: BINARIZE_LEQ <= 50.0
+13.355704653110681 # 288. (rank_from_simplifiedSim) - Mapping: BINARIZE_LEQ <= 100.0
+13.314867131806235 # 289. (rank_from_simplifiedSim) - Mapping: BINARIZE_LEQ <= 200.0
+15.202520108469537 # 290. (rank_abstract_simplifiedSim) - Mapping: BINARIZE_LEQ <= 2.0
+10.035411233509327 # 291. (rank_abstract_simplifiedSim) - Mapping: BINARIZE_LEQ <= 5.0
+5.984863955840479 # 292. (rank_abstract_simplifiedSim) - Mapping: BINARIZE_LEQ <= 10.0
+0.9354490487930509 # 293. (rank_abstract_simplifiedSim) - Mapping: BINARIZE_LEQ <= 15.0
+0.9328524700493275 # 294. (rank_abstract_simplifiedSim) - Mapping: BINARIZE_LEQ <= 25.0
+0.5363998018974949 # 295. (rank_abstract_simplifiedSim) - Mapping: BINARIZE_LEQ <= 30.0
+1.1253237864314531 # 296. (rank_abstract_simplifiedSim) - Mapping: BINARIZE_LEQ <= 50.0
+2.344691687149944 # 297. (rank_abstract_simplifiedSim) - Mapping: BINARIZE_LEQ <= 100.0
+3.5450614994372263 # 298. (rank_abstract_simplifiedSim) - Mapping: BINARIZE_LEQ <= 200.0
+1.283303432335372 # 299. (rank_comments_simplifiedSim) - Mapping: BINARIZE_LEQ <= 2.0
+1.5587497858777755 # 300. (rank_comments_simplifiedSim) - Mapping: BINARIZE_LEQ <= 5.0
+2.6756161668679486 # 301. (rank_comments_simplifiedSim) - Mapping: BINARIZE_LEQ <= 10.0
+3.2406785536032783 # 302. (rank_comments_simplifiedSim) - Mapping: BINARIZE_LEQ <= 15.0
+3.762169091540353 # 303. (rank_comments_simplifiedSim) - Mapping: BINARIZE_LEQ <= 25.0
+3.6535061488059606 # 304. (rank_comments_simplifiedSim) - Mapping: BINARIZE_LEQ <= 30.0
+3.3760933061528178 # 305. (rank_comments_simplifiedSim) - Mapping: BINARIZE_LEQ <= 50.0
+4.836731144237064 # 306. (rank_comments_simplifiedSim) - Mapping: BINARIZE_LEQ <= 100.0
+4.556065435348889 # 307. (rank_comments_simplifiedSim) - Mapping: BINARIZE_LEQ <= 200.0
+2.32165712532486 # 308. (rank_authors_simplifiedSim) - Mapping: BINARIZE_LEQ <= 2.0
+11.163257442518033 # 309. (rank_authors_simplifiedSim) - Mapping: BINARIZE_LEQ <= 5.0
+6.42367505967351 # 310. (rank_authors_simplifiedSim) - Mapping: BINARIZE_LEQ <= 10.0
+5.702546153893684 # 311. (rank_authors_simplifiedSim) - Mapping: BINARIZE_LEQ <= 15.0
+3.686934937198039 # 312. (rank_authors_simplifiedSim) - Mapping: BINARIZE_LEQ <= 25.0
+3.2452305198836626 # 313. (rank_authors_simplifiedSim) - Mapping: BINARIZE_LEQ <= 30.0
+3.3072861500361057 # 314. (rank_authors_simplifiedSim) - Mapping: BINARIZE_LEQ <= 50.0
+3.01504694024323 # 315. (rank_authors_simplifiedSim) - Mapping: BINARIZE_LEQ <= 100.0
+2.7408811525950147 # 316. (rank_authors_simplifiedSim) - Mapping: BINARIZE_LEQ <= 200.0
+2.47727420391254 # 317. (rank_journal-ref_simplifiedSim) - Mapping: BINARIZE_LEQ <= 2.0
+2.851288413435024 # 318. (rank_journal-ref_simplifiedSim) - Mapping: BINARIZE_LEQ <= 5.0
+2.5082004511389413 # 319. (rank_journal-ref_simplifiedSim) - Mapping: BINARIZE_LEQ <= 10.0
+2.4999776362431727 # 320. (rank_journal-ref_simplifiedSim) - Mapping: BINARIZE_LEQ <= 15.0
+2.557723294011765 # 321. (rank_journal-ref_simplifiedSim) - Mapping: BINARIZE_LEQ <= 25.0
+2.452635619519501 # 322. (rank_journal-ref_simplifiedSim) - Mapping: BINARIZE_LEQ <= 30.0
+2.4231149909445446 # 323. (rank_journal-ref_simplifiedSim) - Mapping: BINARIZE_LEQ <= 50.0
+3.34747209526497 # 324. (rank_journal-ref_simplifiedSim) - Mapping: BINARIZE_LEQ <= 100.0
+3.34747209526497 # 325. (rank_journal-ref_simplifiedSim) - Mapping: BINARIZE_LEQ <= 200.0
+28.184370671968125 # 326. (rank_article_1_simplifiedSim) - Mapping: BINARIZE_LEQ <= 2.0
+14.744575109625503 # 327. (rank_article_1_simplifiedSim) - Mapping: BINARIZE_LEQ <= 5.0
+12.52683719455088 # 328. (rank_article_1_simplifiedSim) - Mapping: BINARIZE_LEQ <= 10.0
+4.32705421460894 # 329. (rank_article_1_simplifiedSim) - Mapping: BINARIZE_LEQ <= 15.0
+6.083807362234652 # 330. (rank_article_1_simplifiedSim) - Mapping: BINARIZE_LEQ <= 25.0
+3.906624015547424 # 331. (rank_article_1_simplifiedSim) - Mapping: BINARIZE_LEQ <= 30.0
+6.01190840575481 # 332. (rank_article_1_simplifiedSim) - Mapping: BINARIZE_LEQ <= 50.0
+5.687125096137714 # 333. (rank_article_1_simplifiedSim) - Mapping: BINARIZE_LEQ <= 100.0
+3.1023682770216565 # 334. (rank_article_1_simplifiedSim) - Mapping: BINARIZE_LEQ <= 200.0
+5.821515189433993 # 335. (rank_article_2_simplifiedSim) - Mapping: BINARIZE_LEQ <= 2.0
+1.6789130607015148 # 336. (rank_article_2_simplifiedSim) - Mapping: BINARIZE_LEQ <= 5.0
+0.9316249521483415 # 337. (rank_article_2_simplifiedSim) - Mapping: BINARIZE_LEQ <= 10.0
+3.6915920365414854 # 338. (rank_article_2_simplifiedSim) - Mapping: BINARIZE_LEQ <= 15.0
+2.6716689121233506 # 339. (rank_article_2_simplifiedSim) - Mapping: BINARIZE_LEQ <= 25.0
+2.998575164207619 # 340. (rank_article_2_simplifiedSim) - Mapping: BINARIZE_LEQ <= 30.0
+3.640253742563677 # 341. (rank_article_2_simplifiedSim) - Mapping: BINARIZE_LEQ <= 50.0
+1.794026523690026 # 342. (rank_article_2_simplifiedSim) - Mapping: BINARIZE_LEQ <= 100.0
+0.4333882911280653 # 343. (rank_article_2_simplifiedSim) - Mapping: BINARIZE_LEQ <= 200.0
+0.11734647789651731 # 344. (rank_article_3_simplifiedSim) - Mapping: BINARIZE_LEQ <= 2.0
+3.8917248850486814 # 345. (rank_article_3_simplifiedSim) - Mapping: BINARIZE_LEQ <= 5.0
+2.8008642327322715 # 346. (rank_article_3_simplifiedSim) - Mapping: BINARIZE_LEQ <= 10.0
+4.056544578374601 # 347. (rank_article_3_simplifiedSim) - Mapping: BINARIZE_LEQ <= 15.0
+6.375093765222451 # 348. (rank_article_3_simplifiedSim) - Mapping: BINARIZE_LEQ <= 25.0
+4.83631990612352 # 349. (rank_article_3_simplifiedSim) - Mapping: BINARIZE_LEQ <= 30.0
+4.904043770813175 # 350. (rank_article_3_simplifiedSim) - Mapping: BINARIZE_LEQ <= 50.0
+2.2080715339458976 # 351. (rank_article_3_simplifiedSim) - Mapping: BINARIZE_LEQ <= 100.0
+3.084288076686531 # 352. (rank_article_3_simplifiedSim) - Mapping: BINARIZE_LEQ <= 200.0
+6.978339937438854 # 353. (rank_article_4_simplifiedSim) - Mapping: BINARIZE_LEQ <= 2.0
+1.7085486972105515 # 354. (rank_article_4_simplifiedSim) - Mapping: BINARIZE_LEQ <= 5.0
+1.5383926219440878 # 355. (rank_article_4_simplifiedSim) - Mapping: BINARIZE_LEQ <= 10.0
+0.9238726143993388 # 356. (rank_article_4_simplifiedSim) - Mapping: BINARIZE_LEQ <= 15.0
+2.134299742723852 # 357. (rank_article_4_simplifiedSim) - Mapping: BINARIZE_LEQ <= 25.0
+2.6581360708629034 # 358. (rank_article_4_simplifiedSim) - Mapping: BINARIZE_LEQ <= 30.0
+8.12661412768337 # 359. (rank_article_4_simplifiedSim) - Mapping: BINARIZE_LEQ <= 50.0
+2.1149748222686076 # 360. (rank_article_4_simplifiedSim) - Mapping: BINARIZE_LEQ <= 100.0
+1.3457073240061117 # 361. (rank_article_4_simplifiedSim) - Mapping: BINARIZE_LEQ <= 200.0
+7.731480241601502 # 362. (rank_article_5_simplifiedSim) - Mapping: BINARIZE_LEQ <= 2.0
+3.9361853499926673 # 363. (rank_article_5_simplifiedSim) - Mapping: BINARIZE_LEQ <= 5.0
+3.3494561836619545 # 364. (rank_article_5_simplifiedSim) - Mapping: BINARIZE_LEQ <= 10.0
+4.974015079076468 # 365. (rank_article_5_simplifiedSim) - Mapping: BINARIZE_LEQ <= 15.0
+3.848076184488844 # 366. (rank_article_5_simplifiedSim) - Mapping: BINARIZE_LEQ <= 25.0
+6.9833077681889915 # 367. (rank_article_5_simplifiedSim) - Mapping: BINARIZE_LEQ <= 30.0
+3.1193800313180637 # 368. (rank_article_5_simplifiedSim) - Mapping: BINARIZE_LEQ <= 50.0
+1.7350643956682674 # 369. (rank_article_5_simplifiedSim) - Mapping: BINARIZE_LEQ <= 100.0
+3.234698033433825 # 370. (rank_article_5_simplifiedSim) - Mapping: BINARIZE_LEQ <= 200.0
+52.08052062891255 # 371. (rank_article_phraseSim) - Mapping: BINARIZE_LEQ <= 2.0
+39.14640652058021 # 372. (rank_article_phraseSim) - Mapping: BINARIZE_LEQ <= 5.0
+32.919978120109405 # 373. (rank_article_phraseSim) - Mapping: BINARIZE_LEQ <= 10.0
+33.28610932925268 # 374. (rank_article_phraseSim) - Mapping: BINARIZE_LEQ <= 15.0
+28.13174987517265 # 375. (rank_article_phraseSim) - Mapping: BINARIZE_LEQ <= 25.0
+28.496425051885044 # 376. (rank_article_phraseSim) - Mapping: BINARIZE_LEQ <= 30.0
+27.664571229678035 # 377. (rank_article_phraseSim) - Mapping: BINARIZE_LEQ <= 50.0
+24.36459750152037 # 378. (rank_article_phraseSim) - Mapping: BINARIZE_LEQ <= 100.0
+27.09060889783449 # 379. (rank_article_phraseSim) - Mapping: BINARIZE_LEQ <= 200.0
+52.13694215980886 # 380. (rank_title_phraseSim) - Mapping: BINARIZE_LEQ <= 2.0
+45.630717499519015 # 381. (rank_title_phraseSim) - Mapping: BINARIZE_LEQ <= 5.0
+42.4514328519323 # 382. (rank_title_phraseSim) - Mapping: BINARIZE_LEQ <= 10.0
+36.84099038955916 # 383. (rank_title_phraseSim) - Mapping: BINARIZE_LEQ <= 15.0
+35.50778398370244 # 384. (rank_title_phraseSim) - Mapping: BINARIZE_LEQ <= 25.0
+35.486667822653146 # 385. (rank_title_phraseSim) - Mapping: BINARIZE_LEQ <= 30.0
+38.69054426649326 # 386. (rank_title_phraseSim) - Mapping: BINARIZE_LEQ <= 50.0
+36.25860739538094 # 387. (rank_title_phraseSim) - Mapping: BINARIZE_LEQ <= 100.0
+34.658163863811694 # 388. (rank_title_phraseSim) - Mapping: BINARIZE_LEQ <= 200.0
+3.8582104951934135 # 389. (rank_from_phraseSim) - Mapping: BINARIZE_LEQ <= 2.0
+4.979283818597739 # 390. (rank_from_phraseSim) - Mapping: BINARIZE_LEQ <= 5.0
+5.168863154425032 # 391. (rank_from_phraseSim) - Mapping: BINARIZE_LEQ <= 10.0
+5.129072788844776 # 392. (rank_from_phraseSim) - Mapping: BINARIZE_LEQ <= 15.0
+4.850818100103127 # 393. (rank_from_phraseSim) - Mapping: BINARIZE_LEQ <= 25.0
+5.22614890272633 # 394. (rank_from_phraseSim) - Mapping: BINARIZE_LEQ <= 30.0
+5.22255363638185 # 395. (rank_from_phraseSim) - Mapping: BINARIZE_LEQ <= 50.0
+5.21503203927891 # 396. (rank_from_phraseSim) - Mapping: BINARIZE_LEQ <= 100.0
+5.21503203927891 # 397. (rank_from_phraseSim) - Mapping: BINARIZE_LEQ <= 200.0
+29.435961200407057 # 398. (rank_abstract_phraseSim) - Mapping: BINARIZE_LEQ <= 2.0
+29.35041059834273 # 399. (rank_abstract_phraseSim) - Mapping: BINARIZE_LEQ <= 5.0
+28.221858081402566 # 400. (rank_abstract_phraseSim) - Mapping: BINARIZE_LEQ <= 10.0
+21.030428247939057 # 401. (rank_abstract_phraseSim) - Mapping: BINARIZE_LEQ <= 15.0
+23.801691168150434 # 402. (rank_abstract_phraseSim) - Mapping: BINARIZE_LEQ <= 25.0
+20.114785276740353 # 403. (rank_abstract_phraseSim) - Mapping: BINARIZE_LEQ <= 30.0
+20.00620446701795 # 404. (rank_abstract_phraseSim) - Mapping: BINARIZE_LEQ <= 50.0
+24.018722367094025 # 405. (rank_abstract_phraseSim) - Mapping: BINARIZE_LEQ <= 100.0
+26.392330170962502 # 406. (rank_abstract_phraseSim) - Mapping: BINARIZE_LEQ <= 200.0
+0.8426701959607017 # 407. (rank_comments_phraseSim) - Mapping: BINARIZE_LEQ <= 2.0
+1.11497624852135 # 408. (rank_comments_phraseSim) - Mapping: BINARIZE_LEQ <= 5.0
+1.3755689208396467 # 409. (rank_comments_phraseSim) - Mapping: BINARIZE_LEQ <= 10.0
+1.7679811143207114 # 410. (rank_comments_phraseSim) - Mapping: BINARIZE_LEQ <= 15.0
+2.0190137499199383 # 411. (rank_comments_phraseSim) - Mapping: BINARIZE_LEQ <= 25.0
+2.0195047620991384 # 412. (rank_comments_phraseSim) - Mapping: BINARIZE_LEQ <= 30.0
+2.333010422649138 # 413. (rank_comments_phraseSim) - Mapping: BINARIZE_LEQ <= 50.0
+2.7919415663965768 # 414. (rank_comments_phraseSim) - Mapping: BINARIZE_LEQ <= 100.0
+2.7919415663965768 # 415. (rank_comments_phraseSim) - Mapping: BINARIZE_LEQ <= 200.0
+5.868382167344314 # 416. (rank_authors_phraseSim) - Mapping: BINARIZE_LEQ <= 2.0
+9.212526767415426 # 417. (rank_authors_phraseSim) - Mapping: BINARIZE_LEQ <= 5.0
+6.9574486341280535 # 418. (rank_authors_phraseSim) - Mapping: BINARIZE_LEQ <= 10.0
+7.521942063298099 # 419. (rank_authors_phraseSim) - Mapping: BINARIZE_LEQ <= 15.0
+7.612685809562398 # 420. (rank_authors_phraseSim) - Mapping: BINARIZE_LEQ <= 25.0
+7.620572758562859 # 421. (rank_authors_phraseSim) - Mapping: BINARIZE_LEQ <= 30.0
+7.549154719221927 # 422. (rank_authors_phraseSim) - Mapping: BINARIZE_LEQ <= 50.0
+7.5595385233158074 # 423. (rank_authors_phraseSim) - Mapping: BINARIZE_LEQ <= 100.0
+7.55937392583754 # 424. (rank_authors_phraseSim) - Mapping: BINARIZE_LEQ <= 200.0
+0.936286558526358 # 425. (rank_journal-ref_phraseSim) - Mapping: BINARIZE_LEQ <= 2.0
+1.2420580059116042 # 426. (rank_journal-ref_phraseSim) - Mapping: BINARIZE_LEQ <= 5.0
+1.1211249041707512 # 427. (rank_journal-ref_phraseSim) - Mapping: BINARIZE_LEQ <= 10.0
+0.7616835764647935 # 428. (rank_journal-ref_phraseSim) - Mapping: BINARIZE_LEQ <= 15.0
+0.9653933179032989 # 429. (rank_journal-ref_phraseSim) - Mapping: BINARIZE_LEQ <= 25.0
+0.9651367627588691 # 430. (rank_journal-ref_phraseSim) - Mapping: BINARIZE_LEQ <= 30.0
+1.325085658610405 # 431. (rank_journal-ref_phraseSim) - Mapping: BINARIZE_LEQ <= 50.0
+1.4241816844021042 # 432. (rank_journal-ref_phraseSim) - Mapping: BINARIZE_LEQ <= 100.0
+1.4241816844021042 # 433. (rank_journal-ref_phraseSim) - Mapping: BINARIZE_LEQ <= 200.0
+58.49206560712881 # 434. (rank_article_1_phraseSim) - Mapping: BINARIZE_LEQ <= 2.0
+48.36505420138798 # 435. (rank_article_1_phraseSim) - Mapping: BINARIZE_LEQ <= 5.0
+44.33410332228002 # 436. (rank_article_1_phraseSim) - Mapping: BINARIZE_LEQ <= 10.0
+40.728989051294484 # 437. (rank_article_1_phraseSim) - Mapping: BINARIZE_LEQ <= 15.0
+34.19697356779098 # 438. (rank_article_1_phraseSim) - Mapping: BINARIZE_LEQ <= 25.0
+32.21424901626344 # 439. (rank_article_1_phraseSim) - Mapping: BINARIZE_LEQ <= 30.0
+31.866406147201126 # 440. (rank_article_1_phraseSim) - Mapping: BINARIZE_LEQ <= 50.0
+31.08031269814867 # 441. (rank_article_1_phraseSim) - Mapping: BINARIZE_LEQ <= 100.0
+33.36079277468834 # 442. (rank_article_1_phraseSim) - Mapping: BINARIZE_LEQ <= 200.0
+23.864042567153692 # 443. (rank_article_2_phraseSim) - Mapping: BINARIZE_LEQ <= 2.0
+21.50704376546644 # 444. (rank_article_2_phraseSim) - Mapping: BINARIZE_LEQ <= 5.0
+22.83472121336698 # 445. (rank_article_2_phraseSim) - Mapping: BINARIZE_LEQ <= 10.0
+18.44302764156872 # 446. (rank_article_2_phraseSim) - Mapping: BINARIZE_LEQ <= 15.0
+10.967392595071686 # 447. (rank_article_2_phraseSim) - Mapping: BINARIZE_LEQ <= 25.0
+11.336624472860645 # 448. (rank_article_2_phraseSim) - Mapping: BINARIZE_LEQ <= 30.0
+14.78070015350428 # 449. (rank_article_2_phraseSim) - Mapping: BINARIZE_LEQ <= 50.0
+17.94664040909101 # 450. (rank_article_2_phraseSim) - Mapping: BINARIZE_LEQ <= 100.0
+21.061573554882894 # 451. (rank_article_2_phraseSim) - Mapping: BINARIZE_LEQ <= 200.0
+13.670503809053029 # 452. (rank_article_3_phraseSim) - Mapping: BINARIZE_LEQ <= 2.0
+11.777690566229813 # 453. (rank_article_3_phraseSim) - Mapping: BINARIZE_LEQ <= 5.0
+11.85905701615983 # 454. (rank_article_3_phraseSim) - Mapping: BINARIZE_LEQ <= 10.0
+15.308892611436356 # 455. (rank_article_3_phraseSim) - Mapping: BINARIZE_LEQ <= 15.0
+11.126549966718196 # 456. (rank_article_3_phraseSim) - Mapping: BINARIZE_LEQ <= 25.0
+14.383841529210688 # 457. (rank_article_3_phraseSim) - Mapping: BINARIZE_LEQ <= 30.0
+11.27379551745757 # 458. (rank_article_3_phraseSim) - Mapping: BINARIZE_LEQ <= 50.0
+11.707069919043148 # 459. (rank_article_3_phraseSim) - Mapping: BINARIZE_LEQ <= 100.0
+13.05931068393653 # 460. (rank_article_3_phraseSim) - Mapping: BINARIZE_LEQ <= 200.0
+21.190495782428883 # 461. (rank_article_4_phraseSim) - Mapping: BINARIZE_LEQ <= 2.0
+21.229120661101003 # 462. (rank_article_4_phraseSim) - Mapping: BINARIZE_LEQ <= 5.0
+28.517620433960758 # 463. (rank_article_4_phraseSim) - Mapping: BINARIZE_LEQ <= 10.0
+22.14943782162055 # 464. (rank_article_4_phraseSim) - Mapping: BINARIZE_LEQ <= 15.0
+18.839203899381978 # 465. (rank_article_4_phraseSim) - Mapping: BINARIZE_LEQ <= 25.0
+20.187478915674976 # 466. (rank_article_4_phraseSim) - Mapping: BINARIZE_LEQ <= 30.0
+22.40189409567711 # 467. (rank_article_4_phraseSim) - Mapping: BINARIZE_LEQ <= 50.0
+25.26226960827936 # 468. (rank_article_4_phraseSim) - Mapping: BINARIZE_LEQ <= 100.0
+25.00973802367989 # 469. (rank_article_4_phraseSim) - Mapping: BINARIZE_LEQ <= 200.0
+19.23634301447588 # 470. (rank_article_5_phraseSim) - Mapping: BINARIZE_LEQ <= 2.0
+20.41834416143093 # 471. (rank_article_5_phraseSim) - Mapping: BINARIZE_LEQ <= 5.0
+21.62679501555658 # 472. (rank_article_5_phraseSim) - Mapping: BINARIZE_LEQ <= 10.0
+14.895259838151372 # 473. (rank_article_5_phraseSim) - Mapping: BINARIZE_LEQ <= 15.0
+12.545928898300104 # 474. (rank_article_5_phraseSim) - Mapping: BINARIZE_LEQ <= 25.0
+10.96016498360074 # 475. (rank_article_5_phraseSim) - Mapping: BINARIZE_LEQ <= 30.0
+20.76043918431538 # 476. (rank_article_5_phraseSim) - Mapping: BINARIZE_LEQ <= 50.0
+24.30319246435039 # 477. (rank_article_5_phraseSim) - Mapping: BINARIZE_LEQ <= 100.0
+26.409737639803485 # 478. (rank_article_5_phraseSim) - Mapping: BINARIZE_LEQ <= 200.0
+15.613023944367303 # 479. (combined) - Mapping: QUADRATIC = (rank_article <= 2.0)*(rank_title <= 2.0)
+12.2468974772701 # 480. (combined) - Mapping: QUADRATIC = (rank_article <= 2.0)*(rank_title <= 5.0)
+9.29320413238686 # 481. (combined) - Mapping: QUADRATIC = (rank_article <= 2.0)*(rank_title <= 10.0)
+7.356896435580243 # 482. (combined) - Mapping: QUADRATIC = (rank_article <= 2.0)*(rank_title <= 15.0)
+5.813638413814385 # 483. (combined) - Mapping: QUADRATIC = (rank_article <= 2.0)*(rank_title <= 25.0)
+5.278726127778319 # 484. (combined) - Mapping: QUADRATIC = (rank_article <= 2.0)*(rank_title <= 30.0)
+6.238246552234428 # 485. (combined) - Mapping: QUADRATIC = (rank_article <= 2.0)*(rank_title <= 50.0)
+6.670458881404512 # 486. (combined) - Mapping: QUADRATIC = (rank_article <= 2.0)*(rank_title <= 100.0)
+6.745902177383401 # 487. (combined) - Mapping: QUADRATIC = (rank_article <= 2.0)*(rank_title <= 200.0)
+20.32022072881336 # 488. (combined) - Mapping: QUADRATIC = (rank_article <= 5.0)*(rank_title <= 2.0)
+16.07471409118955 # 489. (combined) - Mapping: QUADRATIC = (rank_article <= 5.0)*(rank_title <= 5.0)
+11.131047001281093 # 490. (combined) - Mapping: QUADRATIC = (rank_article <= 5.0)*(rank_title <= 10.0)
+9.188958768879143 # 491. (combined) - Mapping: QUADRATIC = (rank_article <= 5.0)*(rank_title <= 15.0)
+7.639669214121321 # 492. (combined) - Mapping: QUADRATIC = (rank_article <= 5.0)*(rank_title <= 25.0)
+7.120605695855268 # 493. (combined) - Mapping: QUADRATIC = (rank_article <= 5.0)*(rank_title <= 30.0)
+7.719285185877917 # 494. (combined) - Mapping: QUADRATIC = (rank_article <= 5.0)*(rank_title <= 50.0)
+7.91502261142352 # 495. (combined) - Mapping: QUADRATIC = (rank_article <= 5.0)*(rank_title <= 100.0)
+6.950300678530564 # 496. (combined) - Mapping: QUADRATIC = (rank_article <= 5.0)*(rank_title <= 200.0)
+23.44306798145909 # 497. (combined) - Mapping: QUADRATIC = (rank_article <= 10.0)*(rank_title <= 2.0)
+13.864651123445773 # 498. (combined) - Mapping: QUADRATIC = (rank_article <= 10.0)*(rank_title <= 5.0)
+6.699629398060214 # 499. (combined) - Mapping: QUADRATIC = (rank_article <= 10.0)*(rank_title <= 10.0)
+5.422896188316247 # 500. (combined) - Mapping: QUADRATIC = (rank_article <= 10.0)*(rank_title <= 15.0)
+3.203669857413257 # 501. (combined) - Mapping: QUADRATIC = (rank_article <= 10.0)*(rank_title <= 25.0)
+2.7293000671141106 # 502. (combined) - Mapping: QUADRATIC = (rank_article <= 10.0)*(rank_title <= 30.0)
+2.519322864375864 # 503. (combined) - Mapping: QUADRATIC = (rank_article <= 10.0)*(rank_title <= 50.0)
+1.8606688786147236 # 504. (combined) - Mapping: QUADRATIC = (rank_article <= 10.0)*(rank_title <= 100.0)
+1.1542867449120213 # 505. (combined) - Mapping: QUADRATIC = (rank_article <= 10.0)*(rank_title <= 200.0)
+19.51165118433438 # 506. (combined) - Mapping: QUADRATIC = (rank_article <= 15.0)*(rank_title <= 2.0)
+4.940178962107356 # 507. (combined) - Mapping: QUADRATIC = (rank_article <= 15.0)*(rank_title <= 5.0)
+-1.813981083427954 # 508. (combined) - Mapping: QUADRATIC = (rank_article <= 15.0)*(rank_title <= 10.0)
+-4.126250962501365 # 509. (combined) - Mapping: QUADRATIC = (rank_article <= 15.0)*(rank_title <= 15.0)
+-5.792133917341609 # 510. (combined) - Mapping: QUADRATIC = (rank_article <= 15.0)*(rank_title <= 25.0)
+-6.222712668400895 # 511. (combined) - Mapping: QUADRATIC = (rank_article <= 15.0)*(rank_title <= 30.0)
+-5.826232244141331 # 512. (combined) - Mapping: QUADRATIC = (rank_article <= 15.0)*(rank_title <= 50.0)
+-6.2122814033175136 # 513. (combined) - Mapping: QUADRATIC = (rank_article <= 15.0)*(rank_title <= 100.0)
+-6.7227654779961465 # 514. (combined) - Mapping: QUADRATIC = (rank_article <= 15.0)*(rank_title <= 200.0)
+23.39421628793538 # 515. (combined) - Mapping: QUADRATIC = (rank_article <= 25.0)*(rank_title <= 2.0)
+7.224239740613749 # 516. (combined) - Mapping: QUADRATIC = (rank_article <= 25.0)*(rank_title <= 5.0)
+1.1096299541606571 # 517. (combined) - Mapping: QUADRATIC = (rank_article <= 25.0)*(rank_title <= 10.0)
+-2.7878878166443317 # 518. (combined) - Mapping: QUADRATIC = (rank_article <= 25.0)*(rank_title <= 15.0)
+-5.006710123213835 # 519. (combined) - Mapping: QUADRATIC = (rank_article <= 25.0)*(rank_title <= 25.0)
+-6.00065153480127 # 520. (combined) - Mapping: QUADRATIC = (rank_article <= 25.0)*(rank_title <= 30.0)
+-5.459889201197864 # 521. (combined) - Mapping: QUADRATIC = (rank_article <= 25.0)*(rank_title <= 50.0)
+-6.008935234618283 # 522. (combined) - Mapping: QUADRATIC = (rank_article <= 25.0)*(rank_title <= 100.0)
+-6.390736493510899 # 523. (combined) - Mapping: QUADRATIC = (rank_article <= 25.0)*(rank_title <= 200.0)
+26.650032400478878 # 524. (combined) - Mapping: QUADRATIC = (rank_article <= 30.0)*(rank_title <= 2.0)
+9.037408686239866 # 525. (combined) - Mapping: QUADRATIC = (rank_article <= 30.0)*(rank_title <= 5.0)
+3.0239425276998486 # 526. (combined) - Mapping: QUADRATIC = (rank_article <= 30.0)*(rank_title <= 10.0)
+-0.02334616071390344 # 527. (combined) - Mapping: QUADRATIC = (rank_article <= 30.0)*(rank_title <= 15.0)
+-2.239413421632288 # 528. (combined) - Mapping: QUADRATIC = (rank_article <= 30.0)*(rank_title <= 25.0)
+-3.5289990825586717 # 529. (combined) - Mapping: QUADRATIC = (rank_article <= 30.0)*(rank_title <= 30.0)
+-2.1338216581625424 # 530. (combined) - Mapping: QUADRATIC = (rank_article <= 30.0)*(rank_title <= 50.0)
+-2.107547449770169 # 531. (combined) - Mapping: QUADRATIC = (rank_article <= 30.0)*(rank_title <= 100.0)
+-2.3661948657377696 # 532. (combined) - Mapping: QUADRATIC = (rank_article <= 30.0)*(rank_title <= 200.0)
+34.627859345408694 # 533. (combined) - Mapping: QUADRATIC = (rank_article <= 50.0)*(rank_title <= 2.0)
+13.155950243877143 # 534. (combined) - Mapping: QUADRATIC = (rank_article <= 50.0)*(rank_title <= 5.0)
+5.449714957363449 # 535. (combined) - Mapping: QUADRATIC = (rank_article <= 50.0)*(rank_title <= 10.0)
+1.1567868235827183 # 536. (combined) - Mapping: QUADRATIC = (rank_article <= 50.0)*(rank_title <= 15.0)
+-0.8090616652213607 # 537. (combined) - Mapping: QUADRATIC = (rank_article <= 50.0)*(rank_title <= 25.0)
+-1.406104589524496 # 538. (combined) - Mapping: QUADRATIC = (rank_article <= 50.0)*(rank_title <= 30.0)
+0.9851409047252369 # 539. (combined) - Mapping: QUADRATIC = (rank_article <= 50.0)*(rank_title <= 50.0)
+-0.6115869542082881 # 540. (combined) - Mapping: QUADRATIC = (rank_article <= 50.0)*(rank_title <= 100.0)
+-0.8959805370595835 # 541. (combined) - Mapping: QUADRATIC = (rank_article <= 50.0)*(rank_title <= 200.0)
+36.448084506124054 # 542. (combined) - Mapping: QUADRATIC = (rank_article <= 100.0)*(rank_title <= 2.0)
+17.22466115185417 # 543. (combined) - Mapping: QUADRATIC = (rank_article <= 100.0)*(rank_title <= 5.0)
+9.000681384018982 # 544. (combined) - Mapping: QUADRATIC = (rank_article <= 100.0)*(rank_title <= 10.0)
+2.283255842146421 # 545. (combined) - Mapping: QUADRATIC = (rank_article <= 100.0)*(rank_title <= 15.0)
+1.0031701245294091 # 546. (combined) - Mapping: QUADRATIC = (rank_article <= 100.0)*(rank_title <= 25.0)
+0.17567757751505675 # 547. (combined) - Mapping: QUADRATIC = (rank_article <= 100.0)*(rank_title <= 30.0)
+2.3062715275386974 # 548. (combined) - Mapping: QUADRATIC = (rank_article <= 100.0)*(rank_title <= 50.0)
+2.0837292341515776 # 549. (combined) - Mapping: QUADRATIC = (rank_article <= 100.0)*(rank_title <= 100.0)
+2.54263581986185 # 550. (combined) - Mapping: QUADRATIC = (rank_article <= 100.0)*(rank_title <= 200.0)
+38.27000073038015 # 551. (combined) - Mapping: QUADRATIC = (rank_article <= 200.0)*(rank_title <= 2.0)
+24.929764456987616 # 552. (combined) - Mapping: QUADRATIC = (rank_article <= 200.0)*(rank_title <= 5.0)
+17.379308088900903 # 553. (combined) - Mapping: QUADRATIC = (rank_article <= 200.0)*(rank_title <= 10.0)
+11.394463946524471 # 554. (combined) - Mapping: QUADRATIC = (rank_article <= 200.0)*(rank_title <= 15.0)
+9.361145190870648 # 555. (combined) - Mapping: QUADRATIC = (rank_article <= 200.0)*(rank_title <= 25.0)
+7.434280227565928 # 556. (combined) - Mapping: QUADRATIC = (rank_article <= 200.0)*(rank_title <= 30.0)
+11.250272758974308 # 557. (combined) - Mapping: QUADRATIC = (rank_article <= 200.0)*(rank_title <= 50.0)
+11.580870140186443 # 558. (combined) - Mapping: QUADRATIC = (rank_article <= 200.0)*(rank_title <= 100.0)
+12.049421993093047 # 559. (combined) - Mapping: QUADRATIC = (rank_article <= 200.0)*(rank_title <= 200.0)
+9.90178744501947 # 560. (combined) - Mapping: QUADRATIC = (rank_article <= 2.0)*(rank_abstract <= 2.0)
+4.471067025931032 # 561. (combined) - Mapping: QUADRATIC = (rank_article <= 2.0)*(rank_abstract <= 5.0)
+6.750525242690568 # 562. (combined) - Mapping: QUADRATIC = (rank_article <= 2.0)*(rank_abstract <= 10.0)
+8.764949532158807 # 563. (combined) - Mapping: QUADRATIC = (rank_article <= 2.0)*(rank_abstract <= 15.0)
+8.937521276960014 # 564. (combined) - Mapping: QUADRATIC = (rank_article <= 2.0)*(rank_abstract <= 25.0)
+8.26088797738096 # 565. (combined) - Mapping: QUADRATIC = (rank_article <= 2.0)*(rank_abstract <= 30.0)
+5.49845127806669 # 566. (combined) - Mapping: QUADRATIC = (rank_article <= 2.0)*(rank_abstract <= 50.0)
+2.8030749798829704 # 567. (combined) - Mapping: QUADRATIC = (rank_article <= 2.0)*(rank_abstract <= 100.0)
+3.4463589897332656 # 568. (combined) - Mapping: QUADRATIC = (rank_article <= 2.0)*(rank_abstract <= 200.0)
+14.377214044358347 # 569. (combined) - Mapping: QUADRATIC = (rank_article <= 5.0)*(rank_abstract <= 2.0)
+7.457600534437747 # 570. (combined) - Mapping: QUADRATIC = (rank_article <= 5.0)*(rank_abstract <= 5.0)
+8.938402109194366 # 571. (combined) - Mapping: QUADRATIC = (rank_article <= 5.0)*(rank_abstract <= 10.0)
+9.392652154822288 # 572. (combined) - Mapping: QUADRATIC = (rank_article <= 5.0)*(rank_abstract <= 15.0)
+8.05200404036524 # 573. (combined) - Mapping: QUADRATIC = (rank_article <= 5.0)*(rank_abstract <= 25.0)
+7.76068072128583 # 574. (combined) - Mapping: QUADRATIC = (rank_article <= 5.0)*(rank_abstract <= 30.0)
+5.04731965506699 # 575. (combined) - Mapping: QUADRATIC = (rank_article <= 5.0)*(rank_abstract <= 50.0)
+3.4579747144682056 # 576. (combined) - Mapping: QUADRATIC = (rank_article <= 5.0)*(rank_abstract <= 100.0)
+3.460138582620628 # 577. (combined) - Mapping: QUADRATIC = (rank_article <= 5.0)*(rank_abstract <= 200.0)
+15.012031624866477 # 578. (combined) - Mapping: QUADRATIC = (rank_article <= 10.0)*(rank_abstract <= 2.0)
+7.397035324449283 # 579. (combined) - Mapping: QUADRATIC = (rank_article <= 10.0)*(rank_abstract <= 5.0)
+5.329898903926621 # 580. (combined) - Mapping: QUADRATIC = (rank_article <= 10.0)*(rank_abstract <= 10.0)
+3.773443621836028 # 581. (combined) - Mapping: QUADRATIC = (rank_article <= 10.0)*(rank_abstract <= 15.0)
+3.9484495592761997 # 582. (combined) - Mapping: QUADRATIC = (rank_article <= 10.0)*(rank_abstract <= 25.0)
+2.9619456766558447 # 583. (combined) - Mapping: QUADRATIC = (rank_article <= 10.0)*(rank_abstract <= 30.0)
+0.5839725898962127 # 584. (combined) - Mapping: QUADRATIC = (rank_article <= 10.0)*(rank_abstract <= 50.0)
+-3.174499768754234 # 585. (combined) - Mapping: QUADRATIC = (rank_article <= 10.0)*(rank_abstract <= 100.0)
+-2.7008252865348923 # 586. (combined) - Mapping: QUADRATIC = (rank_article <= 10.0)*(rank_abstract <= 200.0)
+12.455387888712922 # 587. (combined) - Mapping: QUADRATIC = (rank_article <= 15.0)*(rank_abstract <= 2.0)
+4.4538024447849 # 588. (combined) - Mapping: QUADRATIC = (rank_article <= 15.0)*(rank_abstract <= 5.0)
+-0.9833712788214257 # 589. (combined) - Mapping: QUADRATIC = (rank_article <= 15.0)*(rank_abstract <= 10.0)
+-4.018285864998921 # 590. (combined) - Mapping: QUADRATIC = (rank_article <= 15.0)*(rank_abstract <= 15.0)
+-2.7725665400402577 # 591. (combined) - Mapping: QUADRATIC = (rank_article <= 15.0)*(rank_abstract <= 25.0)
+-4.1217397050144475 # 592. (combined) - Mapping: QUADRATIC = (rank_article <= 15.0)*(rank_abstract <= 30.0)
+-6.796870090067531 # 593. (combined) - Mapping: QUADRATIC = (rank_article <= 15.0)*(rank_abstract <= 50.0)
+-10.514120995579773 # 594. (combined) - Mapping: QUADRATIC = (rank_article <= 15.0)*(rank_abstract <= 100.0)
+-9.887229999429941 # 595. (combined) - Mapping: QUADRATIC = (rank_article <= 15.0)*(rank_abstract <= 200.0)
+11.826534579840963 # 596. (combined) - Mapping: QUADRATIC = (rank_article <= 25.0)*(rank_abstract <= 2.0)
+4.003524156126495 # 597. (combined) - Mapping: QUADRATIC = (rank_article <= 25.0)*(rank_abstract <= 5.0)
+-7.1601713156869415 # 598. (combined) - Mapping: QUADRATIC = (rank_article <= 25.0)*(rank_abstract <= 10.0)
+-8.612978628152192 # 599. (combined) - Mapping: QUADRATIC = (rank_article <= 25.0)*(rank_abstract <= 15.0)
+-6.80910339301387 # 600. (combined) - Mapping: QUADRATIC = (rank_article <= 25.0)*(rank_abstract <= 25.0)
+-8.545900212172963 # 601. (combined) - Mapping: QUADRATIC = (rank_article <= 25.0)*(rank_abstract <= 30.0)
+-10.666151160689047 # 602. (combined) - Mapping: QUADRATIC = (rank_article <= 25.0)*(rank_abstract <= 50.0)
+-12.328033786839882 # 603. (combined) - Mapping: QUADRATIC = (rank_article <= 25.0)*(rank_abstract <= 100.0)
+-10.891232371727138 # 604. (combined) - Mapping: QUADRATIC = (rank_article <= 25.0)*(rank_abstract <= 200.0)
+11.672650034839185 # 605. (combined) - Mapping: QUADRATIC = (rank_article <= 30.0)*(rank_abstract <= 2.0)
+3.9884852969860893 # 606. (combined) - Mapping: QUADRATIC = (rank_article <= 30.0)*(rank_abstract <= 5.0)
+-6.133287159422647 # 607. (combined) - Mapping: QUADRATIC = (rank_article <= 30.0)*(rank_abstract <= 10.0)
+-7.595269655929694 # 608. (combined) - Mapping: QUADRATIC = (rank_article <= 30.0)*(rank_abstract <= 15.0)
+-5.606806622172511 # 609. (combined) - Mapping: QUADRATIC = (rank_article <= 30.0)*(rank_abstract <= 25.0)
+-8.044411384562455 # 610. (combined) - Mapping: QUADRATIC = (rank_article <= 30.0)*(rank_abstract <= 30.0)
+-9.820182381419851 # 611. (combined) - Mapping: QUADRATIC = (rank_article <= 30.0)*(rank_abstract <= 50.0)
+-9.768981185784757 # 612. (combined) - Mapping: QUADRATIC = (rank_article <= 30.0)*(rank_abstract <= 100.0)
+-7.653771313473993 # 613. (combined) - Mapping: QUADRATIC = (rank_article <= 30.0)*(rank_abstract <= 200.0)
+11.183150043209684 # 614. (combined) - Mapping: QUADRATIC = (rank_article <= 50.0)*(rank_abstract <= 2.0)
+3.5201346620909644 # 615. (combined) - Mapping: QUADRATIC = (rank_article <= 50.0)*(rank_abstract <= 5.0)
+-2.3122157754329917 # 616. (combined) - Mapping: QUADRATIC = (rank_article <= 50.0)*(rank_abstract <= 10.0)
+-7.949115245197686 # 617. (combined) - Mapping: QUADRATIC = (rank_article <= 50.0)*(rank_abstract <= 15.0)
+-4.848556392855037 # 618. (combined) - Mapping: QUADRATIC = (rank_article <= 50.0)*(rank_abstract <= 25.0)
+-9.12669592051417 # 619. (combined) - Mapping: QUADRATIC = (rank_article <= 50.0)*(rank_abstract <= 30.0)
+-9.983856717621144 # 620. (combined) - Mapping: QUADRATIC = (rank_article <= 50.0)*(rank_abstract <= 50.0)
+-9.861817273563322 # 621. (combined) - Mapping: QUADRATIC = (rank_article <= 50.0)*(rank_abstract <= 100.0)
+-7.1126123503700045 # 622. (combined) - Mapping: QUADRATIC = (rank_article <= 50.0)*(rank_abstract <= 200.0)
+12.923777640040697 # 623. (combined) - Mapping: QUADRATIC = (rank_article <= 100.0)*(rank_abstract <= 2.0)
+4.558580831130902 # 624. (combined) - Mapping: QUADRATIC = (rank_article <= 100.0)*(rank_abstract <= 5.0)
+-3.273889160924739 # 625. (combined) - Mapping: QUADRATIC = (rank_article <= 100.0)*(rank_abstract <= 10.0)
+-8.543617146820921 # 626. (combined) - Mapping: QUADRATIC = (rank_article <= 100.0)*(rank_abstract <= 15.0)
+-6.182096460692242 # 627. (combined) - Mapping: QUADRATIC = (rank_article <= 100.0)*(rank_abstract <= 25.0)
+-7.9559298191186185 # 628. (combined) - Mapping: QUADRATIC = (rank_article <= 100.0)*(rank_abstract <= 30.0)
+-8.800496809520451 # 629. (combined) - Mapping: QUADRATIC = (rank_article <= 100.0)*(rank_abstract <= 50.0)
+-8.576173115022481 # 630. (combined) - Mapping: QUADRATIC = (rank_article <= 100.0)*(rank_abstract <= 100.0)
+-5.255637403948112 # 631. (combined) - Mapping: QUADRATIC = (rank_article <= 100.0)*(rank_abstract <= 200.0)
+11.57950265990637 # 632. (combined) - Mapping: QUADRATIC = (rank_article <= 200.0)*(rank_abstract <= 2.0)
+4.710877066850197 # 633. (combined) - Mapping: QUADRATIC = (rank_article <= 200.0)*(rank_abstract <= 5.0)
+-1.933393454225143 # 634. (combined) - Mapping: QUADRATIC = (rank_article <= 200.0)*(rank_abstract <= 10.0)
+-9.14543070370403 # 635. (combined) - Mapping: QUADRATIC = (rank_article <= 200.0)*(rank_abstract <= 15.0)
+-7.030665280394386 # 636. (combined) - Mapping: QUADRATIC = (rank_article <= 200.0)*(rank_abstract <= 25.0)
+-6.824028821379045 # 637. (combined) - Mapping: QUADRATIC = (rank_article <= 200.0)*(rank_abstract <= 30.0)
+-3.657767285317447 # 638. (combined) - Mapping: QUADRATIC = (rank_article <= 200.0)*(rank_abstract <= 50.0)
+-1.1745044285777784 # 639. (combined) - Mapping: QUADRATIC = (rank_article <= 200.0)*(rank_abstract <= 100.0)
+1.903628396751618 # 640. (combined) - Mapping: QUADRATIC = (rank_article <= 200.0)*(rank_abstract <= 200.0)
+-1.0905088812858021 # 641. (combined) - Mapping: QUADRATIC = (rank_article <= 2.0)*(rank_authors <= 2.0)
+1.615915530509438 # 642. (combined) - Mapping: QUADRATIC = (rank_article <= 2.0)*(rank_authors <= 5.0)
+-0.4425519564518595 # 643. (combined) - Mapping: QUADRATIC = (rank_article <= 2.0)*(rank_authors <= 10.0)
+-0.5720579870495914 # 644. (combined) - Mapping: QUADRATIC = (rank_article <= 2.0)*(rank_authors <= 15.0)
+-1.8634497502808691 # 645. (combined) - Mapping: QUADRATIC = (rank_article <= 2.0)*(rank_authors <= 25.0)
+-2.1253092574237846 # 646. (combined) - Mapping: QUADRATIC = (rank_article <= 2.0)*(rank_authors <= 30.0)
+-2.1835678893843835 # 647. (combined) - Mapping: QUADRATIC = (rank_article <= 2.0)*(rank_authors <= 50.0)
+-2.5417294513843323 # 648. (combined) - Mapping: QUADRATIC = (rank_article <= 2.0)*(rank_authors <= 100.0)
+-2.5417294513843323 # 649. (combined) - Mapping: QUADRATIC = (rank_article <= 2.0)*(rank_authors <= 200.0)
+1.3033680224793698 # 650. (combined) - Mapping: QUADRATIC = (rank_article <= 5.0)*(rank_authors <= 2.0)
+1.0060702282095701 # 651. (combined) - Mapping: QUADRATIC = (rank_article <= 5.0)*(rank_authors <= 5.0)
+-4.060016261364513 # 652. (combined) - Mapping: QUADRATIC = (rank_article <= 5.0)*(rank_authors <= 10.0)
+-5.228433221610445 # 653. (combined) - Mapping: QUADRATIC = (rank_article <= 5.0)*(rank_authors <= 15.0)
+-6.351298880288882 # 654. (combined) - Mapping: QUADRATIC = (rank_article <= 5.0)*(rank_authors <= 25.0)
+-6.582799539939054 # 655. (combined) - Mapping: QUADRATIC = (rank_article <= 5.0)*(rank_authors <= 30.0)
+-6.643459965560447 # 656. (combined) - Mapping: QUADRATIC = (rank_article <= 5.0)*(rank_authors <= 50.0)
+-6.863157761073145 # 657. (combined) - Mapping: QUADRATIC = (rank_article <= 5.0)*(rank_authors <= 100.0)
+-6.863157761073145 # 658. (combined) - Mapping: QUADRATIC = (rank_article <= 5.0)*(rank_authors <= 200.0)
+3.7402196009788975 # 659. (combined) - Mapping: QUADRATIC = (rank_article <= 10.0)*(rank_authors <= 2.0)
+6.176283582105802 # 660. (combined) - Mapping: QUADRATIC = (rank_article <= 10.0)*(rank_authors <= 5.0)
+-0.10564141583189968 # 661. (combined) - Mapping: QUADRATIC = (rank_article <= 10.0)*(rank_authors <= 10.0)
+-1.5527933379880503 # 662. (combined) - Mapping: QUADRATIC = (rank_article <= 10.0)*(rank_authors <= 15.0)
+-2.7927216683315463 # 663. (combined) - Mapping: QUADRATIC = (rank_article <= 10.0)*(rank_authors <= 25.0)
+-3.0360836399930498 # 664. (combined) - Mapping: QUADRATIC = (rank_article <= 10.0)*(rank_authors <= 30.0)
+-3.057114537109428 # 665. (combined) - Mapping: QUADRATIC = (rank_article <= 10.0)*(rank_authors <= 50.0)
+-3.3720043903315298 # 666. (combined) - Mapping: QUADRATIC = (rank_article <= 10.0)*(rank_authors <= 100.0)
+-3.3757123547943366 # 667. (combined) - Mapping: QUADRATIC = (rank_article <= 10.0)*(rank_authors <= 200.0)
+1.511907209636652 # 668. (combined) - Mapping: QUADRATIC = (rank_article <= 15.0)*(rank_authors <= 2.0)
+4.56572036896793 # 669. (combined) - Mapping: QUADRATIC = (rank_article <= 15.0)*(rank_authors <= 5.0)
+-1.5329379955845255 # 670. (combined) - Mapping: QUADRATIC = (rank_article <= 15.0)*(rank_authors <= 10.0)
+-2.929948471348434 # 671. (combined) - Mapping: QUADRATIC = (rank_article <= 15.0)*(rank_authors <= 15.0)
+-4.701635961552416 # 672. (combined) - Mapping: QUADRATIC = (rank_article <= 15.0)*(rank_authors <= 25.0)
+-4.956138860133938 # 673. (combined) - Mapping: QUADRATIC = (rank_article <= 15.0)*(rank_authors <= 30.0)
+-4.856361884345617 # 674. (combined) - Mapping: QUADRATIC = (rank_article <= 15.0)*(rank_authors <= 50.0)
+-5.312133957260034 # 675. (combined) - Mapping: QUADRATIC = (rank_article <= 15.0)*(rank_authors <= 100.0)
+-5.31584192172284 # 676. (combined) - Mapping: QUADRATIC = (rank_article <= 15.0)*(rank_authors <= 200.0)
+4.078896738697821 # 677. (combined) - Mapping: QUADRATIC = (rank_article <= 25.0)*(rank_authors <= 2.0)
+7.395986994993797 # 678. (combined) - Mapping: QUADRATIC = (rank_article <= 25.0)*(rank_authors <= 5.0)
+1.2259310375616979 # 679. (combined) - Mapping: QUADRATIC = (rank_article <= 25.0)*(rank_authors <= 10.0)
+-0.33315239134112223 # 680. (combined) - Mapping: QUADRATIC = (rank_article <= 25.0)*(rank_authors <= 15.0)
+-2.457320869048094 # 681. (combined) - Mapping: QUADRATIC = (rank_article <= 25.0)*(rank_authors <= 25.0)
+-2.34372328676843 # 682. (combined) - Mapping: QUADRATIC = (rank_article <= 25.0)*(rank_authors <= 30.0)
+-2.2124896977320203 # 683. (combined) - Mapping: QUADRATIC = (rank_article <= 25.0)*(rank_authors <= 50.0)
+-2.3963527193863348 # 684. (combined) - Mapping: QUADRATIC = (rank_article <= 25.0)*(rank_authors <= 100.0)
+-2.4626926155483693 # 685. (combined) - Mapping: QUADRATIC = (rank_article <= 25.0)*(rank_authors <= 200.0)
+3.461082991304042 # 686. (combined) - Mapping: QUADRATIC = (rank_article <= 30.0)*(rank_authors <= 2.0)
+8.637385587955016 # 687. (combined) - Mapping: QUADRATIC = (rank_article <= 30.0)*(rank_authors <= 5.0)
+3.1110371266089984 # 688. (combined) - Mapping: QUADRATIC = (rank_article <= 30.0)*(rank_authors <= 10.0)
+1.5519536977061814 # 689. (combined) - Mapping: QUADRATIC = (rank_article <= 30.0)*(rank_authors <= 15.0)
+-0.6072845683798809 # 690. (combined) - Mapping: QUADRATIC = (rank_article <= 30.0)*(rank_authors <= 25.0)
+-1.2318274789573018 # 691. (combined) - Mapping: QUADRATIC = (rank_article <= 30.0)*(rank_authors <= 30.0)
+-1.0971438998411682 # 692. (combined) - Mapping: QUADRATIC = (rank_article <= 30.0)*(rank_authors <= 50.0)
+-1.23938168100482 # 693. (combined) - Mapping: QUADRATIC = (rank_article <= 30.0)*(rank_authors <= 100.0)
+-1.3057215771668553 # 694. (combined) - Mapping: QUADRATIC = (rank_article <= 30.0)*(rank_authors <= 200.0)
+2.6971835747601998 # 695. (combined) - Mapping: QUADRATIC = (rank_article <= 50.0)*(rank_authors <= 2.0)
+11.208173704494468 # 696. (combined) - Mapping: QUADRATIC = (rank_article <= 50.0)*(rank_authors <= 5.0)
+7.137125027804005 # 697. (combined) - Mapping: QUADRATIC = (rank_article <= 50.0)*(rank_authors <= 10.0)
+5.798399400727043 # 698. (combined) - Mapping: QUADRATIC = (rank_article <= 50.0)*(rank_authors <= 15.0)
+3.6922656612607905 # 699. (combined) - Mapping: QUADRATIC = (rank_article <= 50.0)*(rank_authors <= 25.0)
+3.0674754209640622 # 700. (combined) - Mapping: QUADRATIC = (rank_article <= 50.0)*(rank_authors <= 30.0)
+3.0945911726302957 # 701. (combined) - Mapping: QUADRATIC = (rank_article <= 50.0)*(rank_authors <= 50.0)
+2.931875093298703 # 702. (combined) - Mapping: QUADRATIC = (rank_article <= 50.0)*(rank_authors <= 100.0)
+2.875707028885499 # 703. (combined) - Mapping: QUADRATIC = (rank_article <= 50.0)*(rank_authors <= 200.0)
+3.0087981994960824 # 704. (combined) - Mapping: QUADRATIC = (rank_article <= 100.0)*(rank_authors <= 2.0)
+11.546043391215747 # 705. (combined) - Mapping: QUADRATIC = (rank_article <= 100.0)*(rank_authors <= 5.0)
+6.521153806634639 # 706. (combined) - Mapping: QUADRATIC = (rank_article <= 100.0)*(rank_authors <= 10.0)
+5.4040026677746775 # 707. (combined) - Mapping: QUADRATIC = (rank_article <= 100.0)*(rank_authors <= 15.0)
+3.7928507852857924 # 708. (combined) - Mapping: QUADRATIC = (rank_article <= 100.0)*(rank_authors <= 25.0)
+2.8237202973376343 # 709. (combined) - Mapping: QUADRATIC = (rank_article <= 100.0)*(rank_authors <= 30.0)
+2.888058311266674 # 710. (combined) - Mapping: QUADRATIC = (rank_article <= 100.0)*(rank_authors <= 50.0)
+2.6924805602301944 # 711. (combined) - Mapping: QUADRATIC = (rank_article <= 100.0)*(rank_authors <= 100.0)
+2.5958551165037678 # 712. (combined) - Mapping: QUADRATIC = (rank_article <= 100.0)*(rank_authors <= 200.0)
+2.9672779309333874 # 713. (combined) - Mapping: QUADRATIC = (rank_article <= 200.0)*(rank_authors <= 2.0)
+12.42843296480729 # 714. (combined) - Mapping: QUADRATIC = (rank_article <= 200.0)*(rank_authors <= 5.0)
+6.891829403783801 # 715. (combined) - Mapping: QUADRATIC = (rank_article <= 200.0)*(rank_authors <= 10.0)
+6.0403342609186055 # 716. (combined) - Mapping: QUADRATIC = (rank_article <= 200.0)*(rank_authors <= 15.0)
+4.4329066774529045 # 717. (combined) - Mapping: QUADRATIC = (rank_article <= 200.0)*(rank_authors <= 25.0)
+3.4668683589632217 # 718. (combined) - Mapping: QUADRATIC = (rank_article <= 200.0)*(rank_authors <= 30.0)
+3.5403774239217 # 719. (combined) - Mapping: QUADRATIC = (rank_article <= 200.0)*(rank_authors <= 50.0)
+2.866940021910799 # 720. (combined) - Mapping: QUADRATIC = (rank_article <= 200.0)*(rank_authors <= 100.0)
+2.7594284906861697 # 721. (combined) - Mapping: QUADRATIC = (rank_article <= 200.0)*(rank_authors <= 200.0)
+-6.634006154690242 # 722. (combined) - Mapping: QUADRATIC = (rank_article <= 2.0)*(contains_author true)
+-10.713054268151112 # 723. (combined) - Mapping: QUADRATIC = (rank_article <= 5.0)*(contains_author true)
+-8.365858373562823 # 724. (combined) - Mapping: QUADRATIC = (rank_article <= 10.0)*(contains_author true)
+-13.040027572985238 # 725. (combined) - Mapping: QUADRATIC = (rank_article <= 15.0)*(contains_author true)
+-14.228941500555326 # 726. (combined) - Mapping: QUADRATIC = (rank_article <= 25.0)*(contains_author true)
+-12.751533162163987 # 727. (combined) - Mapping: QUADRATIC = (rank_article <= 30.0)*(contains_author true)
+-6.767495382531771 # 728. (combined) - Mapping: QUADRATIC = (rank_article <= 50.0)*(contains_author true)
+-7.552347753561545 # 729. (combined) - Mapping: QUADRATIC = (rank_article <= 100.0)*(contains_author true)
+-3.897582861956355 # 730. (combined) - Mapping: QUADRATIC = (rank_article <= 200.0)*(contains_author true)
+27.615363728876872 # 731. (combined) - Mapping: QUADRATIC = (rank_title <= 2.0)*(rank_abstract <= 2.0)
+33.145837096921156 # 732. (combined) - Mapping: QUADRATIC = (rank_title <= 2.0)*(rank_abstract <= 5.0)
+27.774637514973634 # 733. (combined) - Mapping: QUADRATIC = (rank_title <= 2.0)*(rank_abstract <= 10.0)
+28.95502961514368 # 734. (combined) - Mapping: QUADRATIC = (rank_title <= 2.0)*(rank_abstract <= 15.0)
+32.786351941906574 # 735. (combined) - Mapping: QUADRATIC = (rank_title <= 2.0)*(rank_abstract <= 25.0)
+32.2221192301498 # 736. (combined) - Mapping: QUADRATIC = (rank_title <= 2.0)*(rank_abstract <= 30.0)
+33.370316871578446 # 737. (combined) - Mapping: QUADRATIC = (rank_title <= 2.0)*(rank_abstract <= 50.0)
+42.93334462277679 # 738. (combined) - Mapping: QUADRATIC = (rank_title <= 2.0)*(rank_abstract <= 100.0)
+45.095995318705455 # 739. (combined) - Mapping: QUADRATIC = (rank_title <= 2.0)*(rank_abstract <= 200.0)
+21.859804847384773 # 740. (combined) - Mapping: QUADRATIC = (rank_title <= 5.0)*(rank_abstract <= 2.0)
+22.88213906265008 # 741. (combined) - Mapping: QUADRATIC = (rank_title <= 5.0)*(rank_abstract <= 5.0)
+14.618689299725853 # 742. (combined) - Mapping: QUADRATIC = (rank_title <= 5.0)*(rank_abstract <= 10.0)
+10.856361984712034 # 743. (combined) - Mapping: QUADRATIC = (rank_title <= 5.0)*(rank_abstract <= 15.0)
+15.557349582943061 # 744. (combined) - Mapping: QUADRATIC = (rank_title <= 5.0)*(rank_abstract <= 25.0)
+14.53457742744089 # 745. (combined) - Mapping: QUADRATIC = (rank_title <= 5.0)*(rank_abstract <= 30.0)
+18.16240605491759 # 746. (combined) - Mapping: QUADRATIC = (rank_title <= 5.0)*(rank_abstract <= 50.0)
+26.29224274855553 # 747. (combined) - Mapping: QUADRATIC = (rank_title <= 5.0)*(rank_abstract <= 100.0)
+28.83971525464817 # 748. (combined) - Mapping: QUADRATIC = (rank_title <= 5.0)*(rank_abstract <= 200.0)
+16.43421669996748 # 749. (combined) - Mapping: QUADRATIC = (rank_title <= 10.0)*(rank_abstract <= 2.0)
+14.068295693240122 # 750. (combined) - Mapping: QUADRATIC = (rank_title <= 10.0)*(rank_abstract <= 5.0)
+6.702432234856631 # 751. (combined) - Mapping: QUADRATIC = (rank_title <= 10.0)*(rank_abstract <= 10.0)
+1.8068226707187611 # 752. (combined) - Mapping: QUADRATIC = (rank_title <= 10.0)*(rank_abstract <= 15.0)
+6.2908408637744975 # 753. (combined) - Mapping: QUADRATIC = (rank_title <= 10.0)*(rank_abstract <= 25.0)
+5.87986700382467 # 754. (combined) - Mapping: QUADRATIC = (rank_title <= 10.0)*(rank_abstract <= 30.0)
+8.977625284752373 # 755. (combined) - Mapping: QUADRATIC = (rank_title <= 10.0)*(rank_abstract <= 50.0)
+16.973813229598726 # 756. (combined) - Mapping: QUADRATIC = (rank_title <= 10.0)*(rank_abstract <= 100.0)
+19.96880371049619 # 757. (combined) - Mapping: QUADRATIC = (rank_title <= 10.0)*(rank_abstract <= 200.0)
+16.448320971404616 # 758. (combined) - Mapping: QUADRATIC = (rank_title <= 15.0)*(rank_abstract <= 2.0)
+13.467961955204261 # 759. (combined) - Mapping: QUADRATIC = (rank_title <= 15.0)*(rank_abstract <= 5.0)
+3.5324737875953858 # 760. (combined) - Mapping: QUADRATIC = (rank_title <= 15.0)*(rank_abstract <= 10.0)
+-2.919782080813669 # 761. (combined) - Mapping: QUADRATIC = (rank_title <= 15.0)*(rank_abstract <= 15.0)
+-0.5935408451399864 # 762. (combined) - Mapping: QUADRATIC = (rank_title <= 15.0)*(rank_abstract <= 25.0)
+-1.288937205868176 # 763. (combined) - Mapping: QUADRATIC = (rank_title <= 15.0)*(rank_abstract <= 30.0)
+1.4189696682911164 # 764. (combined) - Mapping: QUADRATIC = (rank_title <= 15.0)*(rank_abstract <= 50.0)
+9.886601152503168 # 765. (combined) - Mapping: QUADRATIC = (rank_title <= 15.0)*(rank_abstract <= 100.0)
+12.607860039289626 # 766. (combined) - Mapping: QUADRATIC = (rank_title <= 15.0)*(rank_abstract <= 200.0)
+14.803941777426553 # 767. (combined) - Mapping: QUADRATIC = (rank_title <= 25.0)*(rank_abstract <= 2.0)
+10.693597386010953 # 768. (combined) - Mapping: QUADRATIC = (rank_title <= 25.0)*(rank_abstract <= 5.0)
+-1.1334237242601253 # 769. (combined) - Mapping: QUADRATIC = (rank_title <= 25.0)*(rank_abstract <= 10.0)
+-6.219124192960026 # 770. (combined) - Mapping: QUADRATIC = (rank_title <= 25.0)*(rank_abstract <= 15.0)
+-3.455135390090449 # 771. (combined) - Mapping: QUADRATIC = (rank_title <= 25.0)*(rank_abstract <= 25.0)
+-4.155395642487645 # 772. (combined) - Mapping: QUADRATIC = (rank_title <= 25.0)*(rank_abstract <= 30.0)
+-1.6989092702578852 # 773. (combined) - Mapping: QUADRATIC = (rank_title <= 25.0)*(rank_abstract <= 50.0)
+6.936735913954105 # 774. (combined) - Mapping: QUADRATIC = (rank_title <= 25.0)*(rank_abstract <= 100.0)
+11.372412993291302 # 775. (combined) - Mapping: QUADRATIC = (rank_title <= 25.0)*(rank_abstract <= 200.0)
+14.401513813897177 # 776. (combined) - Mapping: QUADRATIC = (rank_title <= 30.0)*(rank_abstract <= 2.0)
+10.772998916809115 # 777. (combined) - Mapping: QUADRATIC = (rank_title <= 30.0)*(rank_abstract <= 5.0)
+-0.9856357353709311 # 778. (combined) - Mapping: QUADRATIC = (rank_title <= 30.0)*(rank_abstract <= 10.0)
+-5.997563079701157 # 779. (combined) - Mapping: QUADRATIC = (rank_title <= 30.0)*(rank_abstract <= 15.0)
+-3.29541500872339 # 780. (combined) - Mapping: QUADRATIC = (rank_title <= 30.0)*(rank_abstract <= 25.0)
+-4.108775405580444 # 781. (combined) - Mapping: QUADRATIC = (rank_title <= 30.0)*(rank_abstract <= 30.0)
+-1.711013678214946 # 782. (combined) - Mapping: QUADRATIC = (rank_title <= 30.0)*(rank_abstract <= 50.0)
+5.206736856576669 # 783. (combined) - Mapping: QUADRATIC = (rank_title <= 30.0)*(rank_abstract <= 100.0)
+8.492988003029687 # 784. (combined) - Mapping: QUADRATIC = (rank_title <= 30.0)*(rank_abstract <= 200.0)
+14.780164711854866 # 785. (combined) - Mapping: QUADRATIC = (rank_title <= 50.0)*(rank_abstract <= 2.0)
+12.382973709360988 # 786. (combined) - Mapping: QUADRATIC = (rank_title <= 50.0)*(rank_abstract <= 5.0)
+1.0817821121162055 # 787. (combined) - Mapping: QUADRATIC = (rank_title <= 50.0)*(rank_abstract <= 10.0)
+-3.808461325191991 # 788. (combined) - Mapping: QUADRATIC = (rank_title <= 50.0)*(rank_abstract <= 15.0)
+0.19586645577968048 # 789. (combined) - Mapping: QUADRATIC = (rank_title <= 50.0)*(rank_abstract <= 25.0)
+-0.7089781511649682 # 790. (combined) - Mapping: QUADRATIC = (rank_title <= 50.0)*(rank_abstract <= 30.0)
+1.936304789646904 # 791. (combined) - Mapping: QUADRATIC = (rank_title <= 50.0)*(rank_abstract <= 50.0)
+9.594713496099825 # 792. (combined) - Mapping: QUADRATIC = (rank_title <= 50.0)*(rank_abstract <= 100.0)
+12.749240009224813 # 793. (combined) - Mapping: QUADRATIC = (rank_title <= 50.0)*(rank_abstract <= 200.0)
+15.26630992483415 # 794. (combined) - Mapping: QUADRATIC = (rank_title <= 100.0)*(rank_abstract <= 2.0)
+13.950519108524114 # 795. (combined) - Mapping: QUADRATIC = (rank_title <= 100.0)*(rank_abstract <= 5.0)
+3.012937882327372 # 796. (combined) - Mapping: QUADRATIC = (rank_title <= 100.0)*(rank_abstract <= 10.0)
+-2.358319554741655 # 797. (combined) - Mapping: QUADRATIC = (rank_title <= 100.0)*(rank_abstract <= 15.0)
+1.6977135415097209 # 798. (combined) - Mapping: QUADRATIC = (rank_title <= 100.0)*(rank_abstract <= 25.0)
+1.3062953043771184 # 799. (combined) - Mapping: QUADRATIC = (rank_title <= 100.0)*(rank_abstract <= 30.0)
+4.083305365400686 # 800. (combined) - Mapping: QUADRATIC = (rank_title <= 100.0)*(rank_abstract <= 50.0)
+10.510886344785574 # 801. (combined) - Mapping: QUADRATIC = (rank_title <= 100.0)*(rank_abstract <= 100.0)
+13.886017612232742 # 802. (combined) - Mapping: QUADRATIC = (rank_title <= 100.0)*(rank_abstract <= 200.0)
+15.563496210901024 # 803. (combined) - Mapping: QUADRATIC = (rank_title <= 200.0)*(rank_abstract <= 2.0)
+13.886076667703593 # 804. (combined) - Mapping: QUADRATIC = (rank_title <= 200.0)*(rank_abstract <= 5.0)
+4.922881293107646 # 805. (combined) - Mapping: QUADRATIC = (rank_title <= 200.0)*(rank_abstract <= 10.0)
+-0.8285605382924688 # 806. (combined) - Mapping: QUADRATIC = (rank_title <= 200.0)*(rank_abstract <= 15.0)
+3.025839212894986 # 807. (combined) - Mapping: QUADRATIC = (rank_title <= 200.0)*(rank_abstract <= 25.0)
+3.1143246847510584 # 808. (combined) - Mapping: QUADRATIC = (rank_title <= 200.0)*(rank_abstract <= 30.0)
+6.452426876125101 # 809. (combined) - Mapping: QUADRATIC = (rank_title <= 200.0)*(rank_abstract <= 50.0)
+11.56301100163485 # 810. (combined) - Mapping: QUADRATIC = (rank_title <= 200.0)*(rank_abstract <= 100.0)
+14.738987189510638 # 811. (combined) - Mapping: QUADRATIC = (rank_title <= 200.0)*(rank_abstract <= 200.0)
+-1.1072107392856276 # 812. (combined) - Mapping: QUADRATIC = (rank_title <= 2.0)*(rank_authors <= 2.0)
+-0.9762809857141703 # 813. (combined) - Mapping: QUADRATIC = (rank_title <= 2.0)*(rank_authors <= 5.0)
+-0.9762809857141704 # 814. (combined) - Mapping: QUADRATIC = (rank_title <= 2.0)*(rank_authors <= 10.0)
+-0.9762809857141704 # 815. (combined) - Mapping: QUADRATIC = (rank_title <= 2.0)*(rank_authors <= 15.0)
+-1.345351232142713 # 816. (combined) - Mapping: QUADRATIC = (rank_title <= 2.0)*(rank_authors <= 25.0)
+-1.3453512321427128 # 817. (combined) - Mapping: QUADRATIC = (rank_title <= 2.0)*(rank_authors <= 30.0)
+-1.3453512321427128 # 818. (combined) - Mapping: QUADRATIC = (rank_title <= 2.0)*(rank_authors <= 50.0)
+-1.260605248152305 # 819. (combined) - Mapping: QUADRATIC = (rank_title <= 2.0)*(rank_authors <= 100.0)
+-1.1912818062256982 # 820. (combined) - Mapping: QUADRATIC = (rank_title <= 2.0)*(rank_authors <= 200.0)
+0.16881705093047816 # 821. (combined) - Mapping: QUADRATIC = (rank_title <= 5.0)*(rank_authors <= 2.0)
+-0.06932344192660689 # 822. (combined) - Mapping: QUADRATIC = (rank_title <= 5.0)*(rank_authors <= 5.0)
+-0.138646883853214 # 823. (combined) - Mapping: QUADRATIC = (rank_title <= 5.0)*(rank_authors <= 10.0)
+0.09949360900387094 # 824. (combined) - Mapping: QUADRATIC = (rank_title <= 5.0)*(rank_authors <= 15.0)
+-0.3440460083900422 # 825. (combined) - Mapping: QUADRATIC = (rank_title <= 5.0)*(rank_authors <= 25.0)
+-0.7131162548185845 # 826. (combined) - Mapping: QUADRATIC = (rank_title <= 5.0)*(rank_authors <= 30.0)
+-0.7011510854724912 # 827. (combined) - Mapping: QUADRATIC = (rank_title <= 5.0)*(rank_authors <= 50.0)
+-0.5419357305167127 # 828. (combined) - Mapping: QUADRATIC = (rank_title <= 5.0)*(rank_authors <= 100.0)
+-0.49548614236479427 # 829. (combined) - Mapping: QUADRATIC = (rank_title <= 5.0)*(rank_authors <= 200.0)
+0.6688170509304779 # 830. (combined) - Mapping: QUADRATIC = (rank_title <= 10.0)*(rank_authors <= 2.0)
+-0.18047132132524663 # 831. (combined) - Mapping: QUADRATIC = (rank_title <= 10.0)*(rank_authors <= 5.0)
+-0.3221996456950188 # 832. (combined) - Mapping: QUADRATIC = (rank_title <= 10.0)*(rank_authors <= 10.0)
+-0.3781793825001766 # 833. (combined) - Mapping: QUADRATIC = (rank_title <= 10.0)*(rank_authors <= 15.0)
+-0.7059335104287969 # 834. (combined) - Mapping: QUADRATIC = (rank_title <= 10.0)*(rank_authors <= 25.0)
+-1.0750037568573396 # 835. (combined) - Mapping: QUADRATIC = (rank_title <= 10.0)*(rank_authors <= 30.0)
+-1.197758600676444 # 836. (combined) - Mapping: QUADRATIC = (rank_title <= 10.0)*(rank_authors <= 50.0)
+-1.4699375328799595 # 837. (combined) - Mapping: QUADRATIC = (rank_title <= 10.0)*(rank_authors <= 100.0)
+-1.4275186449349202 # 838. (combined) - Mapping: QUADRATIC = (rank_title <= 10.0)*(rank_authors <= 200.0)
+0.05656774813944698 # 839. (combined) - Mapping: QUADRATIC = (rank_title <= 15.0)*(rank_authors <= 2.0)
+-1.3155944778909672 # 840. (combined) - Mapping: QUADRATIC = (rank_title <= 15.0)*(rank_authors <= 5.0)
+-1.480196656035428 # 841. (combined) - Mapping: QUADRATIC = (rank_title <= 15.0)*(rank_authors <= 10.0)
+-1.5361763928405852 # 842. (combined) - Mapping: QUADRATIC = (rank_title <= 15.0)*(rank_authors <= 15.0)
+-1.8639305207692058 # 843. (combined) - Mapping: QUADRATIC = (rank_title <= 15.0)*(rank_authors <= 25.0)
+-2.2151323106501444 # 844. (combined) - Mapping: QUADRATIC = (rank_title <= 15.0)*(rank_authors <= 30.0)
+-2.316718978721776 # 845. (combined) - Mapping: QUADRATIC = (rank_title <= 15.0)*(rank_authors <= 50.0)
+-3.087448123251449 # 846. (combined) - Mapping: QUADRATIC = (rank_title <= 15.0)*(rank_authors <= 100.0)
+-3.1903938699996144 # 847. (combined) - Mapping: QUADRATIC = (rank_title <= 15.0)*(rank_authors <= 200.0)
+0.3176367308412946 # 848. (combined) - Mapping: QUADRATIC = (rank_title <= 25.0)*(rank_authors <= 2.0)
+-0.9134738609509038 # 849. (combined) - Mapping: QUADRATIC = (rank_title <= 25.0)*(rank_authors <= 5.0)
+-0.6663950031942092 # 850. (combined) - Mapping: QUADRATIC = (rank_title <= 25.0)*(rank_authors <= 10.0)
+-0.7104095706532727 # 851. (combined) - Mapping: QUADRATIC = (rank_title <= 25.0)*(rank_authors <= 15.0)
+-0.8927990638886887 # 852. (combined) - Mapping: QUADRATIC = (rank_title <= 25.0)*(rank_authors <= 25.0)
+-1.2488389293197213 # 853. (combined) - Mapping: QUADRATIC = (rank_title <= 25.0)*(rank_authors <= 30.0)
+-1.3504255973913528 # 854. (combined) - Mapping: QUADRATIC = (rank_title <= 25.0)*(rank_authors <= 50.0)
+-1.5909317167831278 # 855. (combined) - Mapping: QUADRATIC = (rank_title <= 25.0)*(rank_authors <= 100.0)
+-1.6951427151304204 # 856. (combined) - Mapping: QUADRATIC = (rank_title <= 25.0)*(rank_authors <= 200.0)
+-0.051433515587247514 # 857. (combined) - Mapping: QUADRATIC = (rank_title <= 30.0)*(rank_authors <= 2.0)
+-1.2646756508318417 # 858. (combined) - Mapping: QUADRATIC = (rank_title <= 30.0)*(rank_authors <= 5.0)
+-1.017596793075147 # 859. (combined) - Mapping: QUADRATIC = (rank_title <= 30.0)*(rank_authors <= 10.0)
+-1.0609306516249304 # 860. (combined) - Mapping: QUADRATIC = (rank_title <= 30.0)*(rank_authors <= 15.0)
+-1.2433201448603466 # 861. (combined) - Mapping: QUADRATIC = (rank_title <= 30.0)*(rank_authors <= 25.0)
+-1.5993600102913788 # 862. (combined) - Mapping: QUADRATIC = (rank_title <= 30.0)*(rank_authors <= 30.0)
+-1.6986513581823681 # 863. (combined) - Mapping: QUADRATIC = (rank_title <= 30.0)*(rank_authors <= 50.0)
+-1.941711944193536 # 864. (combined) - Mapping: QUADRATIC = (rank_title <= 30.0)*(rank_authors <= 100.0)
+-2.045922942540828 # 865. (combined) - Mapping: QUADRATIC = (rank_title <= 30.0)*(rank_authors <= 200.0)
+0.33947524456482747 # 866. (combined) - Mapping: QUADRATIC = (rank_title <= 50.0)*(rank_authors <= 2.0)
+-0.943090332606373 # 867. (combined) - Mapping: QUADRATIC = (rank_title <= 50.0)*(rank_authors <= 5.0)
+-0.6720811361574912 # 868. (combined) - Mapping: QUADRATIC = (rank_title <= 50.0)*(rank_authors <= 10.0)
+-0.723341552635328 # 869. (combined) - Mapping: QUADRATIC = (rank_title <= 50.0)*(rank_authors <= 15.0)
+-0.9495547967095952 # 870. (combined) - Mapping: QUADRATIC = (rank_title <= 50.0)*(rank_authors <= 25.0)
+-1.3055946621406274 # 871. (combined) - Mapping: QUADRATIC = (rank_title <= 50.0)*(rank_authors <= 30.0)
+-1.4320799332369996 # 872. (combined) - Mapping: QUADRATIC = (rank_title <= 50.0)*(rank_authors <= 50.0)
+-1.6472731004044046 # 873. (combined) - Mapping: QUADRATIC = (rank_title <= 50.0)*(rank_authors <= 100.0)
+-1.7709275820870052 # 874. (combined) - Mapping: QUADRATIC = (rank_title <= 50.0)*(rank_authors <= 200.0)
+0.5667078293739121 # 875. (combined) - Mapping: QUADRATIC = (rank_title <= 100.0)*(rank_authors <= 2.0)
+-0.6679417043783524 # 876. (combined) - Mapping: QUADRATIC = (rank_title <= 100.0)*(rank_authors <= 5.0)
+-0.46074781950596616 # 877. (combined) - Mapping: QUADRATIC = (rank_title <= 100.0)*(rank_authors <= 10.0)
+-0.43985768599804004 # 878. (combined) - Mapping: QUADRATIC = (rank_title <= 100.0)*(rank_authors <= 15.0)
+-0.6668691297104277 # 879. (combined) - Mapping: QUADRATIC = (rank_title <= 100.0)*(rank_authors <= 25.0)
+-1.00993337176028 # 880. (combined) - Mapping: QUADRATIC = (rank_title <= 100.0)*(rank_authors <= 30.0)
+-1.1226714874479913 # 881. (combined) - Mapping: QUADRATIC = (rank_title <= 100.0)*(rank_authors <= 50.0)
+-1.3861638149271438 # 882. (combined) - Mapping: QUADRATIC = (rank_title <= 100.0)*(rank_authors <= 100.0)
+-1.4903606946616148 # 883. (combined) - Mapping: QUADRATIC = (rank_title <= 100.0)*(rank_authors <= 200.0)
+0.3986394041160628 # 884. (combined) - Mapping: QUADRATIC = (rank_title <= 200.0)*(rank_authors <= 2.0)
+-0.5196711376425329 # 885. (combined) - Mapping: QUADRATIC = (rank_title <= 200.0)*(rank_authors <= 5.0)
+-0.5373265248638677 # 886. (combined) - Mapping: QUADRATIC = (rank_title <= 200.0)*(rank_authors <= 10.0)
+-0.5050024340162196 # 887. (combined) - Mapping: QUADRATIC = (rank_title <= 200.0)*(rank_authors <= 15.0)
+-0.7312032464671363 # 888. (combined) - Mapping: QUADRATIC = (rank_title <= 200.0)*(rank_authors <= 25.0)
+-1.067584080881883 # 889. (combined) - Mapping: QUADRATIC = (rank_title <= 200.0)*(rank_authors <= 30.0)
+-1.1804674453178183 # 890. (combined) - Mapping: QUADRATIC = (rank_title <= 200.0)*(rank_authors <= 50.0)
+-1.4229842564559814 # 891. (combined) - Mapping: QUADRATIC = (rank_title <= 200.0)*(rank_authors <= 100.0)
+-1.5246047826626108 # 892. (combined) - Mapping: QUADRATIC = (rank_title <= 200.0)*(rank_authors <= 200.0)
+5.093680830892035 # 893. (combined) - Mapping: QUADRATIC = (rank_title <= 2.0)*(contains_author true)
+1.6055652770254856 # 894. (combined) - Mapping: QUADRATIC = (rank_title <= 5.0)*(contains_author true)
+-1.698399360287818 # 895. (combined) - Mapping: QUADRATIC = (rank_title <= 10.0)*(contains_author true)
+-5.892951694046918 # 896. (combined) - Mapping: QUADRATIC = (rank_title <= 15.0)*(contains_author true)
+-5.458266244773494 # 897. (combined) - Mapping: QUADRATIC = (rank_title <= 25.0)*(contains_author true)
+-7.381607054442005 # 898. (combined) - Mapping: QUADRATIC = (rank_title <= 30.0)*(contains_author true)
+-4.198896391279906 # 899. (combined) - Mapping: QUADRATIC = (rank_title <= 50.0)*(contains_author true)
+-2.0322640892052415 # 900. (combined) - Mapping: QUADRATIC = (rank_title <= 100.0)*(contains_author true)
+-1.6051809876777483 # 901. (combined) - Mapping: QUADRATIC = (rank_title <= 200.0)*(contains_author true)
+1.4762809857141703 # 902. (combined) - Mapping: QUADRATIC = (rank_abstract <= 2.0)*(rank_authors <= 2.0)
+1.4356245711334827 # 903. (combined) - Mapping: QUADRATIC = (rank_abstract <= 2.0)*(rank_authors <= 5.0)
+0.8221756234087685 # 904. (combined) - Mapping: QUADRATIC = (rank_abstract <= 2.0)*(rank_authors <= 10.0)
+0.8221756234087685 # 905. (combined) - Mapping: QUADRATIC = (rank_abstract <= 2.0)*(rank_authors <= 15.0)
+0.7822410511992652 # 906. (combined) - Mapping: QUADRATIC = (rank_abstract <= 2.0)*(rank_authors <= 25.0)
+1.1027972209536834 # 907. (combined) - Mapping: QUADRATIC = (rank_abstract <= 2.0)*(rank_authors <= 30.0)
+1.1847053143112316 # 908. (combined) - Mapping: QUADRATIC = (rank_abstract <= 2.0)*(rank_authors <= 50.0)
+1.6639623160332608 # 909. (combined) - Mapping: QUADRATIC = (rank_abstract <= 2.0)*(rank_authors <= 100.0)
+1.6639623160332608 # 910. (combined) - Mapping: QUADRATIC = (rank_abstract <= 2.0)*(rank_authors <= 200.0)
+2.2372953323459437 # 911. (combined) - Mapping: QUADRATIC = (rank_abstract <= 5.0)*(rank_authors <= 2.0)
+1.8663011292068752 # 912. (combined) - Mapping: QUADRATIC = (rank_abstract <= 5.0)*(rank_authors <= 5.0)
+1.2384173003604138 # 913. (combined) - Mapping: QUADRATIC = (rank_abstract <= 5.0)*(rank_authors <= 10.0)
+1.2945626115746884 # 914. (combined) - Mapping: QUADRATIC = (rank_abstract <= 5.0)*(rank_authors <= 15.0)
+0.890395868486737 # 915. (combined) - Mapping: QUADRATIC = (rank_abstract <= 5.0)*(rank_authors <= 25.0)
+1.2311158149694033 # 916. (combined) - Mapping: QUADRATIC = (rank_abstract <= 5.0)*(rank_authors <= 30.0)
+1.313023908326951 # 917. (combined) - Mapping: QUADRATIC = (rank_abstract <= 5.0)*(rank_authors <= 50.0)
+1.661351156477523 # 918. (combined) - Mapping: QUADRATIC = (rank_abstract <= 5.0)*(rank_authors <= 100.0)
+1.6688082811637799 # 919. (combined) - Mapping: QUADRATIC = (rank_abstract <= 5.0)*(rank_authors <= 200.0)
+2.9557535255751795 # 920. (combined) - Mapping: QUADRATIC = (rank_abstract <= 10.0)*(rank_authors <= 2.0)
+2.8263333907190527 # 921. (combined) - Mapping: QUADRATIC = (rank_abstract <= 10.0)*(rank_authors <= 5.0)
+2.1984495618725894 # 922. (combined) - Mapping: QUADRATIC = (rank_abstract <= 10.0)*(rank_authors <= 10.0)
+2.4200090454641474 # 923. (combined) - Mapping: QUADRATIC = (rank_abstract <= 10.0)*(rank_authors <= 15.0)
+1.9431499835852875 # 924. (combined) - Mapping: QUADRATIC = (rank_abstract <= 10.0)*(rank_authors <= 25.0)
+2.2838699300679535 # 925. (combined) - Mapping: QUADRATIC = (rank_abstract <= 10.0)*(rank_authors <= 30.0)
+2.4096017742643525 # 926. (combined) - Mapping: QUADRATIC = (rank_abstract <= 10.0)*(rank_authors <= 50.0)
+2.035225011911632 # 927. (combined) - Mapping: QUADRATIC = (rank_abstract <= 10.0)*(rank_authors <= 100.0)
+2.0426821365978887 # 928. (combined) - Mapping: QUADRATIC = (rank_abstract <= 10.0)*(rank_authors <= 200.0)
+3.2176130327180945 # 929. (combined) - Mapping: QUADRATIC = (rank_abstract <= 15.0)*(rank_authors <= 2.0)
+3.1651475743287256 # 930. (combined) - Mapping: QUADRATIC = (rank_abstract <= 15.0)*(rank_authors <= 5.0)
+2.4598534658120133 # 931. (combined) - Mapping: QUADRATIC = (rank_abstract <= 15.0)*(rank_authors <= 10.0)
+2.6992814059511745 # 932. (combined) - Mapping: QUADRATIC = (rank_abstract <= 15.0)*(rank_authors <= 15.0)
+2.2240000415001258 # 933. (combined) - Mapping: QUADRATIC = (rank_abstract <= 15.0)*(rank_authors <= 25.0)
+2.195649741554249 # 934. (combined) - Mapping: QUADRATIC = (rank_abstract <= 15.0)*(rank_authors <= 30.0)
+2.163066590174956 # 935. (combined) - Mapping: QUADRATIC = (rank_abstract <= 15.0)*(rank_authors <= 50.0)
+1.3556624374612416 # 936. (combined) - Mapping: QUADRATIC = (rank_abstract <= 15.0)*(rank_authors <= 100.0)
+1.3631195621474985 # 937. (combined) - Mapping: QUADRATIC = (rank_abstract <= 15.0)*(rank_authors <= 200.0)
+2.3344120279944875 # 938. (combined) - Mapping: QUADRATIC = (rank_abstract <= 25.0)*(rank_authors <= 2.0)
+1.9357501769512657 # 939. (combined) - Mapping: QUADRATIC = (rank_abstract <= 25.0)*(rank_authors <= 5.0)
+0.8546943117786349 # 940. (combined) - Mapping: QUADRATIC = (rank_abstract <= 25.0)*(rank_authors <= 10.0)
+1.4538300204680241 # 941. (combined) - Mapping: QUADRATIC = (rank_abstract <= 25.0)*(rank_authors <= 15.0)
+0.8622108714162632 # 942. (combined) - Mapping: QUADRATIC = (rank_abstract <= 25.0)*(rank_authors <= 25.0)
+0.47743986007903777 # 943. (combined) - Mapping: QUADRATIC = (rank_abstract <= 25.0)*(rank_authors <= 30.0)
+0.45244532808987 # 944. (combined) - Mapping: QUADRATIC = (rank_abstract <= 25.0)*(rank_authors <= 50.0)
+-0.22241525513264643 # 945. (combined) - Mapping: QUADRATIC = (rank_abstract <= 25.0)*(rank_authors <= 100.0)
+-0.22253639069516495 # 946. (combined) - Mapping: QUADRATIC = (rank_abstract <= 25.0)*(rank_authors <= 200.0)
+2.7034822744230307 # 947. (combined) - Mapping: QUADRATIC = (rank_abstract <= 30.0)*(rank_authors <= 2.0)
+2.3112343395837596 # 948. (combined) - Mapping: QUADRATIC = (rank_abstract <= 30.0)*(rank_authors <= 5.0)
+1.2283293878290293 # 949. (combined) - Mapping: QUADRATIC = (rank_abstract <= 30.0)*(rank_authors <= 10.0)
+1.8130302153966706 # 950. (combined) - Mapping: QUADRATIC = (rank_abstract <= 30.0)*(rank_authors <= 15.0)
+1.2189749306486992 # 951. (combined) - Mapping: QUADRATIC = (rank_abstract <= 30.0)*(rank_authors <= 25.0)
+0.834203919311474 # 952. (combined) - Mapping: QUADRATIC = (rank_abstract <= 30.0)*(rank_authors <= 30.0)
+0.809209387322306 # 953. (combined) - Mapping: QUADRATIC = (rank_abstract <= 30.0)*(rank_authors <= 50.0)
+0.22222013451345496 # 954. (combined) - Mapping: QUADRATIC = (rank_abstract <= 30.0)*(rank_authors <= 100.0)
+0.22643452938308595 # 955. (combined) - Mapping: QUADRATIC = (rank_abstract <= 30.0)*(rank_authors <= 200.0)
+2.3344120279944875 # 956. (combined) - Mapping: QUADRATIC = (rank_abstract <= 50.0)*(rank_authors <= 2.0)
+2.564947650812933 # 957. (combined) - Mapping: QUADRATIC = (rank_abstract <= 50.0)*(rank_authors <= 5.0)
+1.356224885952352 # 958. (combined) - Mapping: QUADRATIC = (rank_abstract <= 50.0)*(rank_authors <= 10.0)
+1.849414630320945 # 959. (combined) - Mapping: QUADRATIC = (rank_abstract <= 50.0)*(rank_authors <= 15.0)
+1.2588855422661247 # 960. (combined) - Mapping: QUADRATIC = (rank_abstract <= 50.0)*(rank_authors <= 25.0)
+0.8757610074124557 # 961. (combined) - Mapping: QUADRATIC = (rank_abstract <= 50.0)*(rank_authors <= 30.0)
+0.8562168140297656 # 962. (combined) - Mapping: QUADRATIC = (rank_abstract <= 50.0)*(rank_authors <= 50.0)
+0.40511984433613374 # 963. (combined) - Mapping: QUADRATIC = (rank_abstract <= 50.0)*(rank_authors <= 100.0)
+0.39560692370811107 # 964. (combined) - Mapping: QUADRATIC = (rank_abstract <= 50.0)*(rank_authors <= 200.0)
+1.8793240921304517 # 965. (combined) - Mapping: QUADRATIC = (rank_abstract <= 100.0)*(rank_authors <= 2.0)
+1.4692265565207259 # 966. (combined) - Mapping: QUADRATIC = (rank_abstract <= 100.0)*(rank_authors <= 5.0)
+0.22801702527494389 # 967. (combined) - Mapping: QUADRATIC = (rank_abstract <= 100.0)*(rank_authors <= 10.0)
+0.5848196593007862 # 968. (combined) - Mapping: QUADRATIC = (rank_abstract <= 100.0)*(rank_authors <= 15.0)
+0.14452454956285848 # 969. (combined) - Mapping: QUADRATIC = (rank_abstract <= 100.0)*(rank_authors <= 25.0)
+-0.23989852009857282 # 970. (combined) - Mapping: QUADRATIC = (rank_abstract <= 100.0)*(rank_authors <= 30.0)
+-0.31402476844796734 # 971. (combined) - Mapping: QUADRATIC = (rank_abstract <= 100.0)*(rank_authors <= 50.0)
+-0.33951969991484865 # 972. (combined) - Mapping: QUADRATIC = (rank_abstract <= 100.0)*(rank_authors <= 100.0)
+-0.3966068280303 # 973. (combined) - Mapping: QUADRATIC = (rank_abstract <= 100.0)*(rank_authors <= 200.0)
+1.9989097192177177 # 974. (combined) - Mapping: QUADRATIC = (rank_abstract <= 200.0)*(rank_authors <= 2.0)
+1.5243922648841415 # 975. (combined) - Mapping: QUADRATIC = (rank_abstract <= 200.0)*(rank_authors <= 5.0)
+0.4323052441526691 # 976. (combined) - Mapping: QUADRATIC = (rank_abstract <= 200.0)*(rank_authors <= 10.0)
+0.7918967709274572 # 977. (combined) - Mapping: QUADRATIC = (rank_abstract <= 200.0)*(rank_authors <= 15.0)
+0.33597720711796497 # 978. (combined) - Mapping: QUADRATIC = (rank_abstract <= 200.0)*(rank_authors <= 25.0)
+-0.04919586465950074 # 979. (combined) - Mapping: QUADRATIC = (rank_abstract <= 200.0)*(rank_authors <= 30.0)
+-0.07563238274743242 # 980. (combined) - Mapping: QUADRATIC = (rank_abstract <= 200.0)*(rank_authors <= 50.0)
+-0.44932527716702053 # 981. (combined) - Mapping: QUADRATIC = (rank_abstract <= 200.0)*(rank_authors <= 100.0)
+-0.5240253279709698 # 982. (combined) - Mapping: QUADRATIC = (rank_abstract <= 200.0)*(rank_authors <= 200.0)
+-0.1479207331236025 # 983. (combined) - Mapping: QUADRATIC = (rank_abstract <= 2.0)*(contains_author true)
+-1.838773054953653 # 984. (combined) - Mapping: QUADRATIC = (rank_abstract <= 5.0)*(contains_author true)
+-5.428266678543871 # 985. (combined) - Mapping: QUADRATIC = (rank_abstract <= 10.0)*(contains_author true)
+-4.415374459177227 # 986. (combined) - Mapping: QUADRATIC = (rank_abstract <= 15.0)*(contains_author true)
+-7.891796699175596 # 987. (combined) - Mapping: QUADRATIC = (rank_abstract <= 25.0)*(contains_author true)
+-6.982884673592381 # 988. (combined) - Mapping: QUADRATIC = (rank_abstract <= 30.0)*(contains_author true)
+-5.912992767462111 # 989. (combined) - Mapping: QUADRATIC = (rank_abstract <= 50.0)*(contains_author true)
+-3.3907749757304737 # 990. (combined) - Mapping: QUADRATIC = (rank_abstract <= 100.0)*(contains_author true)
+-3.4193994802358496 # 991. (combined) - Mapping: QUADRATIC = (rank_abstract <= 200.0)*(contains_author true)
+1.5783768775520093 # 992. (combined) - Mapping: QUADRATIC = (rank_authors <= 2.0)*(contains_author true)
+10.62341296712392 # 993. (combined) - Mapping: QUADRATIC = (rank_authors <= 5.0)*(contains_author true)
+5.448552203072978 # 994. (combined) - Mapping: QUADRATIC = (rank_authors <= 10.0)*(contains_author true)
+4.814372241949384 # 995. (combined) - Mapping: QUADRATIC = (rank_authors <= 15.0)*(contains_author true)
+3.247028742296158 # 996. (combined) - Mapping: QUADRATIC = (rank_authors <= 25.0)*(contains_author true)
+2.2539683505212933 # 997. (combined) - Mapping: QUADRATIC = (rank_authors <= 30.0)*(contains_author true)
+2.3885749015837945 # 998. (combined) - Mapping: QUADRATIC = (rank_authors <= 50.0)*(contains_author true)
+2.0488431517530294 # 999. (combined) - Mapping: QUADRATIC = (rank_authors <= 100.0)*(contains_author true)
+1.88219131198907 # 1000. (combined) - Mapping: QUADRATIC = (rank_authors <= 200.0)*(contains_author true)

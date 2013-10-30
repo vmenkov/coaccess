@@ -1,0 +1,139 @@
+##
+## Top Level Options
+## 
+
+# Set to true to turn on extra logging, false otherwise.
+DEBUG = false
+
+# How often to reload the options file (in minutes)
+OPTIONS_LIFETIME = 240
+
+##
+## Indexer Options
+##
+
+# The directory where the Lucene index is stored.
+INDEX_DIRECTORY = /home/arxivsearch/arXiv-index_new_v36/
+
+# The name of the unique identifier field (used to look up documents directly, 
+# to name features, and more). We use the form Blah.xyz/1234567 
+UNIQ_ID_FIELD = paper
+
+##
+## Logger Options
+##
+
+# Prefix to log filenames 
+LOG_PREFIX = osmotLog
+
+# Log database information
+LOG_DB = jdbc:mysql://127.0.0.1:3306/arxiv_new?autoReconnect=true
+LOG_USER = arxiv
+LOG_PWD = arXivLOG
+
+# Set to "true" to make log records be output to standard error instead of 
+# a log file (this is useful to debugging). Set it to "false" for regular
+# logging.
+LOG_STDERROR = false
+
+##
+## Searcher Options
+## 
+
+# Number of results taken on each field for reranking.
+# Results past the number we get will be not presented to the user.
+SEARCHER_NUM_FIELD_RESULTS = 200
+
+# How often to reload the index in minutes. This is sort of
+# slow, and takes the search engine down while the index is being
+# reloaded. So only do it as often as the index is actually
+# updated. 
+SEARCHER_LIFETIME = 360
+
+# How often should the result.txt file containing the interleaving
+# results get updated
+SEARCHER_STORE_RESULTS = 20
+
+# URL of the search engine
+SEARCHER_URL = http://search.arxiv.org:8081/
+
+# Base URL for document links. This is the web page that records clicks 
+# then forwards to the real URL. 
+#SEARCHER_BASE_URL = details.jsp?r=
+SEARCHER_BASE_URL = paper.jsp?r=
+
+# Base visible URL for the document (ie what we show the user).
+# If you don't want to prepend anything to the UniqId to make
+# the visible URL (e.g. for NutchSearcher), set this to "null"
+# or blank. You can't just skip the option.
+SEARCHER_BASE_VISIBLE_URL = http://arxiv.org/abs/
+#SEARCHER_BASE_VISIBLE_URL = 
+
+# To decide which mode to display to users, we do it probabilistically. The
+# counts below show how often each mode should be used. The probability
+# any one mode is selected is the weight of that mode divided by the total
+# weight.
+# 9a: Online perceptron
+SEARCHER_MODE_9a = 1
+# Evaluate ranking
+SEARCHER_MODE_mix = 1
+# dt: Sort by date
+SEARCHER_MODE_dt = 0
+
+
+##
+## Snippeter Options
+##
+## Note: Ignored by the NutchSearcher (it uses the snippets from Nutch)
+##
+
+# The fields to be used in snippets in order of preference.
+SNIPPETER_FIELDS = abstract,comments,subj-class,acm-class,journal-ref
+
+# The length of the snippet (minimum, although this also bounds
+# the maximum in a more complex way)
+SNIPPETER_SNIPPET_LENGTH = 300
+SNIPPETER_LONG_SNIPPET_LENGTH = 450
+
+# The amount of context, in bytes, around query words to try to give.
+SNIPPETER_CONTEXT_LENGTH = 60
+SNIPPETER_LONG_CONTEXT_LENGTH = 90
+
+# The amount of the document to look at (in bytes, from the
+# cache) in generating snippets.
+SNIPPETER_MAX_DOC_LENGTH = 2000000
+
+# Plain text has < replaced with &lt; before collecting snippets
+SNIPPETER_PLAIN_TEXT = true
+
+
+##
+## Cache Options
+##
+
+# The directory where the cache is stored.
+CACHE_DIRECTORY = /home/arxivsearch/arXiv-cache
+
+# The default maximum length of documents returned from the cache. 
+CACHE_DEFAULT_LENGTH = 1000000
+
+##
+## Indexer Options
+##
+
+# The maximum length of documents that we index. Longer documents return an 
+# error when we try to index them.
+INDEXER_MAX_LENGTH = 10000000
+
+##
+## Online perceptron options
+##
+
+# The indices of weights that we want to clip at 1.0 after an update. These
+# are normally the binarized features. The format allows the specification of a 
+# number of subranges, for example 0-17,38,42,50-52,70-end
+WEIGHTS_CLIP_AT_0 = 16-end
+
+# The indices of weights that we want to clip at 0.0 after an update. This
+# should prevent the ranking from reversing.
+WEIGHTS_CLIP_AT_1 = 0-15
