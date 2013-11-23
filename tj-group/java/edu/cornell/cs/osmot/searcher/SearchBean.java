@@ -203,7 +203,7 @@ public class SearchBean {
 			finalResults = onlinePerceptron.search(query);	//Perturb the results
         } else if (mode.equals("mix")) { // Interleave baseline with learned ranking
         	RerankedHits baselineHits = baseline.search(query, false, false);	//Do not perturb baseline
-        	RerankedHits perceptronHits = onlinePerceptron.search(query, false, false);	//Do not perturn while evaluating
+        	RerankedHits perceptronHits = onlinePerceptron.search(query, false, false);	//Do not perturb while evaluating
         	finalResults = baseline.combine(baselineHits, perceptronHits, null, getQuerySeed(session.getId(), query));
 		} else if (mode.equals("dt")) { // Sort by date
 			finalResults = baseline.searchDate(query);
