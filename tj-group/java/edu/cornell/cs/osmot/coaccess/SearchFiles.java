@@ -1,4 +1,4 @@
-package org.apache.lucene.demo;
+package edu.cornell.cs.osmot.coaccess;
 import java.util.*;
 
 /*
@@ -151,7 +151,6 @@ public class SearchFiles {
         ScoreDoc[] hits = results.scoreDocs;
         
         int numTotalHits = results.totalHits;
-        System.out.println(numTotalHits + " total matching documents");
         
         int start = 0;
         int end = Math.min(numTotalHits, hitsPerPage);

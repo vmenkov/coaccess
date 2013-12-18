@@ -1,4 +1,4 @@
-package org.apache.lucene.demo;
+package edu.cornell.cs.osmot.coaccess;
 
 /*
  * Licensed to the Apache Software Foundation (ASF) under one or more
@@ -192,7 +192,9 @@ public class IndexFiles {
                     doc.add(yearField);
                     
                     // Add unique id; this is arxiv id in this case
-                    Field uniqueField = new StringField("arxiv_id", file.getName(), Field.Store.YES);
+                    String filename = file.getName().replaceAll("[@-]", "");
+                    System.out.println(filename);
+                    Field uniqueField = new StringField("arxiv_id", filename, Field.Store.YES);
                     doc.add(uniqueField);
                     
                     // Add author
