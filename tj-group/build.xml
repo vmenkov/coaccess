@@ -4,6 +4,12 @@
 
   <property file="${basedir}/build.properties" />
 
+  <property name="src.dir" value="java"/>
+  <property name="lib.dir" value="lib"/>
+  <property name="build.dir" value="../build"/>
+  <property name="build.classes" value="${build.dir}/classes"/>
+  <property name="javadoc.dir" value="../javadoc"/>
+
   <!-- Classpath -->
   <path id="classpath">
     <fileset dir="${lib.dir}">
@@ -24,15 +30,17 @@
 
   <!-- Compile the Java files -->
   <target name="compile" depends="init">
+    <!-- encoding="${build.encoding}" 
+	 debug="${debug}"
+     optimize="${optimize}"
+     deprecation="${deprecation}"
+-->
     <javac 
-     encoding="${build.encoding}"
      srcdir="${src.dir}"
      includes="edu/cornell/cs/osmot/*/*/*.java,edu/cornell/cs/osmot/*/*.java"
      destdir="${build.classes}"
-     debug="${debug}"
      debuglevel="lines,vars,source"
-     optimize="${optimize}"
-     deprecation="${deprecation}">
+>
       <classpath refid="classpath"/>
     </javac>
   </target>
