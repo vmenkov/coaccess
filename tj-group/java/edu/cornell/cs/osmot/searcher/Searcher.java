@@ -1,8 +1,7 @@
 package edu.cornell.cs.osmot.searcher;
 
 import org.apache.lucene.document.Document;
-import org.apache.lucene.queryParser.ParseException;
-
+import org.apache.lucene.queryparser.classic.ParseException;
 import java.util.Hashtable;
 import java.util.Random;
 import java.util.regex.Pattern;

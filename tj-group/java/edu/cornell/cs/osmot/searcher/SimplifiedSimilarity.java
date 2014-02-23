@@ -1,6 +1,6 @@
 package edu.cornell.cs.osmot.searcher;
 
-import org.apache.lucene.search.DefaultSimilarity;
+import org.apache.lucene.search.similarities.DefaultSimilarity;
 
 /**
  * SimplifiedSimilarity overrides the Lucene's default similarity by setting

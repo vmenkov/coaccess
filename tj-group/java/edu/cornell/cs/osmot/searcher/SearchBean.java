@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
-import org.apache.lucene.queryParser.ParseException;
-import org.apache.lucene.queryParser.QueryParser;
+import org.apache.lucene.queryparser.classic.ParseException;
+import org.apache.lucene.queryparser.classic.QueryParser;
 import org.apache.lucene.util.Version;
 
 import java.security.MessageDigest;
@@ -82,7 +82,7 @@ public class SearchBean {
 		if (query == null) return "";
 		// If we can parse it, return it.
 		try {
-			QueryParser parser = new QueryParser(Version.LUCENE_36, "article", new StandardAnalyzer(Version.LUCENE_36));
+			QueryParser parser = new QueryParser(Version.LUCENE_45, "article", new StandardAnalyzer(Version.LUCENE_45));
 			parser.parse(query);
 			return query;
 		} catch (Exception e) {

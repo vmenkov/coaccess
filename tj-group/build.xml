@@ -4,12 +4,6 @@
 
   <property file="${basedir}/build.properties" />
 
-  <property name="src.dir" value="java"/>
-  <property name="lib.dir" value="lib"/>
-  <property name="build.dir" value="../build"/>
-  <property name="build.classes" value="${build.dir}/classes"/>
-  <property name="javadoc.dir" value="../javadoc"/>
-
   <!-- Classpath -->
   <path id="classpath">
     <fileset dir="${lib.dir}">
@@ -30,17 +24,15 @@
 
   <!-- Compile the Java files -->
   <target name="compile" depends="init">
-    <!-- encoding="${build.encoding}" 
-	 debug="${debug}"
-     optimize="${optimize}"
-     deprecation="${deprecation}"
--->
     <javac 
+     encoding="${build.encoding}"
      srcdir="${src.dir}"
      includes="edu/cornell/cs/osmot/*/*/*.java,edu/cornell/cs/osmot/*/*.java"
      destdir="${build.classes}"
+     debug="${debug}"
      debuglevel="lines,vars,source"
->
+     optimize="${optimize}"
+     deprecation="${deprecation}">
       <classpath refid="classpath"/>
     </javac>
   </target>
@@ -66,7 +58,7 @@
   </target>
 
   <!-- Make the searcher war file -->
-<!--
+
   <target name="war" depends="jar">
      <copy todir="${web.src.dir}/config" file="${basedir}/osmot.conf"/>	 
      <copy todir="${web.src.dir}/config" file="${basedir}/author_popularity.txt"/>
@@ -96,10 +88,10 @@
       <lib dir="${build.dir}" includes="${final.name}.jar"/>
     </war>
   </target>     
--->
+
 	
   <!-- Install in tomcat -->
-<!--
+
   <target name="install" depends="war">
     <exec dir="${basedir}" executable="${tomcat.stop.script}">
     	<arg line="${tomcat.stop.args}"/>
@@ -112,7 +104,7 @@
     	<arg line="${tomcat.start.args}"/>
     </exec>	
   </target>
--->
+	
   
   <!-- Create a tarball for distribution -->
 <!--
