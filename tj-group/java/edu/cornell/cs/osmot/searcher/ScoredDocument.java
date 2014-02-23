@@ -13,7 +13,6 @@ import java.util.TreeSet;
 
 import edu.cornell.cs.osmot.options.Options;
 import edu.cornell.cs.osmot.features.FeatureMapping;
-import edu.cornell.cs.osmot.logger.Logger;
 
 /**
  * This class implements a document with a score attached. We also store two

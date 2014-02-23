@@ -3,27 +3,34 @@ package edu.cornell.cs.osmot.searcher;
 import no.uib.cipr.matrix.sparse.SparseVector;
 
 import org.apache.lucene.document.Document;
-import org.apache.lucene.document.FieldSelector;
-import org.apache.lucene.document.SetBasedFieldSelector;
+
+import org.apache.lucene.search.SortField.Type;
+import org.apache.lucene.index.MultiFields;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.analysis.tokenattributes.CharTermAttribute;
 import org.apache.lucene.analysis.Analyzer;
-import org.apache.lucene.analysis.KeywordAnalyzer;
+import org.apache.lucene.analysis.core.KeywordAnalyzer;
 import org.apache.lucene.analysis.TokenStream;
-import org.apache.lucene.analysis.WhitespaceAnalyzer;
-import org.apache.lucene.analysis.PerFieldAnalyzerWrapper;
+import org.apache.lucene.analysis.core.WhitespaceAnalyzer;
+import org.apache.lucene.analysis.miscellaneous.PerFieldAnalyzerWrapper;
+import org.apache.lucene.index.AtomicReader;
+import org.apache.lucene.index.BinaryDocValues;
+import org.apache.lucene.index.DirectoryReader;
 import org.apache.lucene.index.FieldInfo;
 import org.apache.lucene.index.FieldInfos;
 import org.apache.lucene.index.IndexReader;
+import org.apache.lucene.index.StoredFieldVisitor;
 import org.apache.lucene.index.Term;
+import org.apache.lucene.index.ReaderUtil;
 import org.apache.lucene.misc.SweetSpotSimilarity;
-import org.apache.lucene.queryParser.QueryParser;
-import org.apache.lucene.queryParser.ParseException;
+import org.apache.lucene.queryparser.classic.QueryParser;
+import org.apache.lucene.queryparser.classic.ParseException;
 import org.apache.lucene.search.*;
+import org.apache.lucene.search.FieldCache;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
-import org.apache.lucene.util.ReaderUtil;
 import org.apache.lucene.util.Version;
+import org.apache.lucene.util.BytesRef;
 
 import java.sql.SQLException;
 import java.util.*;
@@ -102,7 +109,7 @@ public class WeightedLuceneSearcher extends Searcher {
 	private String[] subscoreFields;
 
 	/** The fields to load when getting a document from the index. */
-	private FieldSelector fieldsToLoad;
+	private Set<String> fieldsToLoad;
 
 	/** The indices of the weights that we want to clip at 0 or 1 */
 	private ArrayList<Integer> weightsClipAt0;
@@ -208,10 +215,10 @@ public class WeightedLuceneSearcher extends Searcher {
 			openTime = openTime / (1000 * 60);
 			if (force || openTime > Options.getInt("SEARCHER_LIFETIME")) {
 				Logger.log("Reloading Searcher. Open time was " + openTime);
-				for (IndexSearcher searcher : iSearcher.values()) {
+				/*for (IndexSearcher searcher : iSearcher.values()) {
 					searcher.close();
-				}
-			    IndexReader newReader = IndexReader.openIfChanged(iReader);
+				}*/
+			    IndexReader newReader = DirectoryReader.openIfChanged((DirectoryReader) iReader);
 				if (newReader != null) {
 					iReader.close();
 					iReader = newReader;
@@ -230,6 +237,7 @@ public class WeightedLuceneSearcher extends Searcher {
 	 * @param idxDir the index directory
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
+	@SuppressWarnings("deprecation")
 	protected void init(String idxDir) throws IOException {
 
 		this.indexDir = idxDir;
@@ -253,7 +261,8 @@ public class WeightedLuceneSearcher extends Searcher {
 		lazyFields.add("abstract");
 		String[] noAbstract = {"abstract"};
 		eagerFields.addAll(Arrays.asList(loadFields(noAbstract)));
-		fieldsToLoad = new SetBasedFieldSelector(eagerFields, lazyFields);
+		fieldsToLoad = eagerFields;
+		//fieldsToLoad = new SetBasedFieldSelector(eagerFields, lazyFields);
 		
 		if (debug)
 			log("WeightedLuceneSearcher initialized.");
@@ -315,11 +324,11 @@ public class WeightedLuceneSearcher extends Searcher {
 	private static Analyzer getAnalyzer() {
 		Map<String, Analyzer> analyzerPerField = new HashMap<String, Analyzer>();
 		// Split categories at whitespace
-		analyzerPerField.put("category", new WhitespaceAnalyzer(Version.LUCENE_36));
+		analyzerPerField.put("category", new WhitespaceAnalyzer(Version.LUCENE_45));
 		// Don't tokenize the unique id field at all
 		analyzerPerField.put(Options.get("UNIQ_ID_FIELD"), new KeywordAnalyzer());
 		// All other fields will use the default analyzer
-		PerFieldAnalyzerWrapper wrapper = new PerFieldAnalyzerWrapper(new StandardAnalyzer(Version.LUCENE_36),
+		PerFieldAnalyzerWrapper wrapper = new PerFieldAnalyzerWrapper(new StandardAnalyzer(Version.LUCENE_45),
 				analyzerPerField);
 		return wrapper;
 	}
@@ -357,7 +366,7 @@ public class WeightedLuceneSearcher extends Searcher {
 		}
 		return weights;
 	}
-	public static Query phrasedQuery(String fieldName, String query, Analyzer analyzer) {
+	public static Query phrasedQuery(String fieldName, String query, Analyzer analyzer) throws IOException {
 		ArrayList<String> result = new ArrayList<String>();
 		query = query.replaceAll("\\w+:\\w+", "");
 		TokenStream stream = analyzer.tokenStream(fieldName, new StringReader(query));
@@ -416,19 +425,27 @@ public class WeightedLuceneSearcher extends Searcher {
 		 */
 		HashSet<String> candidateSet = new HashSet<String>();
 
-		String[] docIdCache = FieldCache.DEFAULT.getStrings(iReader, uniqIdFieldName);
+		//String[] docIdCache = FieldCache.DEFAULT.getStrings(iReader, uniqIdFieldName);
+		
+		AtomicReader reader = (AtomicReader) iReader;
+		
+		BinaryDocValues docIdCache = FieldCache.DEFAULT.getTerms(reader, uniqIdFieldName, false);
+		
+		
 		timer.addPoint("FieldCache created.");
 		
 		// Get the top 200 matches on the catchAll field
 		// A document has to match every word in the query
-		QueryParser catchAll = new QueryParser(Version.LUCENE_36, "catch-all", getAnalyzer());
+		QueryParser catchAll = new QueryParser(Version.LUCENE_45, "catch-all", getAnalyzer());
 		catchAll.setDefaultOperator(QueryParser.AND_OPERATOR);
 		Query catchAllQuery = catchAll.parse(query);
 		CachingWrapperFilter catchAllFilter = new CachingWrapperFilter(new QueryWrapperFilter(catchAllQuery));
 		TopDocs catchAllHits = iSearcher.get("default").search(catchAllQuery, noOfResults);
 		timer.addPoint("Issued catch-all query.");
 		for (ScoreDoc result : catchAllHits.scoreDocs) {
-			String uniqId = docIdCache[result.doc];
+			final BytesRef term = new BytesRef();
+			docIdCache.get( result.doc, term );
+			String uniqId = term.utf8ToString();
 			candidateSet.add(uniqId);
 		}
 		timer.addPoint("Added catch-all query results to candidate set.");
@@ -438,7 +455,7 @@ public class WeightedLuceneSearcher extends Searcher {
 		// For every field, find the top 50 documents that match part of the
 		// query and also include all words somewhere.
 		for (int j = 0; j < candidateFields.length; j++) {
-			Query fieldQuery = new QueryParser(Version.LUCENE_36, candidateFields[j], analyzer).parse(query);
+			Query fieldQuery = new QueryParser(Version.LUCENE_45, candidateFields[j], analyzer).parse(query);
 			TopDocs hitsTmp = iSearcher.get("default").search(fieldQuery, catchAllFilter, 50);
 			//TopDocs hitsTmp = iSearcher.get("default").search(fieldQuery, 50);
 			if (candidateFields[j].equalsIgnoreCase("authors") && hitsTmp.scoreDocs.length > 5) {
@@ -446,7 +463,9 @@ public class WeightedLuceneSearcher extends Searcher {
 			}
 			for (int r = 0; r < 50 && r < hitsTmp.scoreDocs.length; r++) {
 				ScoreDoc result = hitsTmp.scoreDocs[r];
-				String uniqId = docIdCache[result.doc];
+				final BytesRef term = new BytesRef();
+				docIdCache.get( result.doc, term );
+				String uniqId = term.utf8ToString();
 				candidateSet.add(uniqId);
 			}
 		}
@@ -482,7 +501,7 @@ public class WeightedLuceneSearcher extends Searcher {
 					if (similarity.getKey().equalsIgnoreCase("phraseSim")) {
 						fieldQuery = phrasedQuery(subscoreFields[j], query, analyzer);
 					} else {
-						fieldQuery = new QueryParser(Version.LUCENE_36, subscoreFields[j], analyzer).parse(query);
+						fieldQuery = new QueryParser(Version.LUCENE_45, subscoreFields[j], analyzer).parse(query);
 					}
 					TopDocs h = searcherSim.search(fieldQuery, candidateFilter, candidateSet.size());
 					for (int r = 0; r < h.scoreDocs.length; r++) {
@@ -639,11 +658,11 @@ public class WeightedLuceneSearcher extends Searcher {
 	 */
 	public RerankedHits searchDate(String query) throws ParseException, IOException {
 		// We want each result to match all words in the query
-		QueryParser catchAll = new QueryParser(Version.LUCENE_36, "catch-all", getAnalyzer());
+		QueryParser catchAll = new QueryParser(Version.LUCENE_45, "catch-all", getAnalyzer());
 		catchAll.setDefaultOperator(QueryParser.AND_OPERATOR);
 		Query catchAllQuery = catchAll.parse(query);
 		
-		Sort byDate = new Sort(new SortField("date", SortField.STRING, true));
+		Sort byDate = new Sort(new SortField("date", SortField.Type.STRING, true));
 		TopDocs results = iSearcher.get("default").search(catchAllQuery, null, Options.getInt("SEARCHER_NUM_FIELD_RESULTS"), byDate);
 
 		ScoredDocument[] sortedResults = new ScoredDocument[results.scoreDocs.length];
@@ -680,10 +699,10 @@ public class WeightedLuceneSearcher extends Searcher {
 			forbiddenField.add(field);
 		}
 		
-		FieldInfos myFields = ReaderUtil.getMergedFieldInfos(iReader);
+		FieldInfos myFields = MultiFields.getMergedFieldInfos(iReader);
 		ArrayList<String> allFields = new ArrayList<String>();
 		for (FieldInfo field : myFields) {
-			if ((field.isIndexed) && !forbiddenField.contains(field.name))
+			if ((field.isIndexed()) && !forbiddenField.contains(field.name))
 				allFields.add(field.name);
 		}
 		return allFields.toArray(new String[allFields.size()]);
@@ -697,7 +716,7 @@ public class WeightedLuceneSearcher extends Searcher {
 	 */
 	protected int randomDoc() throws IOException {
 
-		int maxDoc = iSearcher.get("default").maxDoc();
+		int maxDoc = iSearcher.get("default").getIndexReader().numDocs();
 		int docNo;
 
 		while (true) {
@@ -815,7 +834,7 @@ public class WeightedLuceneSearcher extends Searcher {
 	 * @return The maximum document id present in the index.
 	 */
 	public long getIndexSize() {
-		return iSearcher.get("default").maxDoc();
+		return iSearcher.get("default").getIndexReader().numDocs();
 	}
 
 	/**

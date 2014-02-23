@@ -1,5 +1,5 @@
 #!/bin/bash
-TOMCAT_DIR=/home/fan/Documents/apache-tomcat-7.0.47
+TOMCAT_DIR=/Users/JackFan/Documents/apache-tomcat-7.0.50
 export JAVA_HOME=/usr
 
 # Increase heap memory limit to 4 GB
