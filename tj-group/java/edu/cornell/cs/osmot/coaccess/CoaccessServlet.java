@@ -33,6 +33,15 @@ public class CoaccessServlet extends HttpServlet {
 	       throw new IllegalArgumentException(AID + " not supplied");
 	   }
 	   String result = getData(aid);
+
+	   response.setContentType("text/plain");
+	   OutputStream aout = response.getOutputStream();
+	   PrintWriter w = new PrintWriter(aout);
+	   
+	   w.println(result);
+	   w.close();
+
+
        } catch(Exception e) {
 	   try {
 	       e.printStackTrace(System.out);
