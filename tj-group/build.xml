@@ -59,16 +59,15 @@
 
   <!-- Compile the Java files -->
   <target name="compile" depends="init">
-    <!-- encoding="${build.encoding}" 
-	 debug="${debug}"
-     optimize="${optimize}"
-     deprecation="${deprecation}"
--->
     <javac 
      srcdir="${src.dir}"
      includes="edu/cornell/cs/osmot/*/*/*.java,edu/cornell/cs/osmot/*/*.java"
      destdir="${build.classes}"
-     debuglevel="lines,vars,source">
+     debuglevel="lines,vars,source"
+      encoding="${build.encoding}" 
+      debug="${debug}"
+      optimize="${optimize}"
+      deprecation="${deprecation}">
       <classpath refid="classpath"/>
     </javac>
   </target>

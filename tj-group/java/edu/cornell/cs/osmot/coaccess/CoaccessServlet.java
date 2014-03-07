@@ -59,21 +59,29 @@ public class CoaccessServlet extends HttpServlet {
        IndexReader reader = DirectoryReader.open(FSDirectory.open(new File(indexDir)));
        IndexSearcher searcher = new IndexSearcher(reader);
       
-       Term term =new Term(AID, aid);
+       String aidx = simplifyAid(aid);       	
+       Term term =new Term(AID, aidx);
        Query query = new TermQuery(term);
        TopDocs 	 top = searcher.search(query,1);
        ScoreDoc[] hits = top.scoreDocs;
-       Document doc = searcher.doc(hits[0].doc);
-       String yearArray = doc.get("Year");
-       
+       if (hits.length == 0) {
+	   return "NO MATCH FOR arxiv_id=" + aid;
+       } else {
+	   Document doc = searcher.doc(hits[0].doc);
+	   String yearArray = doc.get("Year");
+	   return yearArray;
+       } 
+    }
 
-       return yearArray;
+    /** For some strange reasons, article IDs are stored in the data store
+	with dashes and slashes removed! */
+    static String simplifyAid(String aid) {
+	return aid.replace("/", "").replace("-","");
     }
 
     public static void main(String[] argv) throws IOException {
 	for(int i=0; i<argv.length; i++) {
 	    String aid = argv[i];
-	    aid = aid.replace("/", "");
 	    System.out.println("aid=" + aid);
 	    System.out.println(getData(aid));
 	}
