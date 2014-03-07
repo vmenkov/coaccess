@@ -1,12 +1,45 @@
 <?xml version="1.0"?>
 
-<project name="Osmot" default="default" basedir=".">
+<project name="Coaccess" default="default" basedir=".">
 
   <property file="${basedir}/build.properties" />
+
+
+  <property name="src.dir" value="java"/>
+  <property name="lib.dir" value="lib"/>
+  <property name="build.dir" value="../build"/>
+  <property name="build.classes" value="${build.dir}/classes"/>
+  <property name="javadoc.dir" value="../javadoc"/>
+
+  <!-- The base name for the Jar file etc to be created -->
+  <property name="final.name" value="coaccess"/>
+
+
+  <!-- the name of the web application we are building -->
+  <property name="app.name"       value="coaccess"/>
+
+  <!-- where the web app is going to be deployed -->
+  <property name="tomcat.home6"  value="/usr/share/tomcat6" />
+  <property name="tomcat.home7"  value="/usr/share/tomcat7" />
+  <condition property="tomcat.home" 
+	     value="${tomcat.home7}" else="${tomcat.home6}">
+    <available file="${tomcat.home7}"/>
+  </condition>
+  <property name="deploy.home"    value="${tomcat.home}/webapps/${app.name}"/>
+  <!-- Our web application's library directory  -->
+  <property name="deploy.lib"      value="${deploy.home}/WEB-INF/lib" />
+
+  <!-- Tomcat JAR files needed during compilation -->
+  <property name="tomcat.lib"     value="${tomcat.home}/lib"/>
+
+
 
   <!-- Classpath -->
   <path id="classpath">
     <fileset dir="${lib.dir}">
+      <include name="*.jar"/>
+    </fileset>
+    <fileset dir="${tomcat.lib}">  <!-- Tomcat JAR files, local copy -->
       <include name="*.jar"/>
     </fileset>
   </path>
@@ -16,6 +49,9 @@
     <mkdir dir="${build.dir}"/>
     <mkdir dir="${build.classes}"/>
     <mkdir dir="${javadoc.dir}"/>
+    <mkdir  dir="${deploy.home}/META-INF"/>
+    <mkdir  dir="${deploy.home}/WEB-INF"/>
+    <mkdir  dir="${deploy.lib}"/>
   </target>    
 
   <!-- By default make a jar file, and make the documentation -->
@@ -24,27 +60,29 @@
 
   <!-- Compile the Java files -->
   <target name="compile" depends="init">
+    <!-- encoding="${build.encoding}" 
+	 debug="${debug}"
+     optimize="${optimize}"
+     deprecation="${deprecation}"
+-->
     <javac 
-     encoding="${build.encoding}"
      srcdir="${src.dir}"
      includes="edu/cornell/cs/osmot/*/*/*.java,edu/cornell/cs/osmot/*/*.java"
      destdir="${build.classes}"
-     debug="${debug}"
-     debuglevel="lines,vars,source"
-     optimize="${optimize}"
-     deprecation="${deprecation}">
+     debuglevel="lines,vars,source">
       <classpath refid="classpath"/>
     </javac>
   </target>
 
   <!-- Make the javadoc documentation -->
   <target name="javadoc" depends="init">
+<!-- "http://lucene.apache.org/java/docs/api"/ -->
     <javadoc 
-     sourcepath="${javadoc.src}"
+     sourcepath="${src.dir}"
      destdir="${javadoc.dir}"
      packagenames="edu.cornell.cs.osmot.*"
      private="false">
-      <link href="http://lucene.apache.org/java/docs/api"/>
+      <link href="http://lucene.apache.org/core/4_5_0/core/"/>
       <classpath refid="classpath"/>
     </javadoc>
   </target>
@@ -57,8 +95,45 @@
     />
   </target>
 
-  <!-- Make the searcher war file -->
 
+<!-- web site deployment -->
+<target name="deploy"  depends="init,jar">
+  <copy  file="osmot.conf" todir="${deploy.home}/WEB-INF"/>
+  <copy  file="WEB-INF/web.xml" todir="${deploy.home}/WEB-INF"/>
+
+  <copy  file="${build.dir}/${final.name}.jar" todir="${deploy.lib}"/> 
+ 
+  <copy todir="${deploy.lib}">
+    <fileset dir="${lib.dir}"><include name="**/*.jar"/></fileset>
+   </copy>
+ 
+  <echo message="Copying files from web/ to ${deploy.home}" />
+  <copy todir="${deploy.home}">
+    <fileset dir="web" excludes=".svn" />
+  </copy>
+
+</target>
+
+<property name="reloadclass" value="org.apache.catalina.ant.ReloadTask"/>
+<!-- The reload URL under Tomcat7 is different from Tomcat6 and 5.5 -->
+<condition property="reload.url" 
+	   value="http://localhost:8080/manager/text"
+	   else="http://localhost:8080/manager">
+  <available file="${tomcat.home7}"/>
+</condition>
+
+
+<taskdef name="reload"    classname="${reloadclass}"
+	 classpathref="classpath"/>
+  
+<!-- The user list, with roles, is stored in /usr/local/tomcat/conf/tomcat-users.xml -->
+<target name="reload" description="Reload web application on localhost"
+        depends="deploy">
+  <reload url="${reload.url}" username="vmenkov2" password="vmenkov2-manager-script" path="/${app.name}"/>
+</target>
+
+  <!-- Make the searcher war file -->
+<!--
   <target name="war" depends="jar">
      <copy todir="${web.src.dir}/config" file="${basedir}/osmot.conf"/>	 
      <copy todir="${web.src.dir}/config" file="${basedir}/author_popularity.txt"/>
@@ -88,10 +163,10 @@
       <lib dir="${build.dir}" includes="${final.name}.jar"/>
     </war>
   </target>     
-
+-->
 	
   <!-- Install in tomcat -->
-
+<!--
   <target name="install" depends="war">
     <exec dir="${basedir}" executable="${tomcat.stop.script}">
     	<arg line="${tomcat.stop.args}"/>
@@ -104,7 +179,7 @@
     	<arg line="${tomcat.start.args}"/>
     </exec>	
   </target>
-	
+-->
   
   <!-- Create a tarball for distribution -->
 <!--
@@ -138,15 +213,18 @@
     </exec>
   </target>
 -->
+
+
 		
   <!-- Clean up -->
-<!--
   <target name="clean" depends="init">
-    <delete dir="${build.dir}"/>
+    <delete dir="${build.classes}"/>
+    <delete file="${build.dir}/${final.name}.jar"/>
+<!--
     <delete dir="${class.dir}"/>
     <delete dir="${distrib.name}"/>
     <delete file="${distrib.name}.tar.gz"/>
-  </target>
 -->
+  </target>
 
 </project>
