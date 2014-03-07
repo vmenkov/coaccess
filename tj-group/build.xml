@@ -1,19 +1,18 @@
 <?xml version="1.0"?>
 
 <project name="Coaccess" default="default" basedir=".">
-
+ 
   <property file="${basedir}/build.properties" />
 
-
+  <!--
   <property name="src.dir" value="java"/>
   <property name="lib.dir" value="lib"/>
   <property name="build.dir" value="../build"/>
   <property name="build.classes" value="${build.dir}/classes"/>
-  <property name="javadoc.dir" value="../javadoc"/>
-
+  <property name="javadoc.dir" value="../doc"/>
+  -->
   <!-- The base name for the Jar file etc to be created -->
-  <property name="final.name" value="coaccess"/>
-
+  <!-- property name="final.name" value="coaccess"/ -->
 
   <!-- the name of the web application we are building -->
   <property name="app.name"       value="coaccess"/>
@@ -89,6 +88,7 @@
 
   <!-- Make the searcher jar file -->
   <target name="jar" depends="compile">
+    <echo message="final.name=${final.name}"/>
     <jar
       jarfile="${build.dir}/${final.name}.jar"
       basedir="${build.classes}"
