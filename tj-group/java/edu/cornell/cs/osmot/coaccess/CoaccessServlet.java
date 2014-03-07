@@ -32,13 +32,29 @@ public class CoaccessServlet extends HttpServlet {
 	   if (aid==null) {
 	       throw new IllegalArgumentException(AID + " not supplied");
 	   }
-	   String result = getData(aid);
+	   boolean raw = getBoolean(request, "raw", false);
+	   int maxlen = (int)getLong(request, "maxlen", 20);
+
+	   String rawData = getRawData(aid);
 
 	   response.setContentType("text/plain");
 	   OutputStream aout = response.getOutputStream();
 	   PrintWriter w = new PrintWriter(aout);
 	   
-	   w.println(result);
+	   if (raw) {
+	       String result = (rawData==null) ? 
+		   "NO MATCH FOR arxiv_id=" + aid : rawData;
+	       w.println(result);
+	   } else {
+		List<Map.Entry<String, Integer>> list= SearchFiles.aggregateCounts(rawData);
+		int cnt=0;
+		for(Map.Entry<String, Integer> e: list) {
+		    w.println(e.getKey() + " " + e.getValue());
+		    cnt++;
+		    if (maxlen>0 && cnt>=maxlen) break;
+		}
+	   }
+
 	   w.close();
 
 
@@ -55,7 +71,7 @@ public class CoaccessServlet extends HttpServlet {
     static final public String indexDir = "/data/coaccess/round5/lucene_framework/index";
 
 
-    static String getData(String aid) throws IOException {
+    static String getRawData(String aid) throws IOException {
        IndexReader reader = DirectoryReader.open(FSDirectory.open(new File(indexDir)));
        IndexSearcher searcher = new IndexSearcher(reader);
       
@@ -65,7 +81,7 @@ public class CoaccessServlet extends HttpServlet {
        TopDocs 	 top = searcher.search(query,1);
        ScoreDoc[] hits = top.scoreDocs;
        if (hits.length == 0) {
-	   return "NO MATCH FOR arxiv_id=" + aid;
+	   return null;
        } else {
 	   Document doc = searcher.doc(hits[0].doc);
 	   String yearArray = doc.get("Year");
@@ -79,11 +95,54 @@ public class CoaccessServlet extends HttpServlet {
 	return aid.replace("/", "").replace("-","");
     }
 
+    
+    static private boolean getBoolean(HttpServletRequest request, String name, boolean defVal) {
+	String s = request.getParameter(name);
+	if (s==null) {
+	    Boolean a = (Boolean)request.getAttribute(name);
+	    return (a!=null) ? a.booleanValue() : defVal;
+	}
+	try {
+	    return Boolean.parseBoolean(s);
+	} catch (Exception ex) {
+	    return defVal;
+	}
+    }
+
+ /** Retrives an integer HTTP request parameter. If not found in
+      the HTTP request, also looks in the attributes (which can be used
+      by SurveyLogicServlet in case of internal redirect)
+     */
+    static public long getLong(HttpServletRequest request, String name, long defVal) {
+	String s = request.getParameter(name);
+	if (s==null) {
+	    Long a = (Long)request.getAttribute(name);
+	    return (a!=null) ? a.longValue() : defVal;
+	}
+	try {
+	    return Long.parseLong(s);
+	} catch (Exception ex) {
+	    return defVal;
+	}
+    }
+
+
     public static void main(String[] argv) throws IOException {
 	for(int i=0; i<argv.length; i++) {
 	    String aid = argv[i];
-	    System.out.println("aid=" + aid);
-	    System.out.println(getData(aid));
+	    System.out.println("Raw data for aid=" + aid);
+	    String rawData = getRawData(aid);
+	    if (rawData==null) {
+		System.out.println( "NO MATCH FOR arxiv_id=" + aid);
+	    } else {
+		System.out.println(rawData);
+		System.out.println("Aggregate data for aid=" + aid);
+		List<Map.Entry<String, Integer>> list= SearchFiles.aggregateCounts(rawData);
+		for(Map.Entry<String, Integer> e: list) {
+		    System.out.println(e.getKey() + " " + e.getValue());
+		}
+	    }
+
 	}
     }
 
