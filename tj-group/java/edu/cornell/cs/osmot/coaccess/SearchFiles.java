@@ -178,32 +178,9 @@ public class SearchFiles {
                 Document doc = searcher.doc(hits[i].doc);
                 String yearArray = doc.get("Year");
                 
-                // Merge coaccess data from all years.
-                Hashtable<String, Integer> ht = new Hashtable<String, Integer>();
-                String[] years = yearArray.split("\n:\n");
-                for(String year : years){
-                    String[] coaccesses = year.split("\n");
-                    for(String coaccess : coaccesses){
-                        if(coaccess != ""){
-                            String[] temp = coaccess.split(" ");
-                            if(ht.containsKey(temp[0])){
-                                int coaccessNum = ht.get(temp[0]);
-                                ht.put(temp[0], coaccessNum + Integer.parseInt(temp[1]));
-                            } else {
-                                ht.put(temp[0], Integer.parseInt(temp[1]));
-                            }
-                        }
-                    }
-                }
-                List<Map.Entry<String, Integer>> list =
-                new LinkedList<Map.Entry<String, Integer>>( ht.entrySet() );
-                Collections.sort( list, new Comparator<Map.Entry<String, Integer>>()
-                                 {
-                                     public int compare( Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2 )
-                                     {
-                                         return (o1.getValue()).compareTo( o2.getValue() ) * (-1);
-                                     }
-                                 } );
+		// Merge coaccess data from all years.
+		List<Map.Entry<String,Integer>> list=aggregateCounts(yearArray);
+ 
                 String topTen = "";
                 int num = 0;
                 for(Map.Entry<String, Integer> entry : list){
@@ -263,4 +240,40 @@ public class SearchFiles {
             }
         }
     }
+
+    /** Processes the entry retrived from the Lucene database, computing 
+	aggregate coaccess counts for all years.
+	@return a List of (article id, count) pairs, ordered, in descending
+	order, by count
+     */
+    static List<Map.Entry<String, Integer>> aggregateCounts(String yearArray) {
+	Hashtable<String, Integer> ht = new Hashtable<String, Integer>();
+	String[] years = yearArray.split("\n:\n");
+
+	for(String year : years){
+	    String[] coaccesses = year.split("\n");
+	    for(String coaccess : coaccesses){
+		if(coaccess != ""){
+		    String[] temp = coaccess.split(" ");
+		    if(ht.containsKey(temp[0])){
+			int coaccessNum = ht.get(temp[0]);
+			ht.put(temp[0], coaccessNum+Integer.parseInt(temp[1]));
+		    } else {
+			ht.put(temp[0], Integer.parseInt(temp[1]));
+		    }
+		}
+	    }
+	}
+	List<Map.Entry<String, Integer>> list =
+	    new LinkedList<Map.Entry<String, Integer>>( ht.entrySet() );
+	Collections.sort( list, new Comparator<Map.Entry<String, Integer>>()
+			  {
+			      public int compare( Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2 )
+			      {
+				  return -(o1.getValue()).compareTo(o2.getValue());
+			      }
+			  } );
+	return list;
+    }
+
 }
