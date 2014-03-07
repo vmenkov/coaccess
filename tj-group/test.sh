@@ -20,7 +20,7 @@ set opt="-cp ${cp}"
 
 #echo "opt=$opt"
 
-echo java $opt edu.cornell.cs.osmot.coaccess.CoaccessServlet $argv $1 $2 $3
-java $opt edu.cornell.cs.osmot.coaccess.CoaccessServlet $argv $1 $2 $3
+echo java $opt edu.cornell.cs.osmot.coaccess.CoaccessServlet $argv 
+java $opt edu.cornell.cs.osmot.coaccess.CoaccessServlet $argv 
 
 
