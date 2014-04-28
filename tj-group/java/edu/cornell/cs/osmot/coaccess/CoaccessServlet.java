@@ -40,11 +40,14 @@ public class CoaccessServlet extends HttpServlet {
 	   response.setContentType("text/plain");
 	   OutputStream aout = response.getOutputStream();
 	   PrintWriter w = new PrintWriter(aout);
-	   
-	   if (raw) {
-	       String result = (rawData==null) ? 
-		   "NO MATCH FOR arxiv_id=" + aid : rawData;
-	       w.println(result);
+
+	   if (rawData==null) {
+	       if (raw)  {
+		   String result =  "NO MATCH FOR arxiv_id=" + aid;
+		   w.println(result);
+	       }
+	   } else if (raw) {
+	       w.println(rawData);
 	   } else {
 		List<Map.Entry<String, Integer>> list= SearchFiles.aggregateCounts(rawData);
 		int cnt=0;
