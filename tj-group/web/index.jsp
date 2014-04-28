@@ -22,7 +22,7 @@ This service provides access to the coaccess data stored at the Lucene index at
 arxiv_id <td>: <input name="arxiv_id" type="text" size="10" value="0704.0001">
 </tr>
 <tr><td>
-<input name="raw" type="radio" size="10" value="true"> Raw Data
+<input name="raw" type="radio" size="10" value="true"> Raw Data (use this for troubleshooting, too!)
 <td>
 <input name="raw" type="radio" size="10" value="false" checked>Aggregate Data
 </tr>
