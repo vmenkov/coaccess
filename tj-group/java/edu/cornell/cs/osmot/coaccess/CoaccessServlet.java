@@ -32,6 +32,7 @@ public class CoaccessServlet extends HttpServlet {
 	   if (aid==null) {
 	       throw new IllegalArgumentException(AID + " not supplied");
 	   }
+	   aid = aid.trim();
 	   boolean raw = getBoolean(request, "raw", false);
 	   int maxlen = (int)getLong(request, "maxlen", 20);
 
@@ -43,7 +44,7 @@ public class CoaccessServlet extends HttpServlet {
 
 	   if (rawData==null) {
 	       if (raw)  {
-		   String result =  "NO MATCH FOR arxiv_id=" + aid;
+		   String result =  "NO MATCH FOR arxiv_id='" + aid + "'";
 		   w.println(result);
 	       }
 	   } else if (raw) {
