@@ -1,10 +1,11 @@
 #!/bin/bash
-echo "Running python script"
+
+echo `date` " : Running python script"
 
 /usr/local/epd/bin/python parser_vFinal.py
 
 
-echo "Touching new year files"
+echo `date` " : Touching new year files"
 
 ls /data/coaccess/round5/2014 > cur.txt
 
@@ -27,7 +28,7 @@ while read p; do touch $p; done < cur.txt
 rm cur.txt
 
 
-echo "Creating Lucene Index"
+echo `date` : " : Creating Lucene Index"
 
 # Lucene indexing...
 cd /data/coaccess/round5/lucene_framework
@@ -37,7 +38,7 @@ java -cp lucene-analyzers-common-4.5.1.jar:lucene-demo-4.5.1-SNAPSHOT.jar:lucene
 cd /data/coaccess/round5
 
 
-echo "Removing .txt files..."
+echo `date` : " Removing .txt files..."
 
 rm *.txt
 

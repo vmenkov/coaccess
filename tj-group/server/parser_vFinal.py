@@ -19,7 +19,7 @@ from json import dumps, loads, JSONEncoder, JSONDecoder
 import pickle
 import re
 
-years = ['2013']
+years = ['2013', '2014']
 
 # Make set JSON serializable
 class SetEncoder(json.JSONEncoder):
@@ -32,7 +32,10 @@ class SetEncoder(json.JSONEncoder):
 def constructHash():
     correct = dict()
     os.chdir('/data/coaccess/round5')
-    openCorrect = 'idlist_07Nov13'
+#    openCorrect = 'idlist_07Nov13'
+
+#-- using an ArXiv ID list file produced with "~vmenkov/arxiv/arxiv/cmd.sh list"
+    openCorrect = 'aid-list-20140605.dat'
 
     with open(openCorrect,'r+') as infile:
         for line in infile:
@@ -40,16 +43,19 @@ def constructHash():
             correct[cur] = cur
         return correct
     # optionally cache hashtable
+    
+    print "Has read article ID list; size=" + str(len(cur))
 
 # Returns a hash table of arrays with document accesses for a given user
 def produceUserList():
     global years
     validDoc = constructHash()
     os.chdir('/data/coaccess/round5');	
+    print "Working in directory " + os.getcwd() + " . Temporary files will be created here"
     
     for year in years:
         strToFile = str(year) + "_phase1"
-        h = open('%s.txt' % strToFile,'wb')
+        h = open('%s.txt' % strToFile,'wb')        
         counter= 0;
 
 
@@ -57,14 +63,15 @@ def produceUserList():
         i = 0
 
         data_path = '/data/json/usage/' + year + '/'
+        print "Processing JSON files for Year " + year + ", from the directory " + data_path;
         # Get all files under the directory
         files = []
         for (dirpath, dirnames, filenames) in walk(data_path):
             files.extend(filenames)
         for file_name in files:
             i += 1
-            print 'Processing Data #' + str(i)
-            file_path = '/data/json/usage/' + year + '/' + file_name
+            file_path = data_path + file_name
+            print "Processing file("  + str(i) + ")=" + file_path;
             f = gzip.open(file_path,'rb')
             data = json.load(f)
             entries = data['entries']
@@ -197,8 +204,10 @@ def reducer(year):
 def sorter2(year):
     strToPairReduce = str(year) + "_phase6.txt"
     strToPairSort = str(year) + "_phase7.txt"
+    print "Sorting data in " + strToPairReduce + " into " + strToPairSort
     os.system('sort -k1,1 -k3,3r ' + strToPairReduce + ' > ' + strToPairSort)
     splitter(year)
+    print "Done sorting"
 
 
 
@@ -354,6 +363,7 @@ reducer()
 
 inverter(10)
 '''
+
 
 
 
