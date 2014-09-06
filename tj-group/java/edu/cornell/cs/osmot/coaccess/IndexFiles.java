@@ -30,15 +30,11 @@ import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
 import org.apache.lucene.util.Version;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.Date;
+import java.io.*;
+import java.util.*;
 
 /** Index coaccess data from all years corresponding to a arxiv_id.
- *  Command to run: java -cp lucene-analyzers-common-4.5.1.jar:lucene-demo-4.5.1-SNAPSHOT.jar:lucene-core-4.5.1.jar:lucene-queryparser-4.5.1.jar org.apache.lucene.demo.IndexFiles -docs /data/coaccess
- *  /round5/finals
+ *  Command to run: java -cp lucene-analyzers-common-4.5.1.jar:lucene-demo-4.5.1-SNAPSHOT.jar:lucene-core-4.5.1.jar:lucene-queryparser-4.5.1.jar org.apache.lucene.demo.IndexFiles -docs /data/coaccess/round5
  */
 public class IndexFiles {
     
@@ -47,11 +43,14 @@ public class IndexFiles {
     /** Index all text files under a directory. */
     public static void main(String[] args) {
         String usage = "java org.apache.lucene.demo.IndexFiles"
-        + " [-index INDEX_PATH] [-docs DOCS_PATH] [-update]\n\n"
+        + " -aids aidListFile [-index INDEX_PATH] [-docs DOCS_PATH] [-update]\n\n"
         + "This indexes the documents in DOCS_PATH, creating a Lucene index"
         + "in INDEX_PATH that can be searched with SearchFiles";
         String indexPath = "index";
         String docsPath = null;
+	String aidListFilePath = null;
+	String yearsString = null;
+
         boolean create = true;
         for(int i=0;i<args.length;i++) {
             if ("-index".equals(args[i])) {
@@ -60,24 +59,36 @@ public class IndexFiles {
             } else if ("-docs".equals(args[i])) {
                 docsPath = args[i+1];
                 i++;
+            } else if ("-aids".equals(args[i])) {
+                aidListFilePath = args[i+1];
+                i++;
+            } else if ("-years".equals(args[i])) {
+                yearsString = args[i+1];
+                i++;
             } else if ("-update".equals(args[i])) {
                 create = false;
             }
         }
         
-        if (docsPath == null) {
+        if (docsPath == null || aidListFilePath == null) {
             System.err.println("Usage: " + usage);
             System.exit(1);
         }
         
         final File docDir = new File(docsPath);
-        if (!docDir.exists() || !docDir.canRead()) {
+        // Making sure the directory exists
+        if (!docDir.exists() || !docDir.isDirectory() || !docDir.canRead()) {
             System.out.println("Document directory '" +docDir.getAbsolutePath()+ "' does not exist or is not readable, please check the path");
             System.exit(1);
         }
         
         Date start = new Date();
+
+	int[] years = makeYearList(yearsString);
+
         try {
+	    Vector<String> aids = readAidList(aidListFilePath); 
+
             System.out.println("Indexing to directory '" + indexPath + "'...");
             
             Directory dir = FSDirectory.open(new File(indexPath));
@@ -101,8 +112,12 @@ public class IndexFiles {
             // iwc.setRAMBufferSizeMB(256.0);
             
             IndexWriter writer = new IndexWriter(dir, iwc);
-            indexDocs(writer, docDir);
-            
+	    int doneCnt = 0;
+	    for(String aid: aids) {
+		boolean done = indexDocs(writer, docDir, aid, years);
+		if (done) doneCnt ++;
+            }
+
             // NOTE: if you want to maximize search performance,
             // you can optionally call forceMerge here.  This can be
             // a terribly costly operation, so generally it's only
@@ -114,6 +129,7 @@ public class IndexFiles {
             writer.close();
             
             Date end = new Date();
+            System.out.println("Looked for files for " + aids.size() + " articles, in " + years.length + " years' directories. Found at least some data for " + doneCnt + " articles out of these.");
             System.out.println(end.getTime() - start.getTime() + " total milliseconds");
             
         } catch (IOException e) {
@@ -121,102 +137,125 @@ public class IndexFiles {
                                "\n with message: " + e.getMessage());
         }
     }
+
+    /** Reads the list of article IDs from a file. 
+
+	@param f The name of the file to read. The file must contain one 
+	article ID per line. It can be generated e.g. with "cmd.sh list".
+    */
+    static Vector<String> readAidList(String f) throws IOException {
+	FileReader fr = new FileReader(f);
+	LineNumberReader r =  new LineNumberReader(fr);
+	Vector<String> aids= new    Vector<String>();
+	String s=null;
+	while((s = r.readLine())!=null) {
+	    s = s.trim();
+	    if (s.equals("") || s.startsWith("#")) continue;
+	    aids.add(s);
+	}
+	System.out.println("Has read in list of "+aids.size()+" article IDs");
+	return aids;
+    }
+
+    /** Converts a command line description of the year range
+	(e.g. "2000:2010" to an array of years (e.g. {2000, 2001, ..., 2010}) */
+    static int[] makeYearList(String yearsString) {
+	int y1=2003, y2=2014;
+	if (yearsString != null) {
+	    String bounds[] = yearsString.split(":");
+	    if (bounds.length!=2) throw new IllegalArgumentException("Cannot parse '"+yearsString+"' as yyyy:yyyy");
+	    y1 = Integer.parseInt(bounds[0]);
+	    y2 = Integer.parseInt(bounds[1]);
+	    if (y1 < 1900 || y2 > 2020 || y1 > y2) {
+		throw new IllegalArgumentException("Invalid year range ("+y1 +" thru " + y2 + ")");
+	    }
+	}
+	int [] q = new int[ y2 - y1 + 1];
+	int pos=0;
+	for(int y=y1; y <= y2; y++) {
+	    q[pos++] = y;
+	}
+	return q;
+    }
+
+
+    /** The names of fields for Lucene documents to create. */
+    static class Fields {
+	static final String ARXIV_ID = "arxiv_id", COACCESS = "coaccess";
+    }
     
     /**
-     * Indexes the given file using the given writer, or if a directory is given,
-     * recurses over files and directories found under the given directory.
-     *
-     * NOTE: This method indexes one document per input file.  This is slow.  For good
-     * throughput, put multiple documents into your input file(s).  An example of this is
-     * in the benchmark module, which can create "line doc" files, one document per line,
-     * using the
-     * <a href="../../../../../contrib-benchmark/org/apache/lucene/benchmark/byTask/tasks/WriteLineDocTask.html"
-     * >WriteLineDocTask</a>.
-     *
-     * @param writer Writer to the index where the given file/dir info will be stored
-     * @param file The file to index, or the directory to recurse into to find files to index
-     * @throws IOException If there is a low-level I/O error
+     Indexes the given file using the given writer, or if a directory
+     is given, recurses over files and directories found under the
+     given directory.
+     
+     NOTE: This method indexes one document per input file.  This is
+     slow.  For good throughput, put multiple documents into your
+     input file(s).  An example of this is in the benchmark module,
+     which can create "line doc" files, one document per line, using
+     the <a
+     href="../../../../../contrib-benchmark/org/apache/lucene/benchmark/byTask/tasks/WriteLineDocTask.html">WriteLineDocTask</a>.
+     
+     @param writer Writer to the index where the given file/dir info will be stored
+     @param dataDir Directory in which year subdirectories are to be found. E.g.  "/data/coaccess/round5/"
+
+     @return true if a document has been created
+
+     @throws IOException If there is a low-level I/O error
      */
-    static void indexDocs(IndexWriter writer, File file)
+    static boolean indexDocs(IndexWriter writer, File dataDir, String aid, int[] years)
     throws IOException {
-        // do not try to index files that cannot be read
-        if (file.canRead()) {
-            if (file.isDirectory()) {
-                String[] files = file.list();
-                // an IO error could occur
-                if (files != null) {
-                    for (int i = 0; i < files.length; i++) {
-                        indexDocs(writer, new File(file, files[i]));
-                    }
-                }
-            } else {
-                
-                FileInputStream fis;
-                try {
-                    fis = new FileInputStream(file);
-                } catch (FileNotFoundException fnfe) {
-                    // at least on windows, some temporary files raise this exception with an "access denied" message
-                    // checking if the file can be read doesn't help
-                    return;
-                }
-                
-                try {
-                    
-                    // make a new, empty document
-                    Document doc = new Document();
-                    
-                    String[] years= {"2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013"};
-                    
-                    // Loads 10 years of top k documents and uses :  as delimiter to separate years
-                    String fileName = file.getName();
-                    StringBuilder holdK = new StringBuilder();
-                    for (String year: years){
-                        String filer = "/data/coaccess/round5/" + year + "/" + fileName;
-                        // check if file exists
-                        File temp = new File(filer);
-                        if(temp.exists()){
-                            byte[] data = new byte[(int)temp.length()];
-                            FileInputStream fiss = new FileInputStream(temp);
-                            fiss.read(data);
-                            fiss.close();
-                            String s = new String(data, "UTF-8");
-                            holdK.append(s+ "\n:\n");
-                        }
-                    }
-                    // Field yearField = new StringField("Year", holdK.toString(), Field.Store.YES);
-                    Field yearField = new StringField("Year", holdK.toString(), Field.Store.YES);
-                    doc.add(yearField);
-                    
-                    // Add unique id; this is arxiv id in this case
-                    String filename = file.getName().replaceAll("[@-]", "");
-                    System.out.println(filename);
-                    Field uniqueField = new StringField("arxiv_id", filename, Field.Store.YES);
-                    doc.add(uniqueField);
-                    
-                    // Add author
-                    Field authorField = new StringField("author", "author", Field.Store.YES);
-                    doc.add(authorField);
-                    
-                    // Add title
-                    Field titleField = new StringField("title", "title" + file.getName(), Field.Store.YES);
-                    doc.add(titleField);
-                    
-                    if (writer.getConfig().getOpenMode() == OpenMode.CREATE) {
-                        // New index, so we just add the document (no old document can be there):
-                        System.out.println("adding " + file);
-                        writer.addDocument(doc);
-                    } else {
-                        // Existing index (an old copy of this document may have been indexed) so
-                        // we use updateDocument instead to replace the old one matching the exact
-                        // path, if present:
-                        System.out.println("updating " + file);
-                        writer.updateDocument(new Term("path", file.getPath()), doc);
-                    }
-                    
-                }  finally {
-                    fis.close();
-                }
-            }
-        }
+
+	// Loads 10 years of top k documents and uses :  as delimiter to separate years
+	String fileName = aid.replaceAll("/", "@");
+	StringBuilder holdK = new StringBuilder();
+	
+	int foundFileCnt = 0;
+	for (int year: years){
+	    File yearDir = new File(dataDir, "" + year);
+	    if (!yearDir.canRead()) throw new IOException("Cannot read directory " + yearDir);
+	    File temp = new File(yearDir, fileName);
+	    // check if file exists
+	    if(temp.exists()){
+		byte[] data = new byte[(int)temp.length()];
+		FileInputStream fiss = new FileInputStream(temp);
+		fiss.read(data);
+		fiss.close();
+		String s = new String(data, "UTF-8");
+		holdK.append(s+ "\n:\n");
+		foundFileCnt++;
+	    }
+	}
+	if (foundFileCnt==0) return false; // no files found for this article
+	
+	// make a new, empty document
+	Document doc = new Document();
+
+	String coaccessData = SearchFiles.consolidate(holdK.toString());
+      	Field yearField = new StringField(Fields.COACCESS, coaccessData, Field.Store.YES);
+	doc.add(yearField);
+        
+	// Add unique id; this is arxiv id in this case
+	//String filename = file.getName().replaceAll("[@-]", "");
+	//	    System.out.println(filename);
+	//	    Field uniqueField = new StringField("arxiv_id", filename, Field.Store.YES);
+	Field uniqueField = new StringField(Fields.ARXIV_ID, aid, Field.Store.YES);
+
+	doc.add(uniqueField);
+	
+	if (writer.getConfig().getOpenMode() == OpenMode.CREATE) {
+	    // New index, so we just add the document (no old
+	    // document can be there):
+	    System.out.println("Adding doc " + aid);
+	    writer.addDocument(doc);
+	} else {
+	    // Existing index (an old entry for this article ID
+	    // may have been indexed) so we use updateDocument
+	    // instead to replace the old one matching the article
+	    // ID, if present:
+	    System.out.println("Updating doc " + aid);
+	    writer.updateDocument(new Term(Fields.ARXIV_ID, aid), doc);
+	}
+	return true;
     }
 }

@@ -176,7 +176,7 @@ public class SearchFiles {
                 }
                 
                 Document doc = searcher.doc(hits[i].doc);
-                String yearArray = doc.get("Year");
+                String yearArray = doc.get(IndexFiles.Fields.COACCESS);
                 
 		// Merge coaccess data from all years.
 		List<Map.Entry<String,Integer>> list=aggregateCounts(yearArray);
@@ -274,6 +274,18 @@ public class SearchFiles {
 			      }
 			  } );
 	return list;
+    }
+
+    /** Reformats a database entry, merging together data from
+	separate years' secions.
+     */
+    static String consolidate(String yearData) {
+	List<Map.Entry<String, Integer>> list = aggregateCounts(yearData);
+	StringBuffer buf = new StringBuffer();	
+	for(Map.Entry<String, Integer> x: list) {
+	    buf.append(x.getKey() + " " + x.getValue() + "\n");
+	}
+	return buf.toString();
     }
 
 }

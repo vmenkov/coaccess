@@ -22,7 +22,7 @@ import org.apache.lucene.store.FSDirectory;
 
 public class CoaccessServlet extends HttpServlet {
 
-    final static String AID = "arxiv_id";
+    final static String AID = IndexFiles.Fields.ARXIV_ID;
 
    public void	service(HttpServletRequest request, HttpServletResponse response
 ) {
@@ -78,9 +78,13 @@ public class CoaccessServlet extends HttpServlet {
     static String getRawData(String aid) throws IOException {
        IndexReader reader = DirectoryReader.open(FSDirectory.open(new File(indexDir)));
        IndexSearcher searcher = new IndexSearcher(reader);
-      
+
+       /*
        String aidx = simplifyAid(aid);       	
        Term term =new Term(AID, aidx);
+       */
+       Term term =new Term(AID, aid);
+
        Query query = new TermQuery(term);
        TopDocs 	 top = searcher.search(query,1);
        ScoreDoc[] hits = top.scoreDocs;
@@ -88,17 +92,19 @@ public class CoaccessServlet extends HttpServlet {
 	   return null;
        } else {
 	   Document doc = searcher.doc(hits[0].doc);
-	   String yearArray = doc.get("Year");
+	   //	   String yearArray = doc.get("Year");
+	   String yearArray = doc.get(IndexFiles.Fields.COACCESS);
 	   return yearArray;
        } 
     }
 
     /** For some strange reasons, article IDs are stored in the data store
 	with dashes and slashes removed! */
+    /*
     static String simplifyAid(String aid) {
 	return aid.replace("/", "").replace("-","");
     }
-
+    */
     
     static private boolean getBoolean(HttpServletRequest request, String name, boolean defVal) {
 	String s = request.getParameter(name);
