@@ -1,14 +1,43 @@
 #!/bin/bash
 
-echo `date` " : Running python script"
+echo `date` " : Listing valid article IDs"
+cmd=../../../arxiv/cmd.sh
 
-/usr/local/epd/bin/python parser_vFinal.py
+if [ ! -x $cmd ] 
+then
+    echo "Script $cmd does not exist, or is not executable. Exiting!"
+    exit
+fi
+
+build=`pwd`/../build
+aidList=`pwd`/aid-list.txt
+aidListShort=`pwd`/aid-list-short.txt
+
+echo "Running script $cmd ; output goes to $aidList"
+
+$cmd list > $aidList
+grep '^14' $aidList > $aidListShort
+
+echo "Prepared article ID list, as per My.ArXiv's Lucene data store: "
+ls -l $aidList $aidListShort
+wc $aidList $aidListShort
+
+parser=parser_vFinal.py
+# parser=parser-tmp.py
+
+outdir=/data/coaccess/round5
+
+echo `date` " : Running python script $parser, output goes to $outdir (including per-year dirs)"
+
+time /usr/local/epd/bin/python $parser 2014 $outdir  $aidList
+
+# exit
 
 
-echo `date` " : Touching new year files"
+#echo `date` " : Touching new year files"
 
-ls /data/coaccess/round5/2014 > cur.txt
-
+#cd $outdir 
+#ls 2014 > cur.txt
 
 #cat cur.txt pastyearUniq.txt > newyears.txt
 
@@ -16,31 +45,26 @@ ls /data/coaccess/round5/2014 > cur.txt
 # final merge
 #sort -u newyears.txt > newyearsUniq.txt
 
-cd /data/coaccess/round5
-mkdir -m 777 newyear
-cd newyear
-cp /data/coaccess/round5/cur.txt /data/coaccess/round5/newyear
-cd /data/coaccess/round5/newyear
+#mkdir -m 777 newyear
+#cd newyear
+#cp $outdir/cur.txt $outdir/newyear
+#cd $outdir/newyear
 
+#while read p; do touch $p; done < cur.txt
 
-while read p; do touch $p; done < cur.txt
-
-rm cur.txt
-
+#rm cur.txt
 
 echo `date` : " : Creating Lucene Index"
 
 # Lucene indexing...
-cd /data/coaccess/round5/lucene_framework
-java -cp lucene-analyzers-common-4.5.1.jar:lucene-demo-4.5.1-SNAPSHOT.jar:lucene-core-4.5.1.jar:lucene-queryparser-4.5.1.jar org.apache.lucene.demo.IndexFiles -docs /data/coaccess/round5/final/
 
+cd $outdir/lucene_framework
 
-cd /data/coaccess/round5
+cp=$build/osmot-1.0.jar:lucene-analyzers-common-4.5.1.jar:lucene-demo-4.5.1-SNAPSHOT.jar:lucene-core-4.5.1.jar:lucene-queryparser-4.5.1.jar  
+java -cp $cp edu.cornell.cs.osmot.coaccess.IndexFiles  -docs $outdir -update -index index.new -aids $aidList -years 2003:2014
 
-
-echo `date` : " Removing .txt files..."
-
-rm *.txt
+#echo `date` : " Removing .txt files from $outdir..."
+# SKIP rm $outdir/*.txt
 
 
 

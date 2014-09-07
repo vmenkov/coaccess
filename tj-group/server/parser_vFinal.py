@@ -1,5 +1,6 @@
 # Parses JSON into lists of user data. Each list contains the documents that user accessed in a given user session
 
+import sys
 import cPickle as pickle
 import numpy as np
 import scipy.sparse
@@ -19,7 +20,28 @@ from json import dumps, loads, JSONEncoder, JSONDecoder
 import pickle
 import re
 
-years = ['2013', '2014']
+if (len(sys.argv)!=4):
+    print "Usage: " + sys.argv[0] + " year out-dir-name correct-aid-list-file"
+    exit()
+
+years = [ int(sys.argv[1]) ]
+outdir=sys.argv[2]
+correctAidListFile=sys.argv[3]
+
+if ((years[0] <= 2000) or (years[0] >= 2020)):
+    print "Year " + str( years[0]) + " is out of expected range"
+    exit()
+
+
+if (not(os.path.isdir(outdir))):
+    print "Directory " + outdir + " does not exist!"
+    exit()
+
+if (not(os.path.isfile(correctAidListFile))):
+    print "File " + correctAidListFile + " does not exist!"
+    exit()
+
+
 
 # Make set JSON serializable
 class SetEncoder(json.JSONEncoder):
@@ -29,28 +51,27 @@ class SetEncoder(json.JSONEncoder):
         return json.JSONEncoder.default(self, obj)
 
 # constructs hashtable of only valid documents
-def constructHash():
-    correct = dict()
-    os.chdir('/data/coaccess/round5')
-#    openCorrect = 'idlist_07Nov13'
-
 #-- using an ArXiv ID list file produced with "~vmenkov/arxiv/arxiv/cmd.sh list"
-    openCorrect = 'aid-list-20140605.dat'
-
+def constructHash(openCorrect):
+    correct = dict()
+    os.chdir(outdir)
+    
+    print 'Reading list of valid article IDs from ' + openCorrect + ' ...'
     with open(openCorrect,'r+') as infile:
         for line in infile:
             cur = line.strip()
             correct[cur] = cur
+        print "Has read article ID list; size=" + str(len(correct))
         return correct
     # optionally cache hashtable
     
-    print "Has read article ID list; size=" + str(len(cur))
 
 # Returns a hash table of arrays with document accesses for a given user
 def produceUserList():
     global years
-    validDoc = constructHash()
-    os.chdir('/data/coaccess/round5');	
+    validDoc = constructHash(correctAidListFile)
+#    os.chdir('/data/coaccess/round5')	
+    os.chdir(outdir)	
     print "Working in directory " + os.getcwd() + " . Temporary files will be created here"
     
     for year in years:
@@ -62,13 +83,20 @@ def produceUserList():
         # Counter to print
         i = 0
 
-        data_path = '/data/json/usage/' + year + '/'
-        print "Processing JSON files for Year " + year + ", from the directory " + data_path;
+        data_path = '/data/json/usage/' + str(year) + '/'
+        print "Processing JSON files for Year " + str(year) + ", from the directory " + data_path;
         # Get all files under the directory
         files = []
         for (dirpath, dirnames, filenames) in walk(data_path):
             files.extend(filenames)
         for file_name in files:
+
+
+#            pat = re.compile('^14010[123].*')
+#            m = pat.match( file_name)
+#            if not(m):
+#                continue
+
             i += 1
             file_path = data_path + file_name
             print "Processing file("  + str(i) + ")=" + file_path;
@@ -204,20 +232,27 @@ def reducer(year):
 def sorter2(year):
     strToPairReduce = str(year) + "_phase6.txt"
     strToPairSort = str(year) + "_phase7.txt"
-    print "Sorting data in " + strToPairReduce + " into " + strToPairSort
+    print "Sorting article pair list in " + strToPairReduce + " into " + strToPairSort
     os.system('sort -k1,1 -k3,3r ' + strToPairReduce + ' > ' + strToPairSort)
-    splitter(year)
     print "Done sorting"
+    splitter(year)
+    print "Done splitting"
 
 
-
+#-----------------------------------------------------------------------------------------
+# Splits the sorted master pair file into article-specific files in
+# the year-specific directory. The names of these files will be the
+# same as the respective article IDs, except that slashes are replaced
+# with the '@' character
+# -------------------------------------------------------------------------------------------
 def splitter(year):
     pairReduce = str(year) + '_phase7.txt'
-    os.system('mkdir '+ year);
-    os.system('chmod 777 *');
+    print "Splitting " + pairReduce + " into article-specific list files in directory " + str(year)
+    os.system('mkdir '+ str(year));
+#    os.system('chmod 777 *');
     cutOff = 100
     with open(pairReduce, 'r+') as infile:
-	os.chdir('' + year);
+	os.chdir('' + str(year));
 	prev = infile.readline()
 	counter = 1
         strHolder= ''
@@ -240,7 +275,7 @@ def splitter(year):
 		    curFile = open(fileName, 'wb')
 		    counter = 0
 	    prev = line;	    
-    os.chdir('/data/coaccess/round5');	
+    os.chdir(outdir);	
 				
 
 
@@ -363,25 +398,5 @@ reducer()
 
 inverter(10)
 '''
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
