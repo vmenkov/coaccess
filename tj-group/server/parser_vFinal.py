@@ -3,7 +3,7 @@
 import sys
 import cPickle as pickle
 import numpy as np
-import scipy.sparse
+#import scipy.sparse
 import gzip
 import json
 import itertools
@@ -11,10 +11,10 @@ import time
 import os
 from sets import Set
 from os import walk
-from scipy.sparse import lil_matrix
-from scipy.sparse.linalg import spsolve
-from numpy.linalg import solve, norm
-from numpy.random import rand
+#from scipy.sparse import lil_matrix
+#from scipy.sparse.linalg import spsolve
+#from numpy.linalg import solve, norm
+#from numpy.random import rand
 
 from json import dumps, loads, JSONEncoder, JSONDecoder
 import pickle
@@ -70,7 +70,6 @@ def constructHash(openCorrect):
 def produceUserList():
     global years
     validDoc = constructHash(correctAidListFile)
-#    os.chdir('/data/coaccess/round5')	
     os.chdir(outdir)	
     print "Working in directory " + os.getcwd() + " . Temporary files will be created here"
     
@@ -119,8 +118,11 @@ def produceUserList():
         fakereducer(year)
 
 
-
-# Reduces list of pairs for duplicates
+#-------------------------------------------------------------------
+# Removes duplicates from the list of (user, article) pairs.
+# (Duplicates may occur e.g. due to the user reloading a page.
+# They may or may not have the same time stamp).
+#-------------------------------------------------------------------
 def fakereducer(year):
     strToFile = str(year) + "_phase1.txt"
     strToSort = str(year) + "_phase2.txt"
@@ -133,12 +135,6 @@ def fakereducer(year):
         for line in infile:
             temp = line.split(" ");
             tempPrev = prev.split(" ");
-	    
-            if (not (container(tempPrev[1]))): tempPrev[1] = re.sub('v.*','',tempPrev[1])
-            if (not (container(temp[1]))): temp[1] = re.sub('v.*', '', temp[1]);
-            if (not (container(temp[0]))): temp[0] = re.sub('v.*', '', temp[0]);
-            if (not (container(tempPrev[0]))): tempPrev[0] = re.sub('v.*', '', tempPrev[0]);
-
             if (str(temp[0] + temp[1]) != str(tempPrev[0] + tempPrev[1])):
 		prev = tempPrev[0] + " " + tempPrev[1] + " " + tempPrev[2]
 		line = temp[0] + " " + temp[1] + " " + temp[2]
@@ -146,15 +142,6 @@ def fakereducer(year):
                 prev= line
     f.close()
     pairGeneration(year)
-
-
-# checks whether a substring is contained or not
-def container(stringS):
-    subS = 'solv-'
-    return (subS in stringS)
-
-
-
 
 # Generates pairs into text file
 def pairGeneration(year):
@@ -182,17 +169,12 @@ def pairGeneration(year):
                     prevUser = userLineId
                     continue;
                 currentDocs.append(prevDoc)
-                outerCount= 0
-                innerCount = 0
-                while(outerCount < len(currentDocs)):
+                for outerCount in range (0,len(currentDocs)):
                     i = currentDocs[outerCount]
-                    while(innerCount < len(currentDocs)):
+                    for innerCount in range(0,len(currentDocs)):
                         j = currentDocs[innerCount]
                         if (i != j):
                             pairFile.write(str(i) + " " + str(j) + "\n")
-                        innerCount += 1
-                    innerCount= 0
-                    outerCount += 1
                 currentDocs= []
             else:
                 currentDocs.append(prevDoc)
@@ -247,37 +229,42 @@ def sorter2(year):
 # -------------------------------------------------------------------------------------------
 def splitter(year):
     pairReduce = str(year) + '_phase7.txt'
-    print "Splitting " + pairReduce + " into article-specific list files in directory " + str(year)
+    print "Splitting " + pairReduce + " into article-specific list files in directory " + str(year)    
     os.system('mkdir '+ str(year));
 #    os.system('chmod 777 *');
     cutOff = 100
-    with open(pairReduce, 'r+') as infile:
-	os.chdir('' + str(year));
-	prev = infile.readline()
-	counter = 1
-        strHolder= ''
-	fileInit = prev.split(" ")
-	fileInit = fileInit[0];
-	fileInit = fileInit.replace("/","");
-	curFile = open(fileInit, 'wb')
-	for line in infile:
-	    lineS = line.strip().split()
-            prevS= prev.strip().split()
-	    if (counter < cutOff):
-       	        if(lineS[0] == prevS[0]):
-		    curFile.write(prevS[1] + " " + prevS[2] + "\n")
-	  	    counter += 1
-	    else:
-		if (lineS[0] != prevS[0]): 
-		    curFile.close()
-		    fileName = lineS[0];
-		    fileName = fileName.replace("/","@");
-		    curFile = open(fileName, 'wb')
-		    counter = 0
-	    prev = line;	    
-    os.chdir(outdir);	
-				
 
+    curFile = None 
+    oldKey = None
+    cnt = 0
+    sumCnt = discardCnt = fileCnt = 0
+
+    with open(pairReduce, 'r+') as infile:
+        os.chdir(str(year))
+        for line in infile:
+            key = line.split()[0]
+            if (oldKey is None or oldKey != key):
+                if (not (curFile is None)):       
+                    curFile.close()
+                cnt = 0
+                oldKey = key
+                curFile = open(key.replace("/","@"), 'wb')
+                fileCnt += 1
+    	    if (cnt < cutOff):
+                curFile.write(line)     
+                cnt += 1
+                sumCnt += 1
+            else:
+                discardCnt += 1
+
+        if (not (curFile is None)):
+             curFile.close() 
+
+        print("Done with")
+
+    os.chdir(outdir)  
+    print("Split: created " + str(fileCnt) + " files; wrote " + str(sumCnt) + " lines, discarded " + str(discardCnt) + " 'extra' lines")
+				
 
 # merges multiple years into one year
 def merger():
