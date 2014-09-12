@@ -143,6 +143,18 @@ def fakereducer(year):
     f.close()
     pairGeneration(year)
 
+def writePairs(pairFile, user, currentDocs):
+    if (len(currentDocs)>200):
+        print("Skip user " + user + " with " + str(len(currentDocs)) + " article views")
+        return
+    for outerCount in range (0,len(currentDocs)):
+                    i = currentDocs[outerCount]
+                    for innerCount in range(0,len(currentDocs)):
+                        j = currentDocs[innerCount]
+                        if (i != j):
+                            pairFile.write(str(i) + " " + str(j) + "\n")
+       
+
 # Generates pairs into text file
 def pairGeneration(year):
     counter= 0;
@@ -151,37 +163,27 @@ def pairGeneration(year):
     pairFile = open(strToPair, 'wb')
 
     with open(strToReduce, 'r+') as infile:
-        prev = infile.readline()
-        prev = prev.split(" ")
-        prevDoc = prev[1]
-        prevUser = prev[0]
+        prevUser = None
         currentDocs= []
         counter = 0;
+
         for line in infile:
             userLine = line.split(" ")
-            userLineId = userLine[0]
-            if (userLineId != prevUser):
+            user = userLine[0]
+            if (prevUser is None or user != prevUser):
                 counter += 1
-                #print "Number: " + str(counter) + " " + str(len(currentDocs))
-                if (len(currentDocs) > 200):
-                    currentDocs= []
-                    prevDoc = userLine[1]
-                    prevUser = userLineId
-                    continue;
-                currentDocs.append(prevDoc)
-                for outerCount in range (0,len(currentDocs)):
-                    i = currentDocs[outerCount]
-                    for innerCount in range(0,len(currentDocs)):
-                        j = currentDocs[innerCount]
-                        if (i != j):
-                            pairFile.write(str(i) + " " + str(j) + "\n")
+                writePairs(pairFile, user, currentDocs)
+                prevUser = user
                 currentDocs= []
-            else:
-                currentDocs.append(prevDoc)
-            prevDoc = userLine[1]
-            prevUser = userLineId
+
+            currentDocs.append(userLine[1])
+
+        writePairs(pairFile, user, currentDocs)
+        
     pairFile.close()
     sorter(year)
+
+
 
 # Sorts pairs into k1 k2 order
 def sorter(year):
