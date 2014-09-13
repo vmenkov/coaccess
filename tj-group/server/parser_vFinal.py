@@ -244,7 +244,8 @@ def splitter(year):
     with open(pairReduce, 'r+') as infile:
         os.chdir(str(year))
         for line in infile:
-            key = line.split()[0]
+            sp = line.strip().split()
+            key = sp[0]
             if (oldKey is None or oldKey != key):
                 if (not (curFile is None)):       
                     curFile.close()
@@ -253,7 +254,7 @@ def splitter(year):
                 curFile = open(key.replace("/","@"), 'wb')
                 fileCnt += 1
     	    if (cnt < cutOff):
-                curFile.write(line)     
+                curFile.write(sp[1] + " " + sp[2] + "\n")     
                 cnt += 1
                 sumCnt += 1
             else:
