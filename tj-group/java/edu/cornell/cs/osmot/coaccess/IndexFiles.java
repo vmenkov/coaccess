@@ -89,7 +89,7 @@ public class IndexFiles {
         try {
 	    Vector<String> aids = readAidList(aidListFilePath); 
 
-            System.out.println("Indexing to directory '" + indexPath + "'...");
+            System.out.println("At "+new Date()+", indexing to directory '" + indexPath + "'...");
             
             Directory dir = FSDirectory.open(new File(indexPath));
             Analyzer analyzer = new StandardAnalyzer(Version.LUCENE_40);
@@ -109,7 +109,7 @@ public class IndexFiles {
             // buffer.  But if you do this, increase the max heap
             // size to the JVM (eg add -Xmx512m or -Xmx1g):
             //
-            // iwc.setRAMBufferSizeMB(256.0);
+            iwc.setRAMBufferSizeMB(512.0);
             
             IndexWriter writer = new IndexWriter(dir, iwc);
 	    int doneCnt = 0;
@@ -118,18 +118,34 @@ public class IndexFiles {
 		if (done) doneCnt ++;
             }
 
+            System.out.println("Looked for files for " + aids.size() + " articles, in " + years.length + " years' directories. Found at least some data for " + doneCnt + " articles out of these.");
+	    System.out.println("At "+new Date()+ ", done indexing documents");
+
             // NOTE: if you want to maximize search performance,
             // you can optionally call forceMerge here.  This can be
             // a terribly costly operation, so generally it's only
             // worth it when your index is relatively static (ie
             // you're done adding documents to it):
             //
-            // writer.forceMerge(1);
-            
+
+
+	    // Optimize is gone from modern versions of Lucene, replaced with
+	    // forceMerge():
+	    // http://blog.trifork.com/2011/11/21/simon-says-optimize-is-bad-for-you/
+	    
+	    final boolean optimize  = true;
+	    if (optimize) {
+		System.out.println("At "+new Date()+", force-merging index...");
+		writer.forceMerge(1);
+		// writer.optimize();
+		System.out.println("At "+new Date()+", done force-merging index.");
+	    }
+	    
+
             writer.close();
             
             Date end = new Date();
-            System.out.println("Looked for files for " + aids.size() + " articles, in " + years.length + " years' directories. Found at least some data for " + doneCnt + " articles out of these.");
+
             System.out.println(end.getTime() - start.getTime() + " total milliseconds");
             
         } catch (IOException e) {
@@ -158,9 +174,12 @@ public class IndexFiles {
     }
 
     /** Converts a command line description of the year range
-	(e.g. "2000:2010" to an array of years (e.g. {2000, 2001, ..., 2010}) */
+	(e.g. "2000:2010" to an array of years (e.g. {2000, 2001, ..., 2010}) 
+    */
     static int[] makeYearList(String yearsString) {
-	int y1=2003, y2=2014;
+	GregorianCalendar cal = new GregorianCalendar();
+	int y1 = 2003;
+	int y2 = cal.get(Calendar.YEAR);
 	if (yearsString != null) {
 	    String bounds[] = yearsString.split(":");
 	    if (bounds.length!=2) throw new IllegalArgumentException("Cannot parse '"+yearsString+"' as yyyy:yyyy");
@@ -236,9 +255,6 @@ public class IndexFiles {
 	doc.add(yearField);
         
 	// Add unique id; this is arxiv id in this case
-	//String filename = file.getName().replaceAll("[@-]", "");
-	//	    System.out.println(filename);
-	//	    Field uniqueField = new StringField("arxiv_id", filename, Field.Store.YES);
 	Field uniqueField = new StringField(Fields.ARXIV_ID, aid, Field.Store.YES);
 
 	doc.add(uniqueField);
