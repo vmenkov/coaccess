@@ -1,12 +1,7 @@
 package edu.cornell.cs.osmot.coaccess;
+
 import java.util.*;
-
-
 import java.io.*;
-import java.util.*;
-//import java.text.*;
-//import java.lang.reflect.*;
-//import java.util.regex.*;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -72,9 +67,14 @@ public class CoaccessServlet extends HttpServlet {
 
    }
 
+    /** The Lucene index directory where coaccess data are stored. */
     static final public String indexDir = "/data/coaccess/round5/lucene_framework/index";
 
 
+    /** The main method for getting stored coaccess data from the
+	Lucene index.  (God knows why they are stored in a Lucene
+	index, but that was A&amp;Z's solution).
+     */
     static String getRawData(String aid) throws IOException {
        IndexReader reader = DirectoryReader.open(FSDirectory.open(new File(indexDir)));
        IndexSearcher searcher = new IndexSearcher(reader);
@@ -119,7 +119,7 @@ public class CoaccessServlet extends HttpServlet {
 	}
     }
 
- /** Retrives an integer HTTP request parameter. If not found in
+    /** Retrives an integer HTTP request parameter. If not found in
       the HTTP request, also looks in the attributes (which can be used
       by SurveyLogicServlet in case of internal redirect)
      */
