@@ -115,6 +115,8 @@ public class IndexFiles {
 	    final int maxCnt = 100;
 	    if (maxCnt>=0) {
 		System.out.println("Restricting the number of results per article to " + maxCnt);
+	    } else {
+		System.out.println("NOT restricting the number of results per article");
 	    }
 
 	    int doneCnt = 0;
