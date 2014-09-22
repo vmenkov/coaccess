@@ -246,20 +246,28 @@ public class SearchFiles {
 	@return a List of (article id, count) pairs, ordered, in descending
 	order, by count
      */
-    static List<Map.Entry<String, Integer>> aggregateCounts(String yearArray) {
-	Hashtable<String, Integer> ht = new Hashtable<String, Integer>();
+    private static List<Map.Entry<String, Integer>> aggregateCounts(String yearArray) {
 	String[] years = yearArray.split("\n:\n");
+	return aggregateCounts(years);	
+    }
 
-	for(String year : years){
+ 
+    private static List<Map.Entry<String, Integer>> aggregateCounts(String[] years) {
+	Hashtable<String, Integer> ht = new Hashtable<String, Integer>();
+
+	for(String year : years) {
+	    if (years==null || years.equals("")) continue;
 	    String[] coaccesses = year.split("\n");
 	    for(String coaccess : coaccesses){
 		if(coaccess != ""){
 		    String[] temp = coaccess.split(" ");
-		    if(ht.containsKey(temp[0])){
-			int coaccessNum = ht.get(temp[0]);
-			ht.put(temp[0], coaccessNum+Integer.parseInt(temp[1]));
+		    String key=temp[0];
+		    int q = Integer.parseInt(temp[1]);
+		    if (ht.containsKey(key)) {
+			int coaccessNum = ht.get(key);
+			ht.put(key, coaccessNum+q);
 		    } else {
-			ht.put(temp[0], Integer.parseInt(temp[1]));
+			ht.put(key, q);
 		    }
 		}
 	    }
@@ -284,8 +292,9 @@ public class SearchFiles {
 	to a certain value. Note that using this parameter may make the
 	sparsity matrix non-symmetric.
      */
-    static String consolidate(String yearData, int maxCnt) {
-	List<Map.Entry<String, Integer>> list = aggregateCounts(yearData);
+    static String consolidate(String[] years, int maxCnt) {
+
+	List<Map.Entry<String, Integer>> list = aggregateCounts(years);
 	StringBuffer buf = new StringBuffer();	
 	int cnt=0;
 	for(Map.Entry<String, Integer> x: list) {
