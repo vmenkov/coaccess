@@ -152,10 +152,11 @@ public class IndexFiles {
             Date end = new Date();
 
             System.out.println(end.getTime() - start.getTime() + " total milliseconds");
-            
+            System.exit(0);            
         } catch (IOException e) {
             System.out.println(" caught a " + e.getClass() +
                                "\n with message: " + e.getMessage());
+            System.exit(1);
         }
     }
 
@@ -166,7 +167,7 @@ public class IndexFiles {
     */
     static Vector<String> readAidList(String f) throws IOException {
 	FileReader fr = new FileReader(f);
-	LineNumberReader r =  new LineNumberReader(fr);
+	LineNumberReader r =  new LineNumberReader(fr, 16384);
 	Vector<String> aids= new    Vector<String>();
 	String s=null;
 	while((s = r.readLine())!=null) {
@@ -174,6 +175,7 @@ public class IndexFiles {
 	    if (s.equals("") || s.startsWith("#")) continue;
 	    aids.add(s);
 	}
+	fr.close();
 	System.out.println("Has read in list of "+aids.size()+" article IDs");
 	return aids;
     }
@@ -230,32 +232,33 @@ public class IndexFiles {
     static boolean indexDocs(IndexWriter writer, File dataDir, String aid, int[] years, int maxCnt)
     throws IOException {
 
-	// Loads 10 years of top k documents and uses :  as delimiter to separate years
+	// Loads 10+ years of top k documents and uses :  as delimiter to separate years
 	String fileName = aid.replaceAll("/", "@");
-	StringBuilder holdK = new StringBuilder();
-	
+	String[] v= new	String[years.length];
 	int foundFileCnt = 0;
+	int yp=0;
 	for (int year: years){
 	    File yearDir = new File(dataDir, "" + year);
 	    if (!yearDir.canRead()) throw new IOException("Cannot read directory " + yearDir);
 	    File temp = new File(yearDir, fileName);
 	    // check if file exists
+	    String s = "";
 	    if(temp.exists()){
 		byte[] data = new byte[(int)temp.length()];
 		FileInputStream fiss = new FileInputStream(temp);
 		fiss.read(data);
 		fiss.close();
-		String s = new String(data, "UTF-8");
-		holdK.append(s+ "\n:\n");
+		s = new String(data, "UTF-8");
 		foundFileCnt++;
 	    }
+	    v[yp++] = s;
 	}
 	if (foundFileCnt==0) return false; // no files found for this article
 	
 	// make a new, empty document
 	Document doc = new Document();
 
-	String coaccessData = SearchFiles.consolidate(holdK.toString(), maxCnt);
+	String coaccessData = SearchFiles.consolidate( v,  maxCnt);
       	Field yearField = new StringField(Fields.COACCESS, coaccessData, Field.Store.YES);
 	doc.add(yearField);
         
