@@ -246,13 +246,13 @@ public class SearchFiles {
 	@return a List of (article id, count) pairs, ordered, in descending
 	order, by count
      */
-    private static List<Map.Entry<String, Integer>> aggregateCounts(String yearArray) {
+    static List<Map.Entry<String, Integer>> aggregateCounts(String yearArray) {
 	String[] years = yearArray.split("\n:\n");
 	return aggregateCounts(years);	
     }
 
  
-    private static List<Map.Entry<String, Integer>> aggregateCounts(String[] years) {
+     static List<Map.Entry<String, Integer>> aggregateCounts(String[] years) {
 	Hashtable<String, Integer> ht = new Hashtable<String, Integer>();
 
 	for(String year : years) {
