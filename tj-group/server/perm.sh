@@ -3,8 +3,7 @@
 echo `date` " : Listing valid article IDs"
 cmd=../../../arxiv/cmd.sh
 
-if [ ! -x $cmd ] 
-then
+if [ ! -x $cmd ] ; then
     echo "Script $cmd does not exist, or is not executable. Exiting!"
     exit 1
 fi
@@ -58,33 +57,42 @@ time /usr/local/epd/bin/python $parser 2014 $outdir  $aidList
 
 cd $outdir/lucene_framework
 
-if [ ! -e index.new ] 
- then
+if [ -e index.new ] ; then
     echo "Directory index.new already exists. Will not run re-indexing now. Please delete index.new and run re0indexing manually!"
     exit 1
 fi
 
 echo `date` : " : Creating Lucene Index"
 
-cp=$build/osmot-1.0.jar:lucene-analyzers-common-4.5.1.jar:lucene-demo-4.5.1-SNAPSHOT.jar:lucene-core-4.5.1.jar:lucene-queryparser-4.5.1.jar  
-java  -Xmx1g -cp $cp edu.cornell.cs.osmot.coaccess.IndexFiles  -docs $outdir -update -index index.new -aids $aidList -years 2003:2014
+#-- no -update  needed, as we use a clean dir
 
-echo `date` : " : Indexer completed: "
+cp=$build/osmot-1.0.jar:lucene-analyzers-common-4.5.1.jar:lucene-demo-4.5.1-SNAPSHOT.jar:lucene-core-4.5.1.jar:lucene-queryparser-4.5.1.jar  
+java  -Xmx1g -cp $cp edu.cornell.cs.osmot.coaccess.IndexFiles  -docs $outdir -index index.new -aids $aidList -years 2003:2014
+
+OUT=$?
+
+echo `date` " : Indexer completed: "
 ls -ld index.new
-ehco "Size in GB"
+echo "Size in GB"
 du -B 1GB index.new
 
-if [ ! -e index.old ] 
- then
-    echo "Removing index.old"
-    rm index.old
- fi
 
-if [ ! -e index.old ] 
- then
+if [ $OUT -eq 0 ];then
+   echo "IndexFiles run was apparently successful"
+else
+   echo "IndexFiles run apparently failed (status=" $OUT "); exiting"
+   exit 1
+fi
+
+if [ -e index.old ] ;  then
+    echo "Removing index.old and its content"
+    rm -rf index.old
+fi
+
+if [ -e index.old ] ;  then
     echo "index.old still exist; could not remove. Please take care of this manually!"
     exit 1
- fi
+fi
 
 echo "Moving index"
 mv index index.old

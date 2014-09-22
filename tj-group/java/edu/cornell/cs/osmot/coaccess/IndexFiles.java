@@ -109,12 +109,17 @@ public class IndexFiles {
             // buffer.  But if you do this, increase the max heap
             // size to the JVM (eg add -Xmx512m or -Xmx1g):
             //
-            iwc.setRAMBufferSizeMB(512.0);
-            
+            iwc.setRAMBufferSizeMB(512.0);            
             IndexWriter writer = new IndexWriter(dir, iwc);
+
+	    final int maxCnt = 100;
+	    if (maxCnt>=0) {
+		System.out.println("Restricting the number of results per article to " + maxCnt);
+	    }
+
 	    int doneCnt = 0;
 	    for(String aid: aids) {
-		boolean done = indexDocs(writer, docDir, aid, years);
+		boolean done = indexDocs(writer, docDir, aid, years, maxCnt);
 		if (done) doneCnt ++;
             }
 
@@ -222,7 +227,7 @@ public class IndexFiles {
 
      @throws IOException If there is a low-level I/O error
      */
-    static boolean indexDocs(IndexWriter writer, File dataDir, String aid, int[] years)
+    static boolean indexDocs(IndexWriter writer, File dataDir, String aid, int[] years, int maxCnt)
     throws IOException {
 
 	// Loads 10 years of top k documents and uses :  as delimiter to separate years
@@ -250,7 +255,7 @@ public class IndexFiles {
 	// make a new, empty document
 	Document doc = new Document();
 
-	String coaccessData = SearchFiles.consolidate(holdK.toString());
+	String coaccessData = SearchFiles.consolidate(holdK.toString(), maxCnt);
       	Field yearField = new StringField(Fields.COACCESS, coaccessData, Field.Store.YES);
 	doc.add(yearField);
         
