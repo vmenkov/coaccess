@@ -278,12 +278,20 @@ public class SearchFiles {
 
     /** Reformats a database entry, merging together data from
 	separate years' secions.
+	@param maxCnt Truncate the list to this many values. If negative, the
+	parameter is ignored. This can be interpreted as a sparsity control
+	on the coaccess matrix, restricting the number of non-zero values
+	to a certain value. Note that using this parameter may make the
+	sparsity matrix non-symmetric.
      */
-    static String consolidate(String yearData) {
+    static String consolidate(String yearData, int maxCnt) {
 	List<Map.Entry<String, Integer>> list = aggregateCounts(yearData);
 	StringBuffer buf = new StringBuffer();	
+	int cnt=0;
 	for(Map.Entry<String, Integer> x: list) {
+	    if (cnt==maxCnt) break;
 	    buf.append(x.getKey() + " " + x.getValue() + "\n");
+	    cnt++;
 	}
 	return buf.toString();
     }
