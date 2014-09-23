@@ -22,7 +22,7 @@ import re
 
 if (len(sys.argv)!=4):
     print "Usage: " + sys.argv[0] + " year out-dir-name correct-aid-list-file"
-    exit()
+    exit(1)
 
 years = [ int(sys.argv[1]) ]
 outdir=sys.argv[2]
@@ -212,13 +212,12 @@ def pairGeneration(year):
                 pairSaver.addPairs(user, currentDocs)
                 prevUser = user
                 currentDocs= []
-
             currentDocs.append(userLine[1])
 
         pairSaver.addPairs(user, currentDocs)
         
     pairSaver.writeAll()
-    print("In total, wrote " + str(pairSaver.allCnt) + " pairs via PairSaver");
+    print("At " + time.strftime("%c") + ", completed pair generation. In total, wrote " + str(pairSaver.allCnt) + " pairs via PairSaver");
     perArticle(xDir, str(year))
 
 #-- sorts coaccess data in each per-article file
@@ -234,6 +233,7 @@ def perArticle(fromDir, toDir):
     cutOff = 100
     files = []
     i = 0
+    wroteCnt = 0
 
     for (dirpath, dirnames, filenames) in walk(fromDir):
         files.extend(filenames)
@@ -264,7 +264,8 @@ def perArticle(fromDir, toDir):
                 cnt += 1
                 if (cnt >= cutOff):
                     break
-    print "Done processing per-article files"
+            wroteCnt += cnt
+    print "At " + time.strftime("%c") +", done processing per-article files. Wrote " + str(i) + " files, " + str(wroteCnt) + " lines"
 
 produceUserList()
 
