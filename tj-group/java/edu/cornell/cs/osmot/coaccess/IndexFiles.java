@@ -51,6 +51,7 @@ public class IndexFiles {
 	String aidListFilePath = null;
 	String yearsString = null;
 
+	boolean dry = false;
         boolean create = true;
         for(int i=0;i<args.length;i++) {
             if ("-index".equals(args[i])) {
@@ -66,6 +67,9 @@ public class IndexFiles {
                 yearsString = args[i+1];
                 i++;
             } else if ("-update".equals(args[i])) {
+                create = false;
+            } else if ("-dry".equals(args[i])) {
+		dry = true;
                 create = false;
             }
         }
@@ -95,7 +99,9 @@ public class IndexFiles {
             Analyzer analyzer = new StandardAnalyzer(Version.LUCENE_40);
             IndexWriterConfig iwc = new IndexWriterConfig(Version.LUCENE_40, analyzer);
             
-            if (create) {
+            if (dry) {
+		System.out.println("This is a dry run; no indexing will be actually done!");
+            } else if (create) {
                 // Create a new index in the directory, removing any
                 // previously indexed documents:
                 iwc.setOpenMode(OpenMode.CREATE);
@@ -110,7 +116,7 @@ public class IndexFiles {
             // size to the JVM (eg add -Xmx512m or -Xmx1g):
             //
             iwc.setRAMBufferSizeMB(512.0);            
-            IndexWriter writer = new IndexWriter(dir, iwc);
+            IndexWriter writer = dry? null : new IndexWriter(dir, iwc);
 
 	    final int maxCnt = 100;
 	    if (maxCnt>=0) {
@@ -119,11 +125,25 @@ public class IndexFiles {
 		System.out.println("NOT restricting the number of results per article");
 	    }
 
+	    File yearDirs[] = new File[years.length];
+	    FileAccess[] fa = new FileAccess[years.length];
+	    int i=0;
+	    for (int year: years) {
+		File y = new File(docDir, "" + year);
+		if (!y.canRead()) throw new IOException("Cannot read directory " + y);
+		yearDirs[i] = y;
+		//		fa[i] = new SplitFileAccess(y);
+		fa[i] = new JoinedFileAccess(y);
+		i++;
+	    }
+
 	    int doneCnt = 0;
 	    for(String aid: aids) {
-		boolean done = indexDocs(writer, docDir, aid, years, maxCnt);
+		boolean done = indexDocs(writer, fa, aid, maxCnt);
 		if (done) doneCnt ++;
             }
+
+	    for(FileAccess f: fa) { f.closeAll(); }
 
             System.out.println("Looked for files for " + aids.size() + " articles, in " + years.length + " years' directories. Found at least some data for " + doneCnt + " articles out of these.");
 	    System.out.println("At "+new Date()+ ", done indexing documents");
@@ -141,7 +161,7 @@ public class IndexFiles {
 	    // http://blog.trifork.com/2011/11/21/simon-says-optimize-is-bad-for-you/
 	    
 	    final boolean optimize  = true;
-	    if (optimize) {
+	    if (optimize && writer!=null) {
 		System.out.println("At "+new Date()+", force-merging index...");
 		writer.forceMerge(1);
 		// writer.optimize();
@@ -149,12 +169,12 @@ public class IndexFiles {
 	    }
 	    
 
-            writer.close();
+            if (writer!=null) writer.close();
             
             Date end = new Date();
 
             System.out.println(end.getTime() - start.getTime() + " total milliseconds");
-            System.exit(0);            
+            System.exit( dry? 2 : 0);            
         } catch (IOException e) {
             System.out.println(" caught a " + e.getClass() +
                                "\n with message: " + e.getMessage());
@@ -211,6 +231,107 @@ public class IndexFiles {
     static class Fields {
 	static final String ARXIV_ID = "arxiv_id", COACCESS = "coaccess";
     }
+
+    abstract static class FileAccess {
+  	abstract String read(String aid) throws IOException;
+	void closeAll() throws IOException	{}
+    }
+
+    /** Reading data from split files (one per document) */
+    static class SplitFileAccess extends FileAccess {
+	File ydir;
+	SplitFileAccess(File _dir) {
+	    ydir = _dir;
+	}
+	String read(String aid) throws IOException {
+	    String fileName = aid.replaceAll("/", "@");
+	    String prefix = getPrefix(aid);
+	    File subdir = new File(ydir, prefix);
+	    File temp = new File(subdir, fileName);
+	    // check if file exists
+	    String s = "";
+	    if(temp.exists()){
+		byte[] data = new byte[(int)temp.length()];
+		FileInputStream fiss = new FileInputStream(temp);
+		fiss.read(data);
+		fiss.close();
+		try {
+		    return new String(data, "UTF-8");
+		} catch (java.io.UnsupportedEncodingException ex) {
+		    return null;
+		}
+	    } else {
+		return null;
+	    }
+	}
+    }
+
+    /** Reading data from joined files (one file per prefix) */
+    static class JoinedFileAccess extends FileAccess {
+	File ydir;
+	LineNumberReader r = null;
+	String oldPrefix = null;
+	String prereadAid = null;       
+
+	JoinedFileAccess(File _dir) {
+	    ydir = _dir;
+	}
+
+	/** Expects to find a string of the form ": AID" (unless EOF
+	    is reached), and reads it in, setting prereadAid.
+	    @return True if the AID has been pre-read either before or now. False on EOF.
+	 */
+	private boolean preread() throws IOException {
+	    if (r == null) throw new AssertionError("Cannot call preread() w/o a reader ready");
+	    if (prereadAid != null) return true;
+	    String x = r.readLine();
+	    if (x==null) return false;
+	    x = x.trim();
+	    if (!x.startsWith(": "))  throw new IOException("preread() expected to find ': id', found '"+x+"'");
+	    prereadAid = x.substring(2);
+	    return true;
+	}
+
+	/** Expects that the AID line has been pre-read already; reads the doc body, and pre-reads the next ID line */
+	private String readBody()  throws IOException{
+	    if (prereadAid != null) throw new AssertionError("Cannot call readBody() w/o pre-read ID");
+	    prereadAid = null;
+	    StringBuffer b= new StringBuffer(8192);
+	    String x=null;
+	    while((x=r.readLine()) != null) {
+		if (x.startsWith(": ")) {
+		    prereadAid = x.trim().substring(2);
+		    break;
+		}
+		b.append(x);
+	    }
+	    return b.toString();
+	}
+
+	String read(String aid) throws IOException {
+	    String prefix = getPrefix(aid);
+
+	    if (oldPrefix == null || !prefix.equals(oldPrefix)) {
+		if (r!=null) closeAll();
+		File f = new File(ydir, prefix + ".txt");
+		if (!f.exists()) return null;
+		FileReader fr = new FileReader(f);
+		r =  new LineNumberReader(fr, 16384);
+		oldPrefix = prefix;
+	    }
+
+	    if (!preread()) return null;
+	    while( prereadAid != null && prereadAid.compareTo(aid) < 0) {
+		readBody();
+	    }
+	    return  (prereadAid!=null && prereadAid.equals(aid))? readBody() : null;
+	}
+	void closeAll()	 throws IOException{
+	    if (r!=null) r.close();
+	    r = null;
+	}
+    }
+
     
     /**
      Indexes the given file using the given writer, or if a directory
@@ -231,27 +352,28 @@ public class IndexFiles {
 
      @throws IOException If there is a low-level I/O error
      */
-    static boolean indexDocs(IndexWriter writer, File dataDir, String aid, int[] years, int maxCnt)
+    static boolean indexDocs(IndexWriter writer, FileAccess[] fa, String aid, int maxCnt)
     throws IOException {
 
 	// Loads 10+ years of top k documents and uses :  as delimiter to separate years
-	String fileName = aid.replaceAll("/", "@");
-	String[] v= new	String[years.length];
+	String prefix = getPrefix(aid);
+	if (prefix==null) {
+	    System.err.println("Warning: no prefix in aid=" + aid);
+	    return false;
+	}
+	//String fileName = aid.replaceAll("/", "@");
+	String[] v= new	String[fa.length];
 	int foundFileCnt = 0;
 	int yp=0;
-	for (int year: years){
-	    File yearDir = new File(dataDir, "" + year);
-	    if (!yearDir.canRead()) throw new IOException("Cannot read directory " + yearDir);
-	    File temp = new File(yearDir, fileName);
-	    // check if file exists
-	    String s = "";
-	    if(temp.exists()){
-		byte[] data = new byte[(int)temp.length()];
-		FileInputStream fiss = new FileInputStream(temp);
-		fiss.read(data);
-		fiss.close();
-		s = new String(data, "UTF-8");
+	//	File subDirs[] = new File[] yearDirs;
+	
+
+	for (FileAccess f: fa) {
+	    String s = f.read(aid);
+	    if (s!=null) {
 		foundFileCnt++;
+	    } else {
+		s = "";
 	    }
 	    v[yp++] = s;
 	}
@@ -269,7 +391,9 @@ public class IndexFiles {
 
 	doc.add(uniqueField);
 	
-	if (writer.getConfig().getOpenMode() == OpenMode.CREATE) {
+	if (writer==null) {
+	    System.out.println("Would add doc " + aid);
+	} else if (writer.getConfig().getOpenMode() == OpenMode.CREATE) {
 	    // New index, so we just add the document (no old
 	    // document can be there):
 	    System.out.println("Adding doc " + aid);
@@ -284,4 +408,15 @@ public class IndexFiles {
 	}
 	return true;
     }
+
+    private static final char sep[] = {'.', '/', '@'};
+
+    private static String getPrefix(String aid) {
+	for(char c:  sep) {
+	    int k = aid.indexOf(c);
+	    if (k > 0) return aid.substring(0, k);
+	}
+	return null;
+    }
+
 }
