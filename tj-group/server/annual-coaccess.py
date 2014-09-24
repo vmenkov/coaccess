@@ -10,7 +10,6 @@ import itertools
 import time
 import os
 from sets import Set
-from os import walk
 #from scipy.sparse import lil_matrix
 #from scipy.sparse.linalg import spsolve
 #from numpy.linalg import solve, norm
@@ -71,8 +70,8 @@ def produceUserList():
     global years
     validDoc = constructHash(correctAidListFile)
     os.chdir(outdir)	
-    print "Working in directory " + os.getcwd() + " . Temporary files will be created here"
-    
+    print "At " + time.strftime("%c") + ", working in directory " + os.getcwd() + " . Temporary files will be created here"
+
     for year in years:
         strToFile = str(year) + "_phase1"
         h = open('%s.txt' % strToFile,'wb')        
@@ -86,7 +85,7 @@ def produceUserList():
         print "Processing JSON files for Year " + str(year) + ", from the directory " + data_path;
         # Get all files under the directory
         files = []
-        for (dirpath, dirnames, filenames) in walk(data_path):
+        for (dirpath, dirnames, filenames) in os.walk(data_path):
             files.extend(filenames)
         for file_name in files:
 
@@ -166,7 +165,7 @@ class PairSaver:
             else:
                 self.topmap[a] = [z]
         self.size += 2*len(z)
-        if (self.size > 100000):
+        if (self.size >  20000000):
             self.writeAll()
 
     def writeAll(self):
@@ -174,7 +173,13 @@ class PairSaver:
         cnt = 0        
         print("Pair buffer flush: size="+str(self.size)+" top map keys=" + str(len(self.topmap.keys())))
         for a in (self.topmap.keys()):
-            with open(self.xDir + "/" + a.replace("/","@"), 'ab') as f:
+            prefix = aidPrefix(a)
+            zDir = self.xDir + "/" + prefix
+            
+            if (not os.path.exists(zDir)):
+                os.mkdir(zDir)
+
+            with open(zDir + "/" + a.replace("/","@"), 'ab') as f:
                 fileCnt += 1
                 for v in (self.topmap[a]):
                     for b in (v):
@@ -231,42 +236,73 @@ def perArticle(fromDir, toDir):
     os.mkdir(toDir)
 
     cutOff = 100
-    files = []
     i = 0
     wroteCnt = 0
 
-    for (dirpath, dirnames, filenames) in walk(fromDir):
-        files.extend(filenames)
-    for file_name in files:
-        file_path = fromDir +"/" + file_name
-        i += 1
-        print "Processing article file("  + str(i) + ")=" + file_path;
-        #-- read all lines, and put counts into h
-        h = {}
-        with open(file_path, 'r+') as infile:
-            for line in infile:
-                b= line.strip()
-                if (b in h):
-                    h[b] += 1
-                else:
-                    h[b] = 1
-        bAndCnt = []
-        for b in (h.keys()):
-            tu = (b, h[b])
-            bAndCnt.append(tu)
-        bAndCnt = sorted(bAndCnt, key=lambda x: x[1], reverse=True)
+    li = os.listdir(fromDir)
+      
+    for prefix in (li):
+        sdir = fromDir + "/" + prefix
 
-        out_path = toDir +"/" + file_name
+        if (not(os.path.isdir(sdir))):
+            continue
+
+        files = os.listdir(sdir)
+        out_path = toDir +"/" + prefix + ".txt"
+
+        print "Processing all "+str(len(files))+" files in directory " + sdir + "; out to " + out_path
+        files.sort()
+
         with open( out_path, 'wb') as curFile:
-            cnt = 0
-            for t in bAndCnt:
-                curFile.write(t[0] + " " + str(t[1]) + "\n")
-                cnt += 1
-                if (cnt >= cutOff):
-                    break
-            wroteCnt += cnt
+
+            for file_name in files:
+                file_path = sdir +"/" + file_name
+                if (not(os.path.isfile(file_path))):
+                    continue
+
+                i += 1
+                # print "Processing article file("  + str(i) + ")=" + file_path;
+                #-- read all lines, and put counts into h
+                h = {}
+                with open(file_path, 'r+') as infile:
+                    for line in infile:
+                        b = line.strip()
+                        if (b in h):
+                            h[b] += 1
+                        else:
+                            h[b] = 1
+
+                bAndCnt = []
+                for b in (h.keys()):
+                    bAndCnt.append( (b, h[b]) )                                
+                bAndCnt.sort(key=lambda x: x[1], reverse=True)
+
+                aid = file_name.replace("@","/")
+                curFile.write(": " + aid + "\n")
+                cnt = 0
+                for t in bAndCnt:
+                    curFile.write(t[0] + " " + str(t[1]) + "\n")
+                    cnt += 1
+                    if (cnt >= cutOff):
+                        break
+
+                wroteCnt += cnt
     print "At " + time.strftime("%c") +", done processing per-article files. Wrote " + str(i) + " files, " + str(wroteCnt) + " lines"
+
+
+prefixPat = re.compile('^(.*)[\.@\/]')
+
+def aidPrefix(aid):
+#    global prefixPat
+    m = prefixPat.search(aid)
+    if (not m): 
+        return None
+    # print "Found no prefix in " + aid + "; skip"
+    return m.group(1)
 
 produceUserList()
 
+#year = years[0]
+#xDir = outdir + '/' + str(year) + "_split1"
+#perArticle(xDir, outdir + '/' + str(year))
 
