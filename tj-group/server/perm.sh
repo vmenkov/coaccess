@@ -14,7 +14,7 @@ aidListShort=`pwd`/aid-list-short.txt
 
 echo "Running script $cmd ; output goes to $aidList"
 
-$cmd list > $aidList
+$cmd list | sort > $aidList
 grep '^14' $aidList > $aidListShort
 
 echo "Prepared article ID list, as per My.ArXiv's Lucene data store: "
