@@ -1,5 +1,16 @@
 #!/bin/bash
 
+#------------------------------------------------------------------------
+# This is the main script for updating the coaccess data. The coaccess
+# matrices are generated based on arxiv.org usage data in /data/json/usage;
+# the resulting data files are installed in /data/coaccess/round5.
+#
+# The script uses the local My.ArXiv's Lucene data store to obtain a
+# (nearly) complete list of ArXiv article IDs. This dependence on
+# My.ArXiv could be avoided, of course, by identifying all article IDs
+# occurring in the usage data instead, but we don't bother doing that.
+# ------------------------------------------------------------------------
+
 echo `date` " : Listing valid article IDs"
 cmd=../../../arxiv/cmd.sh
 
@@ -15,43 +26,35 @@ aidListShort=`pwd`/aid-list-short.txt
 echo "Running script $cmd ; output goes to $aidList"
 
 $cmd list | sort > $aidList
-grep '^14' $aidList > $aidListShort
+grep '^15' $aidList > $aidListShort
 
 echo "Prepared article ID list, as per My.ArXiv's Lucene data store: "
-ls -l $aidList $aidListShort
-wc $aidList $aidListShort
+ls -l $aidList  $aidListShort
+wc $aidList  $aidListShort
 
 parser=parser_vFinal.py
 # parser=parser-tmp.py
 
 outdir=/data/coaccess/round5
 
-echo `date` " : Running python script $parser, output goes to $outdir (including per-year dirs)"
+curYear=`(cd  /data/json/usage; ls -d 2??? | tail -1)`
+month=`date +'%m'`
 
-time /usr/local/epd/bin/python $parser 2014 $outdir  $aidList
+echo "Assuming that the current year is $curYear, month is $month"
 
-# exit
+if [ "$month"=="02" ] ; then
+    prevYear=`(cd  /data/json/usage; ls -d 2??? | tail -2|head -1)`
+    years="$prevYear:$curYear"
+else
+    years=$curYear
+fi
+
+echo `date` " : Running python script $parser for years=$years, output goes to $outdir (including per-year dirs)"
 
 
-#echo `date` " : Touching new year files"
+echo time /usr/local/epd/bin/python $parser $years $outdir  $aidList
 
-#cd $outdir 
-#ls 2014 > cur.txt
-
-#cat cur.txt pastyearUniq.txt > newyears.txt
-
-
-# final merge
-#sort -u newyears.txt > newyearsUniq.txt
-
-#mkdir -m 777 newyear
-#cd newyear
-#cp $outdir/cur.txt $outdir/newyear
-#cd $outdir/newyear
-
-#while read p; do touch $p; done < cur.txt
-
-#rm cur.txt
+exit
 
 # Lucene indexing...
 
@@ -67,7 +70,7 @@ echo `date` : " : Creating Lucene Index"
 #-- no -update  needed, as we use a clean dir
 
 cp=$build/osmot-1.0.jar:lucene-analyzers-common-4.5.1.jar:lucene-demo-4.5.1-SNAPSHOT.jar:lucene-core-4.5.1.jar:lucene-queryparser-4.5.1.jar  
-java  -Xmx1g -cp $cp edu.cornell.cs.osmot.coaccess.IndexFiles  -docs $outdir -index index.new -aids $aidList -years 2003:2014
+java  -Xmx1g -cp $cp edu.cornell.cs.osmot.coaccess.IndexFiles  -docs $outdir -index index.new -aids $aidList -years 2003:$curYear
 
 OUT=$?
 

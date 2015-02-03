@@ -24,7 +24,15 @@ if (len(sys.argv)!=4):
     print "Usage: " + sys.argv[0] + " year out-dir-name correct-aid-list-file"
     exit()
 
-years = [ int(sys.argv[1]) ]
+ystr = sys.argv[1]
+ystrSplit = ystr.split(':')
+if (len(ystrSplit)==1):
+    years = [ int(ystr) ]
+else if  (len(ystrSplit)==2): 
+    y1 = int(ystrSplit[0])
+    y2 = int(ystrSplit[1])
+    years = [ int(ystrSplit[0])  ]
+
 outdir=sys.argv[2]
 correctAidListFile=sys.argv[3]
 
