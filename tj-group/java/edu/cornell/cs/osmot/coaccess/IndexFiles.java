@@ -277,6 +277,14 @@ public class IndexFiles {
 	    ydir = _dir;
 	}
 
+	/** Sets prereadAid from the given line of the form ': AID' */
+	private boolean gotAid(String x)  {
+	    if (x.startsWith(": ")) {
+		prereadAid = x.substring(2);
+		return true;
+	    } else return false;
+	}
+
 	/** Expects to find a string of the form ": AID" (unless EOF
 	    is reached), and reads it in, setting prereadAid.
 	    @return True if the AID has been pre-read either before or now. False on EOF.
@@ -286,25 +294,21 @@ public class IndexFiles {
 	    if (prereadAid != null) return true;
 	    String x = r.readLine();
 	    if (x==null) return false;
-	    x = x.trim();
-	    if (!x.startsWith(": "))  throw new IOException("preread() expected to find ': id', found '"+x+"'");
-	    prereadAid = x.substring(2);
+	    if (!gotAid(x))  throw new IOException("preread() expected to find ': id', found '"+x+"'");
 	    return true;
 	}
 
 	/** Expects that the AID line has been pre-read already; reads the doc body, and pre-reads the next ID line */
 	private String readBody()  throws IOException{
-	    if (prereadAid != null) throw new AssertionError("Cannot call readBody() w/o pre-read ID");
+	    if (prereadAid == null) throw new AssertionError("Cannot call readBody() w/o pre-read ID");
+	    //System.out.println("Readbody ("+ydir+") for aid=" + prereadAid);
 	    prereadAid = null;
 	    StringBuffer b= new StringBuffer(8192);
 	    String x=null;
-	    while((x=r.readLine()) != null) {
-		if (x.startsWith(": ")) {
-		    prereadAid = x.trim().substring(2);
-		    break;
-		}
-		b.append(x);
+	    while((x=r.readLine()) != null && !gotAid(x)) {
+		b.append(x + "\n");  // LineNumberReader strips CR/LF!
 	    }
+	    //System.out.println("Readbody has: " + b);
 	    return b.toString();
 	}
 
