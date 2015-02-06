@@ -28,10 +28,15 @@ ystr = sys.argv[1]
 ystrSplit = ystr.split(':')
 if (len(ystrSplit)==1):
     years = [ int(ystr) ]
-else if  (len(ystrSplit)==2): 
+elif  (len(ystrSplit)==2): 
     y1 = int(ystrSplit[0])
     y2 = int(ystrSplit[1])
-    years = [ int(ystrSplit[0])  ]
+    years = range(y1, y2)
+else :
+    print "Cannot parse year range " + ystr
+    exit()
+
+print "Year list = " + str(years)
 
 outdir=sys.argv[2]
 correctAidListFile=sys.argv[3]
@@ -42,14 +47,15 @@ if ((years[0] <= 2000) or (years[0] >= 2020)):
 
 
 if (not(os.path.isdir(outdir))):
-    print "Directory " + outdir + " does not exist!"
+    print "Output directory " + outdir + " does not exist!"
     exit()
 
 if (not(os.path.isfile(correctAidListFile))):
     print "File " + correctAidListFile + " does not exist!"
     exit()
 
-
+#print "Dry run - finishing now"
+#exit()
 
 # Make set JSON serializable
 class SetEncoder(json.JSONEncoder):

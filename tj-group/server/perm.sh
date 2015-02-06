@@ -11,6 +11,8 @@
 # occurring in the usage data instead, but we don't bother doing that.
 # ------------------------------------------------------------------------
 
+
+
 echo `date` " : Listing valid article IDs"
 cmd=../../../arxiv/cmd.sh
 
@@ -32,6 +34,13 @@ echo "Prepared article ID list, as per My.ArXiv's Lucene data store: "
 ls -l $aidList  $aidListShort
 wc $aidList  $aidListShort
 
+#-- location of the python interpretert on orie hosts; may be different elsewhere
+python=/usr/local/epd/bin/python
+if [ ! -e  $python ] ; then
+    python=python
+fi
+echo "Trying to invoke python as $python"
+
 parser=parser_vFinal.py
 # parser=parser-tmp.py
 
@@ -52,9 +61,13 @@ fi
 echo `date` " : Running python script $parser for years=$years, output goes to $outdir (including per-year dirs)"
 
 
-echo time /usr/local/epd/bin/python $parser $years $outdir  $aidList
 
-exit
+time $python $parser $years $outdir  $aidList
+
+#echo "Dry run; exiting now"
+#exit
+
+
 
 # Lucene indexing...
 
