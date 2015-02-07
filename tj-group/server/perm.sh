@@ -9,6 +9,11 @@
 # (nearly) complete list of ArXiv article IDs. This dependence on
 # My.ArXiv could be avoided, of course, by identifying all article IDs
 # occurring in the usage data instead, but we don't bother doing that.
+#
+# As of early 2015, this script is run weekly using cron. The relevant crontab
+# entry is as follows:
+#
+# 30 02 * * 1 cd /home/vm293/arxiv/coaccess/tj-group/server; ./perm.sh >& perm-monday.log
 # ------------------------------------------------------------------------
 
 
@@ -52,7 +57,8 @@ month=`date +'%m'`
 
 echo "Assuming that the current year is $curYear, month is $month"
 
-if [ "$month"=="02" ] ; then
+if [ "$month"=="01" ] ; then
+    #-- In January, do both years; otherwise, just the current year
     prevYear=`(cd  /data/json/usage; ls -d 2??? | tail -2|head -1)`
     years="$prevYear:$curYear"
 else
