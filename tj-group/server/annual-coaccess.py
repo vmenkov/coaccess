@@ -23,7 +23,22 @@ if (len(sys.argv)!=4):
     print "Usage: " + sys.argv[0] + " year out-dir-name correct-aid-list-file"
     exit(1)
 
-years = [ int(sys.argv[1]) ]
+#years = [ int(sys.argv[1]) ]
+
+ystr = sys.argv[1]
+ystrSplit = ystr.split(':')
+if (len(ystrSplit)==1):
+    years = [ int(ystr) ]
+elif  (len(ystrSplit)==2): 
+    y1 = int(ystrSplit[0])
+    y2 = int(ystrSplit[1])
+    years = range(y1, y2+1)
+else :
+    print "Cannot parse year range " + ystr
+    exit()
+
+print "Year list = " + str(years)
+
 outdir=sys.argv[2]
 correctAidListFile=sys.argv[3]
 
@@ -41,6 +56,8 @@ if (not(os.path.isfile(correctAidListFile))):
     exit()
 
 
+#print "Dry run - exiting"
+#exit()
 
 # Make set JSON serializable
 class SetEncoder(json.JSONEncoder):
