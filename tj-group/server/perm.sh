@@ -41,7 +41,8 @@ if [ ! -e  $python ] ; then
 fi
 echo "Trying to invoke python as $python"
 
-parser=parser_vFinal.py
+parser=annual-coaccess.py
+# parser=parser_vFinal.py
 # parser=parser-tmp.py
 
 outdir=/data/coaccess/round5
@@ -60,14 +61,10 @@ fi
 
 echo `date` " : Running python script $parser for years=$years, output goes to $outdir (including per-year dirs)"
 
-
-
 time $python $parser $years $outdir  $aidList
 
 #echo "Dry run; exiting now"
 #exit
-
-
 
 # Lucene indexing...
 

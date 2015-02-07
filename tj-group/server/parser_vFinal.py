@@ -31,7 +31,7 @@ if (len(ystrSplit)==1):
 elif  (len(ystrSplit)==2): 
     y1 = int(ystrSplit[0])
     y2 = int(ystrSplit[1])
-    years = range(y1, y2)
+    years = range(y1, y2+1)
 else :
     print "Cannot parse year range " + ystr
     exit()
