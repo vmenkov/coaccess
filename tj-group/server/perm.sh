@@ -55,9 +55,9 @@ outdir=/data/coaccess/round5
 curYear=`(cd  /data/json/usage; ls -d 2??? | tail -1)`
 month=`date +'%m'`
 
-echo "Assuming that the current year is $curYear, month is $month"
+echo "Assuming that the current year is $curYear, month is $month."
 
-if [ "$month"=="01" ] ; then
+if [ "$month" == "01" ] ; then
     #-- In January, do both years; otherwise, just the current year
     prevYear=`(cd  /data/json/usage; ls -d 2??? | tail -2|head -1)`
     years="$prevYear:$curYear"
