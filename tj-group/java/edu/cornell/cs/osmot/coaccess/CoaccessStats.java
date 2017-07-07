@@ -48,9 +48,11 @@ public class CoaccessStats {
 
     }
 
+    final int maxRank;
     private Vector<TreeMap<Integer, MutableInt>> aid2cnt, aid2diffCnt;
 
-    CoaccessStats(int maxRank) {
+    CoaccessStats(int _maxRank) {
+	maxRank = _maxRank;
 	aid2cnt = new Vector<TreeMap<Integer, MutableInt>>();
 	aid2diffCnt =  new Vector<TreeMap<Integer, MutableInt>>();
 	for(int i=0; i<maxRank; i++) {
@@ -73,11 +75,12 @@ public class CoaccessStats {
 	for(Map.Entry<String, Integer> e: list) {
 	    String a = e.getKey();
 	    Integer score = e.getValue();
-	    addToMap(aid2cnt.elementAt(rank), score, 1);
+	    if (rank<maxRank) addToMap(aid2cnt.elementAt(rank), score, 1);
 	    if (prev>=0) {
 		int diff = prev-score;
 		addToMap(aid2diffCnt.elementAt(rank-1), new Integer(diff), 1);
 	    }
+	    if (rank == maxRank) break;
 	    prev=score;
 	    rank ++;
 	}
