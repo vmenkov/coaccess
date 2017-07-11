@@ -3,13 +3,13 @@ package edu.cornell.cs.osmot.coaccess;
 import java.util.*;
 import java.io.*;
 
-import javax.servlet.*;
-import javax.servlet.http.*;
+//import javax.servlet.*;
+//import javax.servlet.http.*;
 
-import org.apache.lucene.document.*;
-import org.apache.lucene.index.*;
-import org.apache.lucene.search.*;
-import org.apache.lucene.store.FSDirectory;
+//import org.apache.lucene.document.*;
+//import org.apache.lucene.index.*;
+//import org.apache.lucene.search.*;
+//import org.apache.lucene.store.FSDirectory;
 import org.apache.commons.lang.mutable.*;
 
 /** Computing some aggregate statistics for the coaccess data. Used as a command-line tool 
@@ -102,12 +102,13 @@ TjA1Entry o1,TjA1Entry o2) {
 	File f= new File(fname);
 	PrintWriter w= new PrintWriter(new FileWriter(f));
 	for(int i=0; i<data.size(); i++) {
-	    w.println("# [Rank "+(i+1)+"]");
+	    w.println("# [Rank "+(i+1)+"]"); // used by the "index" clause in gnuplot's plot
 	    TreeMap<Integer, MutableInt> q = data.elementAt(i);
 	    for(Integer key: q.keySet()) {
 		int val =q.get(key).intValue();
 		w.println(key + "\t" + val);
 	    }
+	    w.println(); // need 2 blank lines between sets
 	    w.println();
 	}
 	w.close();
