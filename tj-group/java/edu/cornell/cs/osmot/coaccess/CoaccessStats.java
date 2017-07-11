@@ -68,7 +68,10 @@ public class CoaccessStats {
 	cnt.add(inc);
     }
 
-    /** Fills the buckets for the histograms */
+    /** Fills the buckets for the histograms. For scores, ranks start
+      with 1; rank 1 is the top rank. For differences, ranks start
+      with 1 as well; rank 1 diff is the difference between rank 2
+      score and rank 1 score, etc. */
     private void addStats(List<Map.Entry<String, Integer>> list) {
 	int rank=0;
 	int prev= -1;
